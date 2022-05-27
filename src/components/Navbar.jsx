@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Container, IconButton, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material"
 import AdbIcon from '@mui/icons-material/Adb';
 import { Menu } from "@mui/icons-material";
 
@@ -9,6 +9,14 @@ const Navbar = () => {
     return (
         <AppBar>
             <Toolbar>
+                <Box sx={{ flexGrow: 1, display: 'flex' }}>
+                    <AdbIcon sx={{ mr: 1 }} />
+                    <Typography>
+                        Logo
+                    </Typography>
+                </Box>
+
+
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
                     <Button
@@ -19,11 +27,6 @@ const Navbar = () => {
                     </Button>
                     ))}
                 </Box>
-
-
-
-
-
 
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <Button color="inherit">Login</Button>
