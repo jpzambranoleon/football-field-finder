@@ -1,5 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, createTheme, CssBaseline, Grid, Link, Stack, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
+import FeedFilter from "./components/FeedFilter";
 
 function Copyright() {
     return (
@@ -57,6 +58,7 @@ export default function Home() {
                 </Container>
             </Box>
             <Container sx={{ py: 8 }} maxWidth="md">
+                <FeedFilter />
                 {/* End hero unit */}
                 <Grid container spacing={4}>
                 {cards.map((card) => (
