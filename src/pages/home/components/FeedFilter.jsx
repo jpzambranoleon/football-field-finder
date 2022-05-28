@@ -47,8 +47,6 @@ const FeedFilter = () => {
         setAnchorEl(null);
     };
 
-    
-
     return (
         <Paper
             component="form"
@@ -69,19 +67,19 @@ const FeedFilter = () => {
                     <FormGroup aria-label="position" column>
                         <FormControlLabel 
                             value="end"
-                            control={<Checkbox />}
+                            control={<Checkbox defaultChecked={true} />}
                             label="Field"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
                             value="end"
-                            control={<Checkbox />}
+                            control={<Checkbox defaultChecked={true} />}
                             label="Teams"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
                             value="end"
-                            control={<Checkbox />}
+                            control={<Checkbox defaultChecked={true} />}
                             label="Other"
                             labelPlacement="end"
                         />
@@ -92,20 +90,20 @@ const FeedFilter = () => {
             <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
                 <FormGroup aria-label="position" row>
                     <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
+                        value="1"
+                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
                         label="Field"
                         labelPlacement="end"
                     />
                     <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
+                        value="2"
+                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
                         label="Team"
                         labelPlacement="end"
                     />
                     <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
+                        value="3"
+                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
                         label="Other"
                         labelPlacement="end"
                     />
