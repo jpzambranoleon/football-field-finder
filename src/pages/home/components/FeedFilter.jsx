@@ -50,7 +50,7 @@ const FeedFilter = () => {
     return (
         <Paper
             component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center'}}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mb: 5}}
         >
             <IconButton
                 onClick={handleClick} 

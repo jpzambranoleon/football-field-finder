@@ -60,8 +60,10 @@ export default function Home() {
             </Box>
             <Container sx={{ py: 8 }} maxWidth="md">
                 <FeedFilter />
-            </Container>
-            <Container sx={{ py: 8 }} maxWidth="md">
+                <Post />
+                <Post />
+                <Post />
+                <Post />
                 <Post />
             </Container>
         </main>
