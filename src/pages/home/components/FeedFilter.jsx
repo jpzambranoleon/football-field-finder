@@ -1,5 +1,5 @@
 import { Directions, MenuRounded, Search } from "@mui/icons-material";
-import { Checkbox, Divider, FormControl, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, useTheme } from "@mui/material";
+import { Box, Checkbox, Divider, FormControl, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
@@ -47,7 +47,7 @@ const FeedFilter = () => {
                 <MenuRounded />
             </IconButton>
 
-            <FormControl sx={{ minWidth: 100 }} size="small">
+            <FormControl sx={{ ml: 1, minWidth: 100 }} size="small">
                 <InputLabel id="simple-select-label">State</InputLabel>
                 <Select
                     labelId="simple-select-label"
@@ -68,21 +68,16 @@ const FeedFilter = () => {
                 </Select>
             </FormControl>
 
-
-
-
-
-
-            <InputBase 
+            <TextField 
+                id="outlined-basic" 
+                label="City" 
+                variant="outlined" 
+                size="small"
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Search Google Maps"
-                inputProps={{ 'aria-label': 'search google maps' }}
             />
-            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                <Search />
-            </IconButton>
+
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
                 <Directions />
             </IconButton>
         </Paper>
