@@ -1,16 +1,16 @@
-import { NearMeSharp } from "@mui/icons-material";
-import { Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, OutlinedInput, Paper, Select, useTheme } from "@mui/material";
+import { Directions, MenuRounded, NearMeSharp, Search } from "@mui/icons-material";
+import { Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 100,
     },
+  },
 };
 
 const states = [
@@ -64,45 +64,65 @@ const states = [
     'WY',
 ];
 
-function getStyles(name, stateName, theme) {
-    return {
-        fontWeight:
-            stateName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
-}
-
 const FeedFilter = () => {
-    const theme = useTheme();
-    const [stateName, setStateName] = useState([]);
+    const [state, setState] = useState([]);
 
-    
+    const handleChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setState(
+            typeof value === 'string' ? value.split(',') : value,
+        );
+    };
 
     return (
-        <Paper>
-            <FormControl component="fieldset">
-                <FormGroup aria-label="position" row sx={{ ml: 2 }}>
-                    <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
-                        label="Field"
-                        labelPlacement="end"
-                    />
-                    <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
-                        label="Teams"
-                        labelPlacement="end"
-                    />
-                    <FormControlLabel 
-                        value="end"
-                        control={<Checkbox />}
-                        label="Other"
-                        labelPlacement="end"
-                    />
-                </FormGroup>
+        <Paper
+            component="form"
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center'}}
+        >
+            <IconButton sx={{ p: '10px' }} aria-label="menu">
+                <MenuRounded />
+            </IconButton>
+
+            <FormControl sx={{ minWidth: 100 }} size="small">
+                <InputLabel id="simple-select-label">State</InputLabel>
+                <Select
+                    labelId="simple-select-label"
+                    id="simple-select"
+                    value={state}
+                    label="State"
+                    onChange={handleChange}
+                    MenuProps={MenuProps}
+                >
+                    {states.map((name) => (
+                        <MenuItem
+                            key={name}
+                            value={name}
+                        >
+                            {name}
+                        </MenuItem>
+                    ))}
+                </Select>
             </FormControl>
+
+
+
+
+
+
+            <InputBase 
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search Google Maps"
+                inputProps={{ 'aria-label': 'search google maps' }}
+            />
+            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                <Search />
+            </IconButton>
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+                <Directions />
+            </IconButton>
         </Paper>
     )
 }
