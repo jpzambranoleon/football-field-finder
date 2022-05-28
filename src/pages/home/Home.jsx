@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, createTheme, CssBaseline, Grid, Link, Stack, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import FeedFilter from "./components/FeedFilter";
+import Post from "./components/Post";
 
 function Copyright() {
     return (
@@ -59,6 +60,9 @@ export default function Home() {
             </Box>
             <Container sx={{ py: 8 }} maxWidth="md">
                 <FeedFilter />
+            </Container>
+            <Container sx={{ py: 8 }} maxWidth="md">
+                <Post />
             </Container>
         </main>
     {/* Footer */}
