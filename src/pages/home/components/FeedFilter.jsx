@@ -1,5 +1,5 @@
 import { Directions, MenuRounded, Search } from "@mui/icons-material";
-import { Box, Checkbox, Divider, FormControl, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
+import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
@@ -43,9 +43,32 @@ const FeedFilter = () => {
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center'}}
         >
-            <IconButton sx={{ p: '10px' }} aria-label="menu">
+            <IconButton sx={{ p: '10px', display: { xs: 'flex', md: 'none' } }} aria-label="menu">
                 <MenuRounded />
             </IconButton>
+
+            <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
+                <FormGroup aria-label="position" row>
+                    <FormControlLabel 
+                        value="end"
+                        control={<Checkbox />}
+                        label="Field"
+                        labelPlacement="end"
+                    />
+                    <FormControlLabel 
+                        value="end"
+                        control={<Checkbox />}
+                        label="Team"
+                        labelPlacement="end"
+                    />
+                    <FormControlLabel 
+                        value="end"
+                        control={<Checkbox />}
+                        label="Other"
+                        labelPlacement="end"
+                    />
+                </FormGroup>
+            </FormControl>
 
             <FormControl sx={{ ml: 1, minWidth: 100 }} size="small">
                 <InputLabel id="simple-select-label">State</InputLabel>
