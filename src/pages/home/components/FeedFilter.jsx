@@ -1,5 +1,5 @@
 import { Directions, MenuRounded, Search } from "@mui/icons-material";
-import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
+import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, Menu, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
@@ -28,6 +28,7 @@ const states = [
 
 const FeedFilter = () => {
     const [state, setState] = useState([]);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleChange = (event) => {
         const {
@@ -38,14 +39,55 @@ const FeedFilter = () => {
         );
     };
 
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    
+
     return (
         <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center'}}
         >
-            <IconButton sx={{ p: '10px', display: { xs: 'flex', md: 'none' } }} aria-label="menu">
+            <IconButton
+                onClick={handleClick} 
+                sx={{ p: '10px', display: { xs: 'flex', md: 'none' } }} aria-label="menu"
+            >
                 <MenuRounded />
             </IconButton>
+            <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+            >
+                <FormControl component="fieldset" sx={{ ml: 1 }}>
+                    <FormGroup aria-label="position" column>
+                        <FormControlLabel 
+                            value="end"
+                            control={<Checkbox />}
+                            label="Field"
+                            labelPlacement="end"
+                        />
+                        <FormControlLabel 
+                            value="end"
+                            control={<Checkbox />}
+                            label="Teams"
+                            labelPlacement="end"
+                        />
+                        <FormControlLabel 
+                            value="end"
+                            control={<Checkbox />}
+                            label="Other"
+                            labelPlacement="end"
+                        />
+                    </FormGroup>
+                </FormControl>
+            </Menu>
 
             <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
                 <FormGroup aria-label="position" row>
