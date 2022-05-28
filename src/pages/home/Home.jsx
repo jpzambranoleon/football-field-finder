@@ -41,7 +41,7 @@ export default function Home() {
                         color="text.primary"
                         gutterBottom
                     >
-                        Field Finder
+                        Team Finder
                     </Typography>
                     <Typography variant="h5" align="center" color="text.secondary" paragraph>
                         Find a football field/complex near you.
