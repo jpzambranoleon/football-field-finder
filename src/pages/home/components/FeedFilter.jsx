@@ -124,7 +124,12 @@ const FeedFilter = () => {
                 label="City" 
                 variant="outlined" 
                 size="small"
+                sx={{ ml: 1 }}
+            />
+            <InputBase
                 sx={{ ml: 1, flex: 1 }}
+                placeholder="Search"
+                inputProps={{ 'aria-label': 'search' }}
             />
 
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
