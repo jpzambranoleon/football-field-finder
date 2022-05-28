@@ -68,13 +68,7 @@ const FeedFilter = () => {
                         <FormControlLabel 
                             value="end"
                             control={<Checkbox defaultChecked={true} />}
-                            label="Field"
-                            labelPlacement="end"
-                        />
-                        <FormControlLabel 
-                            value="end"
-                            control={<Checkbox defaultChecked={true} />}
-                            label="Teams"
+                            label="Team"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
@@ -89,12 +83,6 @@ const FeedFilter = () => {
 
             <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
                 <FormGroup aria-label="position" row>
-                    <FormControlLabel 
-                        value="1"
-                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
-                        label="Field"
-                        labelPlacement="end"
-                    />
                     <FormControlLabel 
                         value="2"
                         control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
