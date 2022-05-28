@@ -1,5 +1,5 @@
-import { Directions, MenuRounded, NearMeSharp, Search } from "@mui/icons-material";
-import { Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, useTheme } from "@mui/material";
+import { Directions, MenuRounded, Search } from "@mui/icons-material";
+import { Checkbox, Divider, FormControl, IconButton, InputBase, InputLabel, MenuItem, OutlinedInput, Paper, Select, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
@@ -14,54 +14,16 @@ const MenuProps = {
 };
 
 const states = [
-    'AL',
-    'AK',
-    'AZ',
-    'AR',
-    'CA',
-    'CO',
-    'CT',
-    'DE',
-    'FL',
-    'GA',
-    'HI',
-    'ID',
-    'IL',
-    'IN',
-    'IA',
-    'KS',
-    'KY',
-    'LA',
-    'ME',
-    'MD',
-    'MA',
-    'MI',
-    'MN',
-    'MS',
-    'MO',
-    'MT',
-    'NE',
-    'MV',
-    'NH',
-    'NY',
-    'NC',
-    'ND',
-    'OH',
-    'OK',
-    'OR',
-    'PA',
-    'RI',
-    'SC',
-    'SD',
-    'TN',
-    'TX',
-    'UT',
-    'VT',
-    'VA',
-    'WA',
-    'WV',
-    'WI',
-    'WY',
+    'AL', 'AK', 'AZ', 'AR', 'CA',
+    'CO', 'CT', 'DE', 'FL', 'GA',
+    'HI', 'ID', 'IL', 'IN', 'IA',
+    'KS', 'KY', 'LA', 'ME', 'MD',
+    'MA', 'MI', 'MN', 'MS', 'MO',
+    'MT', 'NE', 'NV', 'NH', 'NJ',
+    'NM', 'NY', 'NC', 'ND', 'OH', 
+    'OK', 'OR', 'PA', 'RI', 'SC', 
+    'SD', 'TN', 'TX', 'UT', 'VT', 
+    'VA', 'WA', 'WV', 'WI', 'WY',
 ];
 
 const FeedFilter = () => {
