@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, createTheme, CssBaseline, Grid, Link, Stack, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import AboutDescription from "./components/AboutDescription";
+import AboutImage from "./components/AboutImage";
 
 function Copyright() {
     return (
@@ -37,16 +38,7 @@ export default function About() {
         <Container maxWidth="100px">
         <Grid container spacing={3}>
             <AboutDescription />
-            <Grid item xs={12} sm={4}>
-                <Card>
-                    <CardMedia
-                        sx={{ height: '340px' }}
-                        component="img" 
-                        image="https://source.unsplash.com/random"
-                        alt="random"
-                    />
-                </Card>
-            </Grid>
+            <AboutImage />
         </Grid>
         </Container>
 
