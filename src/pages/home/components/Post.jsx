@@ -1,5 +1,6 @@
 import { Groups } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import { pink } from "@mui/material/colors";
 
 const Post = () => {
 
@@ -7,7 +8,7 @@ const Post = () => {
         <Card sx={{ mb: 2 }}>
             <CardActionArea>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar sx={{ ml: 2, mt: 2, mb: 2, width: '50px', height: '50px' }} >
+                    <Avatar sx={{ ml: 2, mt: 2, mb: 2, width: '50px', height: '50px', bgcolor: pink[500] }} >
                         <Groups fontSize="large"/>
                     </Avatar>
                     <CardContent>
