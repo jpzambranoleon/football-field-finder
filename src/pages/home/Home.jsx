@@ -45,7 +45,7 @@ export default function Home() {
                     Team Finder
                 </Typography>
                 <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                    Find a football field/complex near you.
+                    Looking for some people to play football with? Are you looking for a team to join? We can help you with that. Find a team near you!
                 </Typography>
                 <Stack
                     sx={{ pt: 4 }}
