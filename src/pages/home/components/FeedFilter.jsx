@@ -48,95 +48,145 @@ const FeedFilter = () => {
     };
 
     return (
-        <Paper
-            component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mb: 5}}
-        >
-            <IconButton
-                onClick={handleClick} 
-                sx={{ p: '10px', display: { xs: 'flex', md: 'none' } }} aria-label="menu"
+        <>
+            <Paper 
+                component="form" 
+                aria-label="mobile-filter"
+                sx={{ p: '2px 4px', display: {xs: 'block', md: 'none'}, mb: 5}}
             >
-                <MenuRounded />
-            </IconButton>
-            <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <IconButton
+                    onClick={handleClick} 
+                    sx={{ p: '10px' }} aria-label="menu"
+                >
+                    <MenuRounded />
+                </IconButton>
+                <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <FormControl component="fieldset" sx={{ ml: 1 }}>
+                        <FormGroup aria-label="position" column>
+                            <FormControlLabel 
+                                value="end"
+                                control={<Checkbox defaultChecked={true} />}
+                                label="Team"
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel 
+                                value="end"
+                                control={<Checkbox defaultChecked={true} />}
+                                label="Other"
+                                labelPlacement="end"
+                            />
+                        </FormGroup>
+                    </FormControl>
+                </Menu>
+                <FormControl sx={{ ml: 1, minWidth: 100 }} size="small">
+                    <InputLabel id="simple-select-label">State</InputLabel>
+                    <Select
+                        labelId="simple-select-label"
+                        id="simple-select"
+                        value={state}
+                        label="State"
+                        onChange={handleChange}
+                        MenuProps={MenuProps}
+                    >
+                        {states.map((name) => (
+                            <MenuItem
+                                key={name}
+                                value={name}
+                            >
+                                {name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+                <TextField 
+                    id="outlined-basic" 
+                    label="City" 
+                    variant="outlined" 
+                    size="small"
+                    sx={{ ml: 1 }}
+                />
+                </Box>
+                <Box sx={{ display: 'flex' }}>
+                <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search"
+                    inputProps={{ 'aria-label': 'search' }}
+                />
+
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
+                    <Directions />
+                </IconButton>
+                </Box>
+            </Paper>
+
+            <Paper
+                component="form"
+                sx={{ p: '2px 4px', display: {xs: 'none', md: 'flex'}, alignItems: 'center', mb: 5}}
             >
-                <FormControl component="fieldset" sx={{ ml: 1 }}>
-                    <FormGroup aria-label="position" column>
+                <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
+                    <FormGroup aria-label="position" row>
                         <FormControlLabel 
-                            value="end"
-                            control={<Checkbox defaultChecked={true} />}
+                            value="2"
+                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
                             label="Team"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
-                            value="end"
-                            control={<Checkbox defaultChecked={true} />}
+                            value="3"
+                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
                             label="Other"
                             labelPlacement="end"
                         />
                     </FormGroup>
                 </FormControl>
-            </Menu>
 
-            <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
-                <FormGroup aria-label="position" row>
-                    <FormControlLabel 
-                        value="2"
-                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
-                        label="Team"
-                        labelPlacement="end"
-                    />
-                    <FormControlLabel 
-                        value="3"
-                        control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
-                        label="Other"
-                        labelPlacement="end"
-                    />
-                </FormGroup>
-            </FormControl>
+                <FormControl sx={{ ml: 1, minWidth: 100 }} size="small">
+                    <InputLabel id="simple-select-label">State</InputLabel>
+                    <Select
+                        labelId="simple-select-label"
+                        id="simple-select"
+                        value={state}
+                        label="State"
+                        onChange={handleChange}
+                        MenuProps={MenuProps}
+                    >
+                        {states.map((name) => (
+                            <MenuItem
+                                key={name}
+                                value={name}
+                            >
+                                {name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
 
-            <FormControl sx={{ ml: 1, minWidth: 100 }} size="small">
-                <InputLabel id="simple-select-label">State</InputLabel>
-                <Select
-                    labelId="simple-select-label"
-                    id="simple-select"
-                    value={state}
-                    label="State"
-                    onChange={handleChange}
-                    MenuProps={MenuProps}
-                >
-                    {states.map((name) => (
-                        <MenuItem
-                            key={name}
-                            value={name}
-                        >
-                            {name}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+                <TextField 
+                    id="outlined-basic" 
+                    label="City" 
+                    variant="outlined" 
+                    size="small"
+                    sx={{ ml: 1 }}
+                />
+                <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search"
+                    inputProps={{ 'aria-label': 'search' }}
+                />
 
-            <TextField 
-                id="outlined-basic" 
-                label="City" 
-                variant="outlined" 
-                size="small"
-                sx={{ ml: 1 }}
-            />
-            <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Search"
-                inputProps={{ 'aria-label': 'search' }}
-            />
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
+                    <Directions />
+                </IconButton>
+            </Paper>
 
-            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
-                <Directions />
-            </IconButton>
-        </Paper>
+        </>
     )
 }
 
