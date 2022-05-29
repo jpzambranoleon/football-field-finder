@@ -28,7 +28,7 @@ const Navbar = () => {
                 </Box>
                 <Box sx={{ alignItems: 'center' }}>
                     <Button color="inherit">
-                        Hello
+                        EN
                     </Button>
                 </Box>
             </Toolbar>
