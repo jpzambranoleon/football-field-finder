@@ -12,7 +12,6 @@ const bull = (
   );
 
 const Post = () => {
-
     return (
         <Card sx={{ mb: 2 }}>
             <CardActionArea>
