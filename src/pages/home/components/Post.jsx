@@ -2,6 +2,15 @@ import { Groups } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { pink } from "@mui/material/colors";
 
+const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
+
 const Post = () => {
 
     return (
@@ -13,7 +22,7 @@ const Post = () => {
                     </Avatar>
                     <CardContent>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Word of the Day
+                            3 hrs ago {bull} Team Name FC {bull} Hot Springs, AR
                         </Typography>
                         <Typography variant="h5" component="div">
                             Players Needed
