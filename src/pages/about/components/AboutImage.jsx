@@ -7,8 +7,8 @@ const AboutImage = () => {
                 <CardMedia
                     sx={{ height: '340px' }}
                     component="img" 
-                    image="https://source.unsplash.com/random"
-                    alt="random"
+                    image="/images/leone_digitale_group.jpg"
+                    alt="group"
                 />
             </Card>
         </Grid>
