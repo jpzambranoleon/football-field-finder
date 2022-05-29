@@ -1,6 +1,5 @@
 import { SportsSoccer } from "@mui/icons-material";
-import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Checkbox, Container, createTheme, CssBaseline, FormControlLabel, Grid, Link, Paper, Stack, TextField, ThemeProvider, Toolbar, Typography } from "@mui/material";
-import Navbar from "../../components/Navbar";
+import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 
 function Copyright(props) {
     return (
