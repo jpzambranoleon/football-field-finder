@@ -21,7 +21,7 @@ export default function About() {
     <>
         <CssBaseline />
         <Navbar />
-        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
+        <Box sx={{ bgcolor: 'background.paper', pt: 6, pb: 6 }}>
             <Container maxWidth="sm">
                 <Typography
                     component="h1"
