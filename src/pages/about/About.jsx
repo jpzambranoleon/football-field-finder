@@ -14,8 +14,6 @@ function Copyright() {
     );
   }
 
-const theme = createTheme();
-
 export default function About() {
   return (
     <>

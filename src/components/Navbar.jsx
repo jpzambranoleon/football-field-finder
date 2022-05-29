@@ -11,7 +11,7 @@ const Navbar = () => {
                 <Box sx={{ alignItems: 'center', display: 'flex'}}>
                     <SportsSoccer sx={{ mr: 2 }} />
                     <Typography variant="h6" color="inherit" noWrap>
-                        Team Finder
+                        First Squad
                     </Typography>
                     <Box
                         sx={{ ml: 5, flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
