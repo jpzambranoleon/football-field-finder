@@ -5,7 +5,14 @@ import PostPage from "./pages/post/PostPage";
 
 function App() {
   return (
-    <Home />
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/post" element={<PostPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
