@@ -18,22 +18,31 @@ export default function Login() {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
+            <Box
+                sx={{ 
+                    mt: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}
+            >
+                <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
+                    <SportsSoccer />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign in to First Squad
+                </Typography>
+            </Box>
             <Paper>
                 <Container>
                     <Box
                         sx={{ 
-                            mt: 8,
+                            mt: 3,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center'
                         }}
                     >
-                        <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
-                            <SportsSoccer />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                        </Typography>
                         <Box component="form">
                             <TextField 
                                 margin="normal"
