@@ -1,5 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, createTheme, CssBaseline, Grid, Link, Stack, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
+import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
 import Post from "./components/Post";
 
@@ -45,7 +46,8 @@ export default function Home() {
                 justifyContent="center"
             >
                 <Button variant="contained">Main call to action</Button>
-                <Button variant="outlined">Secondary action</Button>
+                {/*<Button variant="outlined">Secondary action</Button>*/}
+                <CreatePost />
             </Stack>
           </Container>
         </Box>
