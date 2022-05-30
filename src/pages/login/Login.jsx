@@ -20,14 +20,14 @@ export default function Login() {
             <CssBaseline />
             <Box
                 sx={{ 
-                    mt: 8,
+                    mt: 5,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}
             >
-                <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
-                    <SportsSoccer />
+                <Avatar sx={{ mb: 3, bgcolor: 'secondary.main', width: 56, height: 56 }} size="large">
+                    <SportsSoccer fontSize="large"/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Sign in to First Squad
