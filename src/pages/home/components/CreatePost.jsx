@@ -1,4 +1,4 @@
-import { Button, FormControl, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
+import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const style = {
@@ -61,6 +61,10 @@ const CreatePost = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Paper sx={style}>
+                    <FormGroup row>
+                        <FormControlLabel control={<Checkbox />} label="Team" />
+                        <FormControlLabel control={<Checkbox />} label="Trainer" />
+                    </FormGroup>
                     <TextField 
                         margin="normal"
                         required
