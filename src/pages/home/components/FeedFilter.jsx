@@ -75,7 +75,13 @@ const FeedFilter = () => {
                             <FormControlLabel 
                                 value="end"
                                 control={<Checkbox defaultChecked={true} />}
-                                label="Other"
+                                label="Trainer"
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel 
+                                value="end"
+                                control={<Checkbox defaultChecked={true} />}
+                                label="Free Agent"
                                 labelPlacement="end"
                             />
                         </FormGroup>
@@ -92,7 +98,13 @@ const FeedFilter = () => {
                         <FormControlLabel 
                             value="3"
                             control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
-                            label="Other"
+                            label="Trainer"
+                            labelPlacement="end"
+                        />
+                        <FormControlLabel 
+                            value="3"
+                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
+                            label="Free Agent"
                             labelPlacement="end"
                         />
                     </FormGroup>
@@ -122,7 +134,7 @@ const FeedFilter = () => {
                     label="City" 
                     variant="outlined" 
                     size="small"
-                    sx={{ ml: 1 }}
+                    sx={{ ml: 1, width: 150 }}
                 />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
