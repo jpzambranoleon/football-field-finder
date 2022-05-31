@@ -64,6 +64,7 @@ const CreatePost = () => {
                     <FormGroup row>
                         <FormControlLabel control={<Checkbox />} label="Team" />
                         <FormControlLabel control={<Checkbox />} label="Trainer" />
+                        <FormControlLabel control={<Checkbox />} label="Free Agent" />
                     </FormGroup>
                     <TextField 
                         margin="normal"
