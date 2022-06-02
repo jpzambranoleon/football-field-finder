@@ -1,5 +1,5 @@
-import { Directions, MenuRounded, Search } from "@mui/icons-material";
-import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, Menu, MenuItem, OutlinedInput, Paper, Select, TextField, useTheme } from "@mui/material";
+import { Directions } from "@mui/icons-material";
+import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
@@ -28,8 +28,6 @@ const states = [
 
 const FeedFilter = () => {
     const [state, setState] = useState([]);
-    const [anchorEl, setAnchorEl] = useState(null);
-
     const handleChange = (event) => {
         const {
             target: { value },
@@ -39,71 +37,29 @@ const FeedFilter = () => {
         );
     };
 
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
     return (
         <Paper
             component="form"
             sx={{ p: '2px 4px', display: {xs: 'block', md: 'flex'}, alignItems: 'center', mb: 5}}
         >
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <IconButton
-                    onClick={handleClick} 
-                    sx={{ p: '10px', display: {xs: 'flex', md: 'none'} }} aria-label="menu"
-                >
-                    <MenuRounded />
-                </IconButton>
-                <Menu
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                >
-                    <FormControl component="fieldset" sx={{ ml: 1 }}>
-                        <FormGroup aria-label="position" column>
-                            <FormControlLabel 
-                                value="end"
-                                control={<Checkbox defaultChecked={true} />}
-                                label="Team"
-                                labelPlacement="end"
-                            />
-                            <FormControlLabel 
-                                value="end"
-                                control={<Checkbox defaultChecked={true} />}
-                                label="Trainer"
-                                labelPlacement="end"
-                            />
-                            <FormControlLabel 
-                                value="end"
-                                control={<Checkbox defaultChecked={true} />}
-                                label="Free Agent"
-                                labelPlacement="end"
-                            />
-                        </FormGroup>
-                    </FormControl>
-                </Menu>
-                <FormControl component="fieldset" sx={{ ml: 1, display: { xs: 'none', md: 'flex'} }}>
+            <Box sx={{ display: {xs: 'block', md: 'flex'}, alignItems: 'center' }}>
+                <FormControl component="fieldset" sx={{ ml: 1 }}>
                     <FormGroup aria-label="position" row>
                         <FormControlLabel 
-                            value="2"
-                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
+                            value="end"
+                            control={<Checkbox defaultChecked={true} />}
                             label="Team"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
-                            value="3"
-                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
+                            value="end"
+                            control={<Checkbox defaultChecked={true} />}
                             label="Trainer"
                             labelPlacement="end"
                         />
                         <FormControlLabel 
-                            value="3"
-                            control={<Checkbox defaultChecked={true} inputProps={{ 'aria-label': 'controlled' }}/>}
+                            value="end"
+                            control={<Checkbox defaultChecked={true} />}
                             label="Free Agent"
                             labelPlacement="end"
                         />
@@ -136,17 +92,17 @@ const FeedFilter = () => {
                     size="small"
                     sx={{ ml: 1, width: 150 }}
                 />
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-                <InputBase
-                    sx={{ ml: 1, flex: 1 }}
-                    placeholder="Search"
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
-                    <Directions />
-                </IconButton>
+                <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Search"
+                        inputProps={{ 'aria-label': 'search' }}
+                    />
+                    <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                    <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
+                        <Directions />
+                    </IconButton>
+                </Box>
             </Box>
         </Paper>
     )
