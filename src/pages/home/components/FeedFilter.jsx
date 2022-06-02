@@ -2,7 +2,7 @@ import { Directions } from "@mui/icons-material";
 import { Box, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, IconButton, InputBase, InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
-const ITEM_HEIGHT = 48;
+const ITEM_HEIGHT = 38;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
