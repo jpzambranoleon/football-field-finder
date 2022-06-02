@@ -5,9 +5,9 @@ const AboutImage = () => {
         <Grid item xs={12} sm={4}>
             <Card>
                 <CardMedia
-                    sx={{ height: '340px' }}
+                    sx={{ height: '500px' }}
                     component="img" 
-                    image="/images/leone_digitale_group.jpg"
+                    image="/images/football_boot_and_ball.jpg"
                     alt="group"
                 />
             </Card>
