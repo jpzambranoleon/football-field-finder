@@ -4,27 +4,12 @@ import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
 import Post from "./components/Post";
 
-function Copyright() {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Leone Digitale
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
-
 export default function Home() {
   return (
     <>
-      <CssBaseline />
-      <Navbar />
       <main>
         {/* Hero unit */}
-        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}
+        <Box sx={{ bgcolor: 'background.paper', pt: 15, pb: 6, }}
         >
           <Container maxWidth="sm">
             <Typography
@@ -60,22 +45,6 @@ export default function Home() {
             <Post />
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </>
   );
 }
