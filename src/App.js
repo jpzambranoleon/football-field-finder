@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./pages/about/About";
-import Home from "./pages/home/Home";
 import Login from "./authorization/Login";
 import PostPage from "./pages/post/PostPage";
 import Signup from "./authorization/Signup";
 import Copyright from "./components/Copyright";
+import Home from "./pages/home/Home";
 
 function App() {
   return (

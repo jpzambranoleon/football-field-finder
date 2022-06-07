@@ -4,7 +4,6 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material"
 const pages = ['Home', 'About'];
 
 const Navbar = () => {
-
     return (
         <AppBar position="relative">
             <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
