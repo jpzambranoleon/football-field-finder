@@ -1,19 +1,6 @@
 import { SportsSoccer } from "@mui/icons-material";
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Leone Digitale
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-  }
-
 export default function Signup() {
     return (
         <Container component="main" maxWidth="xs">
@@ -98,7 +85,6 @@ export default function Signup() {
                     </Box>
                 </Container>
             </Paper>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
     );
 }

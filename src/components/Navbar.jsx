@@ -6,7 +6,7 @@ const pages = ['Home', 'About'];
 const Navbar = () => {
 
     return (
-        <AppBar>
+        <AppBar position="relative">
             <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box sx={{ alignItems: 'center', display: 'flex'}}>
                     <SportsSoccer sx={{ mr: 2 }} />
