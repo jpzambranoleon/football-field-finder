@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 
 const AboutDescription = () => {
     return (
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={6}>
             <Typography variant="h5" color="text.secondary">
                 This website was created as a project for bringing people closer together. 
                 As an advid football fan, I've often sought out groups of people that enjoy playing the sport. This website is designed to help people who want to find group/groups of advid football fans that love to play the sport.

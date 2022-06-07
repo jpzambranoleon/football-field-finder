@@ -2,7 +2,7 @@ import { Card, CardMedia, Grid } from "@mui/material";
 
 const AboutImage = () => {
     return (
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6}>
             <Card>
                 <CardMedia
                     sx={{ height: '500px' }}
