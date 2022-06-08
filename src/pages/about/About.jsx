@@ -1,5 +1,6 @@
 import { Facebook, GitHub, Groups, LinkedIn, Person, Sports } from "@mui/icons-material";
 import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography } from "@mui/material";
+import { blue, green, pink } from "@mui/material/colors";
 
 export default function About() {
     return (
@@ -44,7 +45,7 @@ export default function About() {
                                         >
                                             Team
                                         </Typography>
-                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: "secondary.main" }}>
+                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}>
                                             <Groups fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
@@ -58,7 +59,7 @@ export default function About() {
                                         >
                                             Free Agent
                                         </Typography>
-                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: "secondary.main" }}>
+                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[400] }}>
                                             <Person fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
@@ -72,7 +73,7 @@ export default function About() {
                                         >
                                             Trainer
                                         </Typography>
-                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: "secondary.main" }}>
+                                        <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: pink[400] }}>
                                             <Sports fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
@@ -133,13 +134,13 @@ export default function About() {
                                 </CardContent>
                                 <CardActions>
                                     <IconButton href="https://www.facebook.com/jeanpaul.zambranoleon/">
-                                        <Facebook color="primary" />
+                                        <Facebook color="success" />
                                     </IconButton>
                                     <IconButton href="https://www.linkedin.com/in/jpzambranoleon/">
-                                        <LinkedIn color="primary" />
+                                        <LinkedIn color="success" />
                                     </IconButton>
                                     <IconButton href="https://github.com/jpzambranoleon">
-                                        <GitHub color="primary" />
+                                        <GitHub color="success" />
                                     </IconButton>
                                 </CardActions>
                             </Card>
@@ -162,13 +163,13 @@ export default function About() {
                                 </CardContent>
                                 <CardActions>
                                     <IconButton href="https://www.facebook.com/zurab.sabakhtarishvili">
-                                        <Facebook color="primary" />
+                                        <Facebook color="success" />
                                     </IconButton>
                                     <IconButton href="https://www.linkedin.com/in/zurab-sabakhtarishvili-33b2731b4/">
-                                        <LinkedIn color="primary" />
+                                        <LinkedIn color="success" />
                                     </IconButton>
                                     <IconButton href="https://github.com/ZSabakh">
-                                        <GitHub color="primary" />
+                                        <GitHub color="success" />
                                     </IconButton>
                                 </CardActions>
                             </Card>
