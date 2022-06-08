@@ -21,7 +21,7 @@ const FreeAgentPost = () => {
                     </Avatar>
                     <CardContent>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            3 hrs ago {bull} Team Name FC {bull} Hot Springs, AR
+                            3 hrs ago {bull} Free agent name {bull} Hot Springs, AR
                         </Typography>
                         <Typography variant="h5" component="div">
                             Free Agent lookig for a team
