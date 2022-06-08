@@ -30,7 +30,7 @@ export default function Home() {
                         spacing={2}
                         justifyContent="center"
                     >
-                        <Button variant="contained">Find a Post</Button>
+                        <Button variant="contained" color="success">Find a Post</Button>
                         {/*<Button variant="outlined">Secondary action</Button>*/}
                         <CreatePost />
                     </Stack>

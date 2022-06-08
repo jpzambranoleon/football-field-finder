@@ -53,7 +53,7 @@ const CreatePost = () => {
 
     return (
         <>
-            <Button onClick={handleOpen} variant="outlined">Create a Post</Button>
+            <Button onClick={handleOpen} variant="outlined" color="success">Create a Post</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
