@@ -42,24 +42,23 @@ const FeedFilter = () => {
             component="form"
             sx={{ p: '2px 4px', display: {xs: 'block', md: 'flex'}, alignItems: 'center', mb: 5}}
         >
-            
             <FormControl component="fieldset" sx={{ ml: 1 }}>
                 <FormGroup aria-label="position" row>
                     <FormControlLabel 
                         value="end"
-                        control={<Checkbox defaultChecked={true} />}
+                        control={<Checkbox defaultChecked={true} color="success" />}
                         label="Team"
                         labelPlacement="end"
                     />
                     <FormControlLabel 
                         value="end"
-                        control={<Checkbox defaultChecked={true} />}
+                        control={<Checkbox defaultChecked={true} color="success" />}
                         label="Trainer"
                         labelPlacement="end"
                     />
                     <FormControlLabel 
                         value="end"
-                        control={<Checkbox defaultChecked={true} />}
+                        control={<Checkbox defaultChecked={true} color="success" />}
                         label="Free Agent"
                         labelPlacement="end"
                     />
@@ -100,7 +99,7 @@ const FeedFilter = () => {
                 />
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
-                    <Directions />
+                    <Directions color="success"/>
                 </IconButton>
             </Box>
         </Paper>
