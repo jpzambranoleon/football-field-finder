@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const style = {
@@ -8,9 +8,10 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
+    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-}
+};
 
 const ITEM_HEIGHT = 35;
 const ITEM_PADDING_TOP = 8;
@@ -60,7 +61,7 @@ const CreatePost = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Paper sx={style}>
+                <Box sx={style}>
                     <FormGroup row>
                         <FormControlLabel control={<Checkbox color="success" />} label="Team" />
                         <FormControlLabel control={<Checkbox color="success" />} label="Trainer" />
@@ -129,7 +130,7 @@ const CreatePost = () => {
                     <Button sx={{ mt: 2 }} variant="contained" color="success">
                         Submit
                     </Button>
-                </Paper>
+                </Box>
             </Modal>
         </>
     )
