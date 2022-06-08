@@ -1,38 +1,43 @@
-import { SportsSoccer } from "@mui/icons-material";
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material"
-
-const pages = ['Home', 'About'];
+import { Menu } from "@mui/icons-material";
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { useState } from "react";
+import TempDrawer from "./TempDrawer";
 
 const Navbar = () => {
+    const [openDrawer, setOpenDrawer] = useState(false);
+    const handleDrawerOpen = () => {
+        setOpenDrawer(true);
+    };
+
     return (
-        <AppBar position="relative" sx={{ bgcolor: 'success.main' }}>
-            <Toolbar sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                <Box sx={{ alignItems: 'center', display: 'flex'}}>
-                    <SportsSoccer sx={{ mr: 2 }} />
-                    <Typography variant="h6" color="inherit" noWrap>
-                        First Squad
+        <>
+            <TempDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+            <AppBar position="relative" sx={{ bgcolor: 'success.main' }}>
+                <Toolbar sx={{ width: { xl: '76%', lg: '90%' }, margin: { xl: '0 auto', lg: '0 auto' }, justifyContent: 'space-between' }}>
+                    <Typography variant="h5" noWrap>
+                        Team Finder
                     </Typography>
-                    <Box
-                        sx={{ ml: 5, flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
-                    >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                sx={{ color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                    <Box>
+                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        <Button color="inherit">
+                            Home
+                        </Button>
+                        <Button color="inherit">
+                            About
+                        </Button>
                     </Box>
+                    <IconButton 
+                        sx={{ display: { xs: 'flex', sm: 'none' } }}
+                        onClick={handleDrawerOpen}
+                        color="inherit"
+                    >
+                        <Menu />
+                    </IconButton>
                 </Box>
-                <Box sx={{ alignItems: 'center' }}>
-                    <Button color="inherit">
-                        EN
-                    </Button>
-                </Box>
-            </Toolbar>
-        </AppBar>
+                </Toolbar>
+            </AppBar>
+        </>
     )
-}
+};
 
 export default Navbar;
