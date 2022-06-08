@@ -6,6 +6,15 @@ export default function About() {
        <main>
            <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
                <Container>
+                    <Typography
+                        component="h1"
+                        variant="h6"
+                        align="center"
+                        color="success.main"
+                        gutterBottom
+                    >
+                       About Project
+                   </Typography>
                    <Grid container spacing={4}>
                        <Grid item sx={12} sm={6}>
                            <Box>
@@ -14,8 +23,9 @@ export default function About() {
                                     variant="h4"
                                     align="left"
                                     color="text.primary"
+                                    fontWeight="bold"
                                >
-                                   Designed and developed by a small team of talented developers.
+                                   Designed by a small team of talented developers.
                                </Typography>
                                <Typography
                                     variant="h6"
@@ -81,6 +91,29 @@ export default function About() {
                            </Card>
                        </Grid>
                    </Grid>
+               </Container>
+           </Box>
+           <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
+               <Container>
+                   <Typography
+                        component="h1"
+                        variant="h6"
+                        align="center"
+                        color="success.main"
+                        gutterBottom
+                    >
+                       Development Team
+                   </Typography>
+                   <Typography
+                        component="h1"
+                        variant="h4"
+                        align="center"
+                        color="text.primary"
+                        fontWeight="bold"
+                        gutterBottom
+                    >
+                        Lead Developers
+                    </Typography>
                </Container>
            </Box>
        </main> 
