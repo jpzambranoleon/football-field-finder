@@ -1,5 +1,5 @@
-import { Groups, Person, Sports } from "@mui/icons-material";
-import { Avatar, Box, Card, CardMedia, Container, Grid, Typography } from "@mui/material";
+import { Facebook, GitHub, Groups, LinkedIn, Person, Sports } from "@mui/icons-material";
+import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography } from "@mui/material";
 
 export default function About() {
     return (
@@ -114,6 +114,37 @@ export default function About() {
                     >
                         Lead Developers
                     </Typography>
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                <CardMedia 
+                                    component="img"
+                                    height="260"
+                                    image="/images/jp_ramen.jpg"
+                                    alt="portrait"
+                                />
+                                <CardContent sx={{ flexGrow: 1 }}>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Jean-Paul Zambrano-Leon
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Chief Executive Officer, Founder
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <IconButton href="https://www.facebook.com/jeanpaul.zambranoleon/">
+                                        <Facebook color="primary" />
+                                    </IconButton>
+                                    <IconButton href="https://www.linkedin.com/in/jpzambranoleon/">
+                                        <LinkedIn color="primary" />
+                                    </IconButton>
+                                    <IconButton href="https://github.com/jpzambranoleon">
+                                        <GitHub color="primary" />
+                                    </IconButton>
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    </Grid>
                </Container>
            </Box>
        </main> 
