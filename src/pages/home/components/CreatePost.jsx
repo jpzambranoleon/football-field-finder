@@ -62,9 +62,9 @@ const CreatePost = () => {
             >
                 <Paper sx={style}>
                     <FormGroup row>
-                        <FormControlLabel control={<Checkbox />} label="Team" />
-                        <FormControlLabel control={<Checkbox />} label="Trainer" />
-                        <FormControlLabel control={<Checkbox />} label="Free Agent" />
+                        <FormControlLabel control={<Checkbox color="success" />} label="Team" />
+                        <FormControlLabel control={<Checkbox color="success" />} label="Trainer" />
+                        <FormControlLabel control={<Checkbox color="success" />} label="Free Agent" />
                     </FormGroup>
                     <TextField 
                         margin="normal"
@@ -126,7 +126,7 @@ const CreatePost = () => {
                             />
                         </Grid>
                     </Grid>
-                    <Button sx={{ mt: 2 }} variant="contained">
+                    <Button sx={{ mt: 2 }} variant="contained" color="success">
                         Submit
                     </Button>
                 </Paper>
