@@ -1,10 +1,13 @@
 import { Box, Container, Typography } from "@mui/material";
+import FreeAgentPost from "../../components/FreeAgentPost";
+import TeamPost from "../../components/TeamPost";
+import TrainerPost from "../../components/TrainerPost";
 
 export default function User() {
     return (
        <main>
            <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
-               <Container>
+                <Container>
                     <Typography
                         component="h1"
                         variant="h4"
@@ -16,13 +19,18 @@ export default function User() {
                    </Typography>
                    <Typography
                         variant="h6"
-                        align="left"
+                        align="center"
                         color="text.secondary"
                         paragraph
                     >
-                        Let's take a look at the posts you have. 
+                        Let's take a look at the posts that you have. 
                     </Typography>
-               </Container>
+                </Container>
+                <Container sx={{ py: 8 }} maxWidth="md">
+                    <TeamPost />
+                    <FreeAgentPost />
+                    <TrainerPost />
+                </Container>
            </Box>
        </main> 
     )
