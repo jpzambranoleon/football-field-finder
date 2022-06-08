@@ -1,4 +1,4 @@
-import { Groups, Person } from "@mui/icons-material";
+import { Person } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors";
 

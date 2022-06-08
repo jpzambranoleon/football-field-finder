@@ -1,6 +1,7 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import FreeAgentPost from "../../components/FreeAgentPost";
 import TeamPost from "../../components/TeamPost";
+import TrainerPost from "../../components/TrainerPost";
 import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
 import Post from "./components/Post";
@@ -42,9 +43,7 @@ export default function Home() {
                 <FeedFilter />
                 <TeamPost />
                 <FreeAgentPost />
-                <Post />
-                <Post />
-                <Post />
+                <TrainerPost />
             </Container>
         </main>
     );
