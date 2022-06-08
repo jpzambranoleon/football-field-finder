@@ -1,4 +1,4 @@
-import { Menu } from "@mui/icons-material";
+import { Menu, SportsSoccer } from "@mui/icons-material";
 import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import TempDrawer from "./TempDrawer";
@@ -14,9 +14,12 @@ const Navbar = () => {
             <TempDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
             <AppBar position="relative" sx={{ bgcolor: 'success.main' }}>
                 <Toolbar sx={{ width: { xl: '76%', lg: '90%' }, margin: { xl: '0 auto', lg: '0 auto' }, justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <SportsSoccer fontSize="large" sx= {{ mr: 1 }} />
                     <Typography variant="h5" noWrap>
                         Team Finder
                     </Typography>
+                    </Box>
                     <Box>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         <Button color="inherit">
