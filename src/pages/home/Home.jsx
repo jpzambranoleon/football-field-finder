@@ -4,7 +4,6 @@ import TeamPost from "../../components/TeamPost";
 import TrainerPost from "../../components/TrainerPost";
 import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
-import Post from "./components/Post";
 
 export default function Home() {
     return (
