@@ -26,7 +26,7 @@ export default function About() {
                                     color="text.primary"
                                     fontWeight="bold"
                                >
-                                   Designed by a small team of talented developers.
+                                   Designed by a small team of talented developers
                                </Typography>
                                <Typography
                                     variant="h6"
@@ -35,7 +35,7 @@ export default function About() {
                                     paragraph
                                 >
                                     This web app was created to help people who are interested in the sport of soccer 
-                                    to meet up with local teams in the area that are looking for players to join. 
+                                    to meet up with local teams in the area that are looking for players to join 
                                 </Typography>
                                 <Grid container spacing={2} align="center">
                                     <Grid item sx={12} sm={4}>
