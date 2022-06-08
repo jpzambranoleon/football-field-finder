@@ -110,11 +110,11 @@ export default function About() {
                         align="center"
                         color="text.primary"
                         fontWeight="bold"
-                        gutterBottom
+                        paragraph
                     >
                         Lead Developers
                     </Typography>
-                    <Grid container spacing={4}>
+                    <Grid container spacing={4} alignItems="center" justifyContent="center">
                         <Grid item xs={12} sm={6} md={3}>
                             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                                 <CardMedia 
@@ -128,7 +128,7 @@ export default function About() {
                                         Jean-Paul Zambrano-Leon
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        Chief Executive Officer, Founder
+                                        Front-end Developer
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
@@ -157,7 +157,7 @@ export default function About() {
                                         Zurab Sabakhtarishvili
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        Chief Information Officer, Co-founder
+                                        Back-end Developer
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
