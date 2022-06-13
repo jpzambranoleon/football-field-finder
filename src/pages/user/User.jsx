@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import FreeAgentPost from "../../components/FreeAgentPost";
 import TeamPost from "../../components/TeamPost";
+import TempPostResponsive from "../../components/TempPostResponsive";
 import TrainerPost from "../../components/TrainerPost";
 import UserPost from "./components/UserPost";
 
@@ -28,7 +29,7 @@ export default function User() {
                     </Typography>
                 </Container>
                 <Container sx={{ py: 8 }} maxWidth="md">
-                    <UserPost />
+                    <TempPostResponsive />
                 </Container>
            </Box>
        </main> 
