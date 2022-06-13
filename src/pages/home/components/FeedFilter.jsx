@@ -40,6 +40,7 @@ const FeedFilter = () => {
     return (
         <Paper
             component="form"
+            id="filter"
             sx={{ p: '2px 4px', display: {xs: 'block', md: 'flex'}, alignItems: 'center', mb: 5}}
         >
             <FormControl component="fieldset" sx={{ ml: 1 }}>
