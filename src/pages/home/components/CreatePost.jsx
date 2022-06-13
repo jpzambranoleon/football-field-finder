@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
+import { Button, Checkbox, Container, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const style = {
@@ -61,7 +61,7 @@ const CreatePost = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Container sx={style}>
                     <FormGroup row>
                         <FormControlLabel control={<Checkbox color="success" />} label="Team" />
                         <FormControlLabel control={<Checkbox color="success" />} label="Trainer" />
@@ -130,7 +130,7 @@ const CreatePost = () => {
                     <Button sx={{ mt: 2 }} variant="contained" color="success">
                         Submit
                     </Button>
-                </Box>
+                </Container>
             </Modal>
         </>
     )
