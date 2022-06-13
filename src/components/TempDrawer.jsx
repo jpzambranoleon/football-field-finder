@@ -1,4 +1,5 @@
 import { Box, ClickAwayListener, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
     const handleDrawerClose = () => {
@@ -21,7 +22,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                             </Typography>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
+                            <ListItemButton component={Link} to="/">
                                 <ListItemText>
                                     <Typography>
                                         Home
@@ -30,7 +31,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
+                            <ListItemButton component={Link} to="/about">
                                 <ListItemText>
                                     <Typography>
                                         About

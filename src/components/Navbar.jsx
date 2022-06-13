@@ -1,6 +1,7 @@
 import { Menu, SportsSoccer } from "@mui/icons-material";
 import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import TempDrawer from "./TempDrawer";
 
 const Navbar = () => {
@@ -22,10 +23,10 @@ const Navbar = () => {
                     </Box>
                     <Box>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                            <Button color="inherit">
+                            <Button component={Link} to="/" color="inherit">
                                 Home
                             </Button>
-                            <Button color="inherit">
+                            <Button component={Link} to="/about" color="inherit">
                                 About
                             </Button>
                         </Box>
