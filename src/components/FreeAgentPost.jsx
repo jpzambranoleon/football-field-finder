@@ -27,7 +27,6 @@ const FreeAgentPost = () => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="success">Share</Button>
                     <Button size="small" color="success">Learn More</Button>
                 </CardActions>
             </Card>
