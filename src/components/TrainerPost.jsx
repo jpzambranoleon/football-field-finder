@@ -18,7 +18,7 @@ const TrainerPost = () => {
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h7" aria-label="city" paragraph>
-                        Hot Springs, AR
+                        Betonville, AR
                     </Typography>
                     <Typography variant="body2" aria-label="description" color="text.secondary">
                         I'm a soccer coach and trainer.

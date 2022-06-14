@@ -18,7 +18,7 @@ const FreeAgentPost = () => {
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h7" aria-label="city" paragraph>
-                        Hot Springs, AR
+                        Little Rock, AR
                     </Typography>
                     <Typography variant="body2" aria-label="description" color="text.secondary">
                         I'm looking for a team to play with.
