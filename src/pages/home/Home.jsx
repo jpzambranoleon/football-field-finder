@@ -1,7 +1,10 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import FreeAgentPost from "../../components/FreeAgentPost";
+import FreeAgentPost2 from "../../components/FreeAgentPost2";
 import TeamPost from "../../components/TeamPost";
+import TeamPost2 from "../../components/TeamPost2";
 import TrainerPost from "../../components/TrainerPost";
+import TrainerPost2 from "../../components/TrainerPost2";
 import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
 
@@ -52,9 +55,11 @@ export default function Home() {
             </Box>
             <Container sx={{ py: 8 }} maxWidth="md">
                 <FeedFilter />
-                <TeamPost />
-                <FreeAgentPost />
-                <TrainerPost />
+                <Grid container spacing={4}>
+                    <TeamPost2 />
+                    <FreeAgentPost2 />
+                    <TrainerPost2 />
+                </Grid>
             </Container>
         </main>
     );

@@ -1,6 +1,6 @@
-import { Groups } from "@mui/icons-material";
+import { Groups, Person, Sports } from "@mui/icons-material";
 import { Avatar, Box, Card, CardActionArea, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { pink } from "@mui/material/colors";
 
 const bull = (
     <Box
@@ -11,15 +11,15 @@ const bull = (
     </Box>
   );
 
-const TeamPost2 = () => {
+const TrainerPost2 = () => {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ mb: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <CardActionArea sx={{ height: '100%' }}>
                     <CardHeader 
                         avatar={
-                            <Avatar sx={{ bgcolor: green[400] }} >
-                                <Groups />
+                            <Avatar sx={{ bgcolor: pink[400] }} >
+                                <Sports />
                             </Avatar>   
                         }
 
@@ -35,4 +35,4 @@ const TeamPost2 = () => {
     )
 }
 
-export default TeamPost2;
+export default TrainerPost2;
