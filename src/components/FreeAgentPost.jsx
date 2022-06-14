@@ -1,5 +1,5 @@
 import { Person } from "@mui/icons-material";
-import { Avatar, Box, Button, Card, CardActionArea, CardActions, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors";
 
 const FreeAgentPost = () => {

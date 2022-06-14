@@ -1,5 +1,5 @@
 import { Groups } from "@mui/icons-material";
-import { Avatar, Box, Button, Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { pink } from "@mui/material/colors";
 
 const bull = (

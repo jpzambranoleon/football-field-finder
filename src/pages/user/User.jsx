@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import TempPostResponsive from "../../components/TempPostResponsive";
 import UserPost from "./components/UserPost";
 
 export default function User() {
