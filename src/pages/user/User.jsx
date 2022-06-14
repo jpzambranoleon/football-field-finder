@@ -1,5 +1,6 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import TempPostResponsive from "../../components/TempPostResponsive";
+import UserPost from "./components/UserPost";
 
 export default function User() {
     return (
@@ -25,7 +26,12 @@ export default function User() {
                     </Typography>
                 </Container>
                 <Container sx={{ py: 8 }} maxWidth="md">
-                    <TempPostResponsive />
+                    <Grid container spacing={2}>
+                        <UserPost />
+                        <UserPost />
+                        <UserPost />
+                        <UserPost />
+                    </Grid>
                 </Container>
            </Box>
        </main> 
