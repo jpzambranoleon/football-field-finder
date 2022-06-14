@@ -16,8 +16,13 @@ const TeamPost = () => {
                     subheader="September 14, 2016"
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h5">
-                        Looking for more players to join our team
+                    <Typography variant="h7" aria-label="city" paragraph>
+                        Hot Springs, AR
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        Our team is looking for more players.
+                        We play every Saturday at Lakeside Park between
+                        3:30 to 6:00.
                     </Typography>
                 </CardContent>
                 <CardActions>
