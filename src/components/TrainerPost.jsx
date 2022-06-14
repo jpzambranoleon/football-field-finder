@@ -17,8 +17,13 @@ const TrainerPost = () => {
 
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h5" color="text.secondary">
-                        Soccer trainer looking to offer some classes
+                    <Typography variant="h7" aria-label="city" paragraph>
+                        Hot Springs, AR
+                    </Typography>
+                    <Typography variant="body2" aria-label="description" color="text.secondary">
+                        I'm a soccer coach and trainer.
+                        I offer training seessions every Tuesdays and Thursdays
+                        from 5:00 to 6:00 pm.
                     </Typography>
                 </CardContent>
                 <CardActions>
