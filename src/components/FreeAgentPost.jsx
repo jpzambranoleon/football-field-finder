@@ -17,8 +17,13 @@ const FreeAgentPost = () => {
 
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h5" component="div">
-                        Looking for more players to join our team
+                    <Typography variant="h7" aria-label="city" paragraph>
+                        Hot Springs, AR
+                    </Typography>
+                    <Typography variant="body2" aria-label="description" color="text.secondary">
+                        I'm looking for a team to play with.
+                        If you are in a team or know of a team that
+                        is looking for players, please contact me.
                     </Typography>
                 </CardContent>
                 <CardActions>

@@ -19,10 +19,10 @@ const TeamPost = () => {
                     <Typography variant="h7" aria-label="city" paragraph>
                         Hot Springs, AR
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" aria-label="description" color="text.secondary">
                         Our team is looking for more players.
                         We play every Saturday at Lakeside Park between
-                        3:30 to 6:00.
+                        3:30 to 6:00 pm.
                     </Typography>
                 </CardContent>
                 <CardActions>
