@@ -1,25 +1,16 @@
-import { Groups } from "@mui/icons-material";
+import { Person } from "@mui/icons-material";
 import { Avatar, Box, Card, CardActionArea, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 
-const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
-
-const TeamPost2 = () => {
+const FreeAgentPost = () => {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ mb: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <CardActionArea sx={{ height: '100%' }}>
                     <CardHeader 
                         avatar={
-                            <Avatar sx={{ bgcolor: green[400] }} >
-                                <Groups />
+                            <Avatar sx={{ bgcolor: blue[400] }} >
+                                <Person />
                             </Avatar>   
                         }
 
@@ -35,4 +26,4 @@ const TeamPost2 = () => {
     )
 }
 
-export default TeamPost2;
+export default FreeAgentPost;
