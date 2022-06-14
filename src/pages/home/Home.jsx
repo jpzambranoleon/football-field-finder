@@ -56,6 +56,9 @@ export default function Home() {
                     <TeamPost />
                     <FreeAgentPost />
                     <TrainerPost />
+                    <TeamPost />
+                    <FreeAgentPost />
+                    <TrainerPost />
                 </Grid>
             </Container>
         </main>
