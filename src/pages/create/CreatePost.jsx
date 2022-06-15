@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
+import CreateFreeAgent from "./components/CreateFreeAgent";
 import CreateTeam from "./components/CreateTeam";
 
 export default function CreatePost() {
@@ -23,8 +24,7 @@ export default function CreatePost() {
            <Container>
                 <Grid container spacing={5} align='center'>
                     <CreateTeam />
-                    <CreateTeam />
-                    <CreateTeam />
+                    <CreateFreeAgent />
                 </Grid>
            </Container>
        </main> 
