@@ -10,10 +10,9 @@ export default function User() {
                         component="h1"
                         variant="h4"
                         align="center"
-                        color="text.primary"
                         gutterBottom
                     >
-                       Welcome Back, User!
+                       Welcome, User!
                    </Typography>
                    <Typography
                         variant="h6"
