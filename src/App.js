@@ -7,6 +7,7 @@ import Signup from "./authorization/Signup";
 import Copyright from "./components/Copyright";
 import Home from "./pages/home/Home";
 import User from "./pages/user/User";
+import CreatePost from "./pages/create/CreatePost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/user" element={<User />} />
+          <Route path="/create" element={<CreatePost />} />
         </Routes>
       </Router>
       <Copyright />
