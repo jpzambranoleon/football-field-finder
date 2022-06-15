@@ -14,8 +14,8 @@ export default function PostPage() {
                                 <Avatar sx={{ bgcolor: green[400], mr: 2, height: '50px', width: '50px' }} >
                                     <Groups fontSize="large" />
                                 </Avatar> 
-                                <Typography variant="h4" fontWeight="bold">
-                                    Looking for a team to play with 
+                                <Typography variant="h5" fontWeight="bold">
+                                    Looking for more players to join 
                                 </Typography>
                             </Box>
                             <Typography paragraph>

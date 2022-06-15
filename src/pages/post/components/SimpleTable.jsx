@@ -5,19 +5,19 @@ function createData(name, item) {
 }
 
 const rows = [
-    createData('phone', '555-555-5555'),
-    createData('email', 'something@gmail.com'),
-    createData('whatsapp', '555-555-5555')
+    createData('Team Name', 'Team FC'),
+    createData('Number of players', 8),
+    createData('Location', 'Hot Springs, AR'),
+    createData('Phone', '555-555-5555'),
+    createData('Email', 'something@gmail.com'),
+    createData('Whatsapp', '555-555-5555')
 ]
 
 const SimpleTable = () => {
     return (
         <Grid item xs={12} sm={6} md={6}>
-            <Typography variant="h5" gutterBottom fontWeight="bold">
-                Team
-            </Typography>
-            <Typography variant="h5" gutterBottom fontWeight="bold">
-                Author
+            <Typography variant="h5" paragraph fontWeight="bold">
+                Team Info
             </Typography>
             <TableContainer component={Paper}>
                 <Table aria-label="simple table">
