@@ -16,8 +16,8 @@ const CreateTeam = () => {
                     <Typography gutterBottom variant="h4">
                         Team
                     </Typography>
-                   <Typography variant="body1" align="center">
-                        Do you have a team and are lookig for 
+                   <Typography variant="body1" align="center" color="text.secondary">
+                        Do you have a team and are looking for 
                         players to join? Use the team post to
                         post information on your team and how others
                         can find and join.
