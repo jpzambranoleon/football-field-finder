@@ -17,10 +17,9 @@ const CreateTeam = () => {
                             Team
                         </Typography>
                     <Typography variant="body1" align="center" color="text.secondary">
-                            Do you have a team and are looking for 
-                            players to join? Use the team post to
-                            post information on your team and how others
-                            can find and join.
+                            Do you have a team and are in need of players?
+                            Use this post to let others know that your team is looking
+                            for more players to join.
                     </Typography>
                     </CardContent>
                 </CardActionArea>
