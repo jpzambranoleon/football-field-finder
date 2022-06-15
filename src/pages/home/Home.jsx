@@ -2,8 +2,8 @@ import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import FreeAgentPost from "../../components/FreeAgentPost";
 import TeamPost from "../../components/TeamPost";
 import TrainerPost from "../../components/TrainerPost";
-import CreatePost from "./components/CreatePost";
 import FeedFilter from "./components/FeedFilter";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     return (
@@ -45,8 +45,7 @@ export default function Home() {
                         >
                             Find a Post
                         </Button>
-                        {/*<Button variant="outlined">Secondary action</Button>*/}
-                        <Button variant="outlined" color="success">Create a Post</Button>
+                        <Button component={Link} to="/create" variant="outlined" color="success">Create a Post</Button>
                     </Stack>
                 </Container>
             </Box>
