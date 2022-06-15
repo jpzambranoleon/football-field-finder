@@ -20,10 +20,10 @@ export default function PostPage() {
                     <Grid container>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <Avatar sx={{ bgcolor: green[400], mr: 2 }} >
-                                    <Groups />
+                                <Avatar sx={{ bgcolor: green[400], mr: 2, height: '50px', width: '50px' }} >
+                                    <Groups fontSize="large" />
                                 </Avatar> 
-                                <Typography variant="h5">
+                                <Typography variant="h4" fontWeight="bold">
                                     Looking for a team to play with 
                                 </Typography>
                             </Box>
@@ -32,6 +32,12 @@ export default function PostPage() {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6}>
+                            <Typography variant="h5" gutterBottom fontWeight="bold">
+                                Team
+                            </Typography>
+                            <Typography variant="h5" gutterBottom fontWeight="bold">
+                                Author
+                            </Typography>
                             <TableContainer component={Paper}>
                                 <Table aria-label="simple table">
                                     <TableBody>
