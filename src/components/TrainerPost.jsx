@@ -27,7 +27,7 @@ const TrainerPost = () => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="success">Learn More</Button>
+                    <Button size="small" color="success">View</Button>
                 </CardActions>
             </Card>
         </Grid>
