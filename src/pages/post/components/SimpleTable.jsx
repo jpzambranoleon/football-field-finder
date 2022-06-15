@@ -1,4 +1,4 @@
-import { Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
+import { Paper, Grid, TableBody, TableCell, TableContainer, TableRow, Typography, Table } from "@mui/material";
 
 function createData(name, item) {
     return { name, item };
@@ -10,7 +10,7 @@ const rows = [
     createData('whatsapp', '555-555-5555')
 ]
 
-const Table = () => {
+const SimpleTable = () => {
     return (
         <Grid item xs={12} sm={6} md={6}>
             <Typography variant="h5" gutterBottom fontWeight="bold">
@@ -40,4 +40,4 @@ const Table = () => {
     );
 }
 
-export default Table;
+export default SimpleTable;
