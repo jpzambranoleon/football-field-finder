@@ -46,7 +46,7 @@ export default function Home() {
                             Find a Post
                         </Button>
                         {/*<Button variant="outlined">Secondary action</Button>*/}
-                        <CreatePost />
+                        <Button variant="outlined" color="success">Create a Post</Button>
                     </Stack>
                 </Container>
             </Box>
