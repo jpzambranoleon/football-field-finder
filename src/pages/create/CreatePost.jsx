@@ -12,7 +12,7 @@ export default function CreatePost() {
                         component="h1"
                         variant="h2"
                         align="center"
-                        color="text.primary"
+                        color="success.main"
                         gutterBottom
                     >
                         Create A Post
