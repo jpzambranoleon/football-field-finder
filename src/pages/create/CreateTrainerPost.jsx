@@ -1,6 +1,6 @@
-import { Groups } from "@mui/icons-material";
+import { Sports } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardContent, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
-import { green, pink } from "@mui/material/colors";
+import { pink } from "@mui/material/colors";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 35;
@@ -27,7 +27,7 @@ const states = [
     'VA', 'WA', 'WV', 'WI', 'WY',
 ];
 
-export default function CreateTeamPost() {
+export default function CreateTrainerPost() {
     const [state, setState] = useState([]);
 
     const handleChange = (event) => {
@@ -57,7 +57,7 @@ export default function CreateTeamPost() {
                         }}
                     >
                         <Avatar sx={{ height: '60px', width: '60px', bgcolor: pink[400], mt: 3 }}>
-                            <Groups fontSize="large" />
+                            <Sports fontSize="large" />
                         </Avatar>
                         <CardContent>
                             <Typography variant="h5" align="center" gutterBottom>

@@ -1,6 +1,6 @@
-import { Groups, Person } from "@mui/icons-material";
+import { Person } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardContent, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
-import { blue, green } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 35;
@@ -27,7 +27,7 @@ const states = [
     'VA', 'WA', 'WV', 'WI', 'WY',
 ];
 
-export default function CreateTeamPost() {
+export default function CreateFreeAgentPost() {
     const [state, setState] = useState([]);
 
     const handleChange = (event) => {

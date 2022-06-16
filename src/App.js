@@ -9,6 +9,8 @@ import Home from "./pages/home/Home";
 import User from "./pages/user/User";
 import CreatePost from "./pages/create/CreatePost";
 import CreateTeamPost from "./pages/create/CreateTeamPost";
+import CreateFreeAgentPost from "./pages/create/CreateFreeAgentPost";
+import CreateTrainerPost from "./pages/create/CreateTrainerPost";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/create-team-post" element={<CreateTeamPost />} />
+          <Route path="/create-freeAgent-post" element={<CreateFreeAgentPost/>} />
+          <Route path="/create-trainer-post" element={<CreateTrainerPost />} />
         </Routes>
       </Router>
       <Copyright />

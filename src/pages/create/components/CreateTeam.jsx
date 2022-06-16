@@ -17,11 +17,11 @@ const CreateTeam = () => {
                         <Typography gutterBottom variant="h4">
                             Team
                         </Typography>
-                    <Typography variant="body1" align="center" color="text.secondary">
-                            Do you have a team and are in need of players?
-                            Use this post to let others know that your team is looking
-                            for more players to join.
-                    </Typography>
+                        <Typography variant="body1" align="center" color="text.secondary">
+                                Do you have a team and are in need of players?
+                                Use this post to let others know that your team is looking
+                                for more players to join.
+                        </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
