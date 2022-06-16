@@ -61,18 +61,18 @@ export default function CreateFreeAgentPost() {
                         </Avatar>
                         <CardContent>
                             <Typography variant="h5" align="center" gutterBottom>
-                                Team Post
+                                Free Agent Post
                             </Typography>
                             <Box component="form" noValidate sx={{ mt: 3 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <TextField
                                             autoComplete="given-name"
-                                            name="teamName"
+                                            name="freeAgentName"
                                             required
                                             fullWidth
-                                            id="teamName"
-                                            label="Team Name"
+                                            id="freeAgentName"
+                                            label="Free Agent Name"
                                             autoFocus
                                         />
                                     </Grid>
@@ -135,17 +135,6 @@ export default function CreateFreeAgentPost() {
                                             label="Email Address"
                                             name="email"
                                             autoComplete="email"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={3}>
-                                        <TextField
-                                            margin="normal"
-                                            name="team-number"
-                                            fullWidth
-                                            id="team-number"
-                                            label="No. Players"
-                                            type="number"
-                                            defaultValue="0"
                                         />
                                     </Grid>
                                 </Grid>

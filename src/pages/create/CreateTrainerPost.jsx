@@ -68,11 +68,11 @@ export default function CreateTrainerPost() {
                                     <Grid item xs={12}>
                                         <TextField
                                             autoComplete="given-name"
-                                            name="teamName"
+                                            name="trainerName"
                                             required
                                             fullWidth
-                                            id="teamName"
-                                            label="Team Name"
+                                            id="trainerName"
+                                            label="Trainer Name"
                                             autoFocus
                                         />
                                     </Grid>
@@ -135,17 +135,6 @@ export default function CreateTrainerPost() {
                                             label="Email Address"
                                             name="email"
                                             autoComplete="email"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={3}>
-                                        <TextField
-                                            margin="normal"
-                                            name="team-number"
-                                            fullWidth
-                                            id="team-number"
-                                            label="No. Players"
-                                            type="number"
-                                            defaultValue="0"
                                         />
                                     </Grid>
                                 </Grid>
