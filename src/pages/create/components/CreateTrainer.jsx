@@ -1,4 +1,4 @@
-import { Person, Sports } from "@mui/icons-material";
+import { Sports } from "@mui/icons-material";
 import { Avatar, Card, CardActionArea, CardContent, Grid, Typography } from "@mui/material";
 import { pink } from "@mui/material/colors";
 
