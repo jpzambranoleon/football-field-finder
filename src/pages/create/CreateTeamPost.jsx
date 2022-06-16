@@ -2,7 +2,7 @@ import { Groups } from "@mui/icons-material";
 import { Avatar, Container, Paper } from "@mui/material";
 import { green } from "@mui/material/colors";
 
-export default function PostPage() {
+export default function CreateTeamPost() {
     return (
         <main>
             <Container maxWidth="xs">

@@ -8,6 +8,7 @@ import Copyright from "./components/Copyright";
 import Home from "./pages/home/Home";
 import User from "./pages/user/User";
 import CreatePost from "./pages/create/CreatePost";
+import CreateTeamPost from "./pages/create/CreateTeamPost";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/user" element={<User />} />
           <Route path="/create" element={<CreatePost />} />
+          <Route path="/create-team-post" element={<CreateTeamPost />} />
         </Routes>
       </Router>
       <Copyright />

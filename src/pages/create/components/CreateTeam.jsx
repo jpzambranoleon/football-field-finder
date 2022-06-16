@@ -1,12 +1,13 @@
 import { Groups } from "@mui/icons-material";
 import { Avatar, Card, CardActionArea, CardContent, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 const CreateTeam = () => {
     return (
         <Grid item xs={12} sm={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardActionArea sx={{ height: '100%' }}>
+                <CardActionArea component={Link} to="/create-team-post" sx={{ height: '100%' }}>
                     <CardContent>
                         <Avatar sx={{ height: '90px', width: '90px', bgcolor: green[400] }}>
                             <Groups fontSize="large" sx={{ height: '50px', width: '50px' }} />
