@@ -137,17 +137,6 @@ export default function CreateTeamPost() {
                                             autoComplete="email"
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={3}>
-                                        <TextField
-                                            margin="normal"
-                                            name="team-number"
-                                            fullWidth
-                                            id="team-number"
-                                            label="No. Players"
-                                            type="number"
-                                            defaultValue="0"
-                                        />
-                                    </Grid>
                                 </Grid>
                                 <Button
                                     type="submit"
