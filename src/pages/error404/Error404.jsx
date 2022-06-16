@@ -39,7 +39,7 @@ export default function Error404() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             {itemData.map((item) => (
-                                <ImageListItem key={item.img}>
+                                <ImageListItem sx={{ mt: {xl: -5} }} key={item.img}>
                                 <img
                                     src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                                     srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
