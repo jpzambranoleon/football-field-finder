@@ -105,7 +105,6 @@ export default function CreateTeamPost() {
                                             fullWidth
                                             id="city"
                                             label="City"
-                                            autoFocus
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
@@ -125,17 +124,28 @@ export default function CreateTeamPost() {
                                             id="telephone"
                                             label="Telephone Number"
                                             name="telephone"
-                                            autoFocus
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField
                                             required
+                                            margin="normal"
                                             fullWidth
                                             id="email"
                                             label="Email Address"
                                             name="email"
                                             autoComplete="email"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={3}>
+                                        <TextField
+                                            margin="normal"
+                                            name="team-number"
+                                            fullWidth
+                                            id="team-number"
+                                            label="No. Players"
+                                            type="number"
+                                            defaultValue="0"
                                         />
                                     </Grid>
                                 </Grid>
