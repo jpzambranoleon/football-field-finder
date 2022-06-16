@@ -56,7 +56,7 @@ export default function CreateTeamPost() {
                             alignItems: 'center'  
                         }}
                     >
-                        <Avatar sx={{ height: '50px', width: '50px', bgcolor: green[400], mt: 3 }}>
+                        <Avatar sx={{ height: '60px', width: '60px', bgcolor: green[400], mt: 3 }}>
                             <Groups fontSize="large" />
                         </Avatar>
                         <CardContent>
