@@ -138,7 +138,7 @@ export default function About() {
                                         Jean-Paul Zambrano-Leon
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        Chief Executive Officer, Founder
+                                        Front-end Developer
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
@@ -162,7 +162,7 @@ export default function About() {
                                         Zurab Sabakhtarishvili
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        Chief Information Officer, Co-founder
+                                        Back-end Developer
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
