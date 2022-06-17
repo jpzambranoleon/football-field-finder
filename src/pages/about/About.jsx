@@ -115,8 +115,8 @@ export default function About() {
                     >
                         Lead Developers
                     </Typography>
-                    <Grid container spacing={4}>
-                        <Grid item xs={12} sm={6} md={3}>
+                    <Grid container spacing={4} justifyContent='center'>
+                        <Grid item xs={12} sm={6} md={4}>
                             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                                 <CardMedia component="img" height="260" image="/images/jp_ramen.jpg" alt="portrait" />
                                 <CardContent sx={{ flexGrow: 1 }}>
@@ -140,7 +140,7 @@ export default function About() {
                                 </CardActions>
                             </Card>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
+                        <Grid item xs={12} sm={6} md={4}>
                             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                                 <CardMedia component="img" height="260" image="/images/zurab_cio.JPG" alt="zura" />
                                 <CardContent sx={{ flexGrow: 1 }}>
