@@ -1,6 +1,13 @@
 import { Facebook, GitHub, Groups, LinkedIn, Person, Sports } from "@mui/icons-material";
-import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, ImageListItem, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
+
+const itemData = [
+    {
+      img: "/images/team_passing.png",
+      title: "team",
+    },
+];
 
 export default function About() {
     return (
@@ -17,7 +24,7 @@ export default function About() {
                        About Project
                    </Typography>
                    <Grid container spacing={4}>
-                       <Grid item sx={12} sm={6}>
+                       <Grid item sx={12} sm={6} xl={6}>
                            <Box>
                                <Typography
                                     component="h1"
@@ -48,7 +55,10 @@ export default function About() {
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}>
                                             <Groups fontSize="large" />
                                         </Avatar>
-                                        <Typography variant="body1" color="text.secondary">
+                                        <Typography 
+                                            variant="body1" 
+                                            color="text.secondary"
+                                        >
                                             You can create a team or join an existing one in your area
                                         </Typography>
                                     </Grid>
@@ -84,12 +94,16 @@ export default function About() {
                            </Box>
                        </Grid>
                        <Grid item xs={12} sm={6}>
-                           <Card>
-                               <CardMedia 
-                                    component="img"
-                                    image="/images/soccer-coming-soon.jpg"
-                               />
-                           </Card>
+                            {itemData.map((item) => (
+                                <ImageListItem sx={{ mt: {xl: -13, md: -10} }} key={item.img}>
+                                    <img
+                                        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                        srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                        alt={item.title}
+                                        loading="lazy"
+                                    />
+                                </ImageListItem>
+                            ))}
                        </Grid>
                    </Grid>
                </Container>
@@ -116,7 +130,7 @@ export default function About() {
                         Lead Developers
                     </Typography>
                     <Grid container spacing={4} justifyContent='center'>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={6} md={4} xl={3}>
                             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                                 <CardMedia component="img" height="260" image="/images/jp_ramen.jpg" alt="portrait" />
                                 <CardContent sx={{ flexGrow: 1 }}>
@@ -140,7 +154,7 @@ export default function About() {
                                 </CardActions>
                             </Card>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={6} md={4} xl={3}>
                             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
                                 <CardMedia component="img" height="260" image="/images/zurab_cio.JPG" alt="zura" />
                                 <CardContent sx={{ flexGrow: 1 }}>
