@@ -1,7 +1,14 @@
 import { Groups, Person, Sports } from "@mui/icons-material";
-import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Container, Grid, ImageListItem, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 import Form from "../../components/Form";
+
+const itemData = [
+    {
+      img: "/images/team_playing.png",
+      title: "team",
+    },
+];
 
 export default function CreatePost() {
     return (
@@ -14,21 +21,13 @@ export default function CreatePost() {
                                <Typography
                                     component="h1"
                                     variant="h4"
-                                    align="left"
-                                    color="text.primary"
+                                    align="center"
+                                    color="success.main"
                                     fontWeight="bold"
+                                    gutterBottom
                                >
-                                   Designed by a small team of talented developers
+                                   Create Post
                                </Typography>
-                               <Typography
-                                    variant="h6"
-                                    align="left"
-                                    color="text.secondary"
-                                    paragraph
-                                >
-                                    This web app was created to help people who are interested in the sport of soccer 
-                                    to meet up with local teams in the area that are looking for players to join 
-                                </Typography>
                                 <Grid container spacing={2} align="center">
                                     <Grid item sx={12} sm={4}>
                                         <Typography
@@ -74,6 +73,18 @@ export default function CreatePost() {
                                         <Typography variant="body1" color="text.secondary">
                                             If you are an experienced, you can offer training services
                                         </Typography>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                            {itemData.map((item) => (
+                                                <ImageListItem sx={{ mt: {xl: -15, md: -10, sm: -5, xs: -5} }} key={item.img}>
+                                                    <img
+                                                        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                                        srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                                        alt={item.title}
+                                                        loading="lazy"
+                                                    />
+                                                </ImageListItem>
+                                            ))}
                                     </Grid>
                                 </Grid>
                            </Box>

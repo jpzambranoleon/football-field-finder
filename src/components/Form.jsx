@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 35;
@@ -40,6 +40,20 @@ const Form = () => {
     return (
         <Box>
             <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <FormControl>
+                        <FormLabel id="row-radio-buttons-group-label">Type</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                        >
+                            <FormControlLabel value="Team" control={<Radio />} label="Team" />
+                            <FormControlLabel value="Free Agent" control={<Radio />} label="Free Agent" />
+                            <FormControlLabel value="Trainer" control={<Radio />} label="Trainer" />
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
                 <Grid item xs={12}>
                     <TextField
                         autoComplete="given-name"
