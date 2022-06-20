@@ -28,6 +28,17 @@ const states = [
 ];
 
 const Form = () => {
+    const [state, setState] = useState([]);
+
+    const handleChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setState(
+            typeof value === 'string' ? value.split(',') : value,
+        );
+    };
+    
     return (
         <Grid container spacing={10}>
             <Grid item xs={12} sm={6}>
