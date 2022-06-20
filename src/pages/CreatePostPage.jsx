@@ -1,3 +1,5 @@
+import Form from "../components/Form";
+
 export default function CreatePostPage() {
     return (
        <main>
@@ -71,13 +73,15 @@ export default function CreatePostPage() {
                                         </Typography>
                                     </Grid>
                                 </Grid>
-				<Grid container>
-				<Grid item>
-				</Grid>
-				</Grid>
+                                <Grid container sx={12} sm={6}>
+                                    <Grid item>
+
+                                    </Grid>
+                                </Grid>
                            </Box>
                        </Grid>
                     </Grid>
+                    <Form />
                 </Container>
            </Box>
        </main> 
