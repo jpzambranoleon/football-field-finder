@@ -8,7 +8,7 @@ import Copyright from "./components/Copyright";
 import Home from "./pages/home/Home";
 import User from "./pages/user/User";
 import Error404 from "./pages/error404/Error404";
-import CreatePost from "./pages/CreatePost";
+import CreatePost from "./pages/create/CreatePost";
 
 function App() {
   return (

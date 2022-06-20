@@ -1,7 +1,7 @@
 import { Groups, Person, Sports } from "@mui/icons-material";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
-import Form from "../components/Form";
+import Form from "../../components/Form";
 
 export default function CreatePost() {
     return (
