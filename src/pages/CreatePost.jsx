@@ -3,7 +3,7 @@ import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 import Form from "../components/Form";
 
-export default function CreatePostPage() {
+export default function CreatePost() {
     return (
        <main>
            <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
