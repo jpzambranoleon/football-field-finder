@@ -71,6 +71,10 @@ export default function CreatePostPage() {
                                         </Typography>
                                     </Grid>
                                 </Grid>
+				<Grid container>
+				<Grid item>
+				</Grid>
+				</Grid>
                            </Box>
                        </Grid>
                     </Grid>
