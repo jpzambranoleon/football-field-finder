@@ -1,6 +1,4 @@
-import { Sports } from "@mui/icons-material";
-import { Avatar, Box, Button, Container, FormControl, Grid, ImageListItem, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
-import { pink } from "@mui/material/colors";
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 const ITEM_HEIGHT = 35;
@@ -38,95 +36,93 @@ const Form = () => {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
-    
+
     return (
-        <Grid container spacing={10}>
-            <Grid item xs={12} sm={6}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <TextField
-                            autoComplete="given-name"
-                            name="teamName"
-                            required
-                            fullWidth
-                            id="teamName"
-                            label="Team Name"
-                            autoFocus
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth margin="normal">
-                            <InputLabel id="simple-select-label">State</InputLabel>
-                            <Select
-                                labelId="simple-select-label"
-                                id="simple-select"
-                                value={state}
-                                label="State"
-                                onChange={handleChange}
-                                MenuProps={MenuProps}
-                            >
-                                {states.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            margin="normal"
-                            name="city"
-                            fullWidth
-                            id="city"
-                            label="City"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            margin="normal"
-                            id="outlined-multiline-static"
-                            label="Description"
-                            multiline
-                            rows={4}
-                            fullWidth 
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            margin="normal"
-                            fullWidth
-                            id="telephone"
-                            label="Telephone Number"
-                            name="telephone"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            required
-                            margin="normal"
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                        />
-                    </Grid>
+        <Box>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <TextField
+                        autoComplete="given-name"
+                        name="teamName"
+                        required
+                        fullWidth
+                        id="teamName"
+                        label="Team Name"
+                        autoFocus
+                    />
                 </Grid>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                    color="success"
-                >
-                    Submit Post
-                </Button>       
+                <Grid item xs={12} sm={6}>
+                    <FormControl fullWidth margin="normal">
+                        <InputLabel id="simple-select-label">State</InputLabel>
+                        <Select
+                            labelId="simple-select-label"
+                            id="simple-select"
+                            value={state}
+                            label="State"
+                            onChange={handleChange}
+                            MenuProps={MenuProps}
+                        >
+                            {states.map((name) => (
+                                <MenuItem
+                                    key={name}
+                                    value={name}
+                                >
+                                    {name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        margin="normal"
+                        name="city"
+                        fullWidth
+                        id="city"
+                        label="City"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        margin="normal"
+                        id="outlined-multiline-static"
+                        label="Description"
+                        multiline
+                        rows={4}
+                        fullWidth 
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField 
+                        margin="normal"
+                        fullWidth
+                        id="telephone"
+                        label="Telephone Number"
+                        name="telephone"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        required
+                        margin="normal"
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                    />
+                </Grid>
             </Grid>
-        </Grid>
+            <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                color="success"
+            >
+                Submit Post
+            </Button>
+        </Box>
     )
 };
 

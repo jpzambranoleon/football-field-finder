@@ -12,6 +12,7 @@ import CreateTeamPost from "./pages/create/CreateTeamPost";
 import CreateFreeAgentPost from "./pages/create/CreateFreeAgentPost";
 import CreateTrainerPost from "./pages/create/CreateTrainerPost";
 import Error404 from "./pages/error404/Error404";
+import CreatePostPage from "./pages/CreatePostPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/create-team-post" element={<CreateTeamPost />} />
           <Route path="/create-freeAgent-post" element={<CreateFreeAgentPost/>} />
           <Route path="/create-trainer-post" element={<CreateTrainerPost />} />
+          <Route path="/create-post-page" element={<CreatePostPage />} />
           <Route path="/*" element={<Error404 />} />
         </Routes>
       </Router>

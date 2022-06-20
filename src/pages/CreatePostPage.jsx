@@ -1,3 +1,6 @@
+import { Groups, Person, Sports } from "@mui/icons-material";
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
+import { blue, green, pink } from "@mui/material/colors";
 import Form from "../components/Form";
 
 export default function CreatePostPage() {
@@ -73,15 +76,12 @@ export default function CreatePostPage() {
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Grid container sx={12} sm={6}>
-                                    <Grid item>
-
-                                    </Grid>
-                                </Grid>
                            </Box>
                        </Grid>
+                       <Grid item xs={12} sm={6} xl={6}>
+                            <Form />
+                       </Grid>
                     </Grid>
-                    <Form />
                 </Container>
            </Box>
        </main> 
