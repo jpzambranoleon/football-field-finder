@@ -45,7 +45,7 @@ export default function Home() {
                         >
                             Find a Post
                         </Button>
-                        <Button component={Link} to="/create" variant="outlined" color="success">Create a Post</Button>
+                        <Button component={Link} to="/create-post-page" variant="outlined" color="success">Create a Post</Button>
                     </Stack>
                 </Container>
             </Box>
