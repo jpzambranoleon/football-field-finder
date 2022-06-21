@@ -49,7 +49,7 @@ const Form = () => {
                             name="row-radio-buttons-group"
                         >
                             <FormControlLabel value="Team" control={<Radio />} label="Team" />
-                            <FormControlLabel value="Player" control={<Radio />} label="Free Agent" />
+                            <FormControlLabel value="Player" control={<Radio />} label="Player" />
                             <FormControlLabel value="Trainer" control={<Radio />} label="Trainer" />
                         </RadioGroup>
                     </FormControl>
