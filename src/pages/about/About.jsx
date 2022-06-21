@@ -1,4 +1,4 @@
-import { Facebook, GitHub, Groups, LinkedIn, Person, Sports } from "@mui/icons-material";
+import { Code, Facebook, GitHub, Laptop, LinkedIn, Palette, } from "@mui/icons-material";
 import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, ImageListItem, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 
@@ -47,29 +47,29 @@ export default function About() {
                                 <Grid container spacing={2}>
                                     <Grid item sx={12} sm={4}>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}>
-                                            <Groups fontSize="large" />
+                                            <Laptop fontSize="large" />
                                         </Avatar>
                                         <Typography 
                                             variant="body1" 
                                             color="text.secondary"
                                         >
-                                            Designed to be a message board for soccer groups
+                                            Designed to be responsive. Can work on any desktop or mobile device.
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[400] }}>
-                                            <Person fontSize="large" />
+                                            <Palette fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Anyone looking for a group to play soccer with
+                                            Designed to look sleek and modern. Developed using advance React Frameworks.
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: pink[400] }}>
-                                            <Sports fontSize="large" />
+                                            <Code fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Coaches can offer training for individuals and teams
+                                            Project is open source. The code is available for anyone to see and modify.
                                         </Typography>
                                     </Grid>
                                 </Grid>
