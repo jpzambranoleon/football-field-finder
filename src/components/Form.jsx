@@ -47,10 +47,11 @@ const Form = () => {
                             row
                             aria-labelledby="row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
+                            defaultValue="team"
                         >
-                            <FormControlLabel value="Team" control={<Radio />} label="Team" />
-                            <FormControlLabel value="Player" control={<Radio />} label="Player" />
-                            <FormControlLabel value="Trainer" control={<Radio />} label="Trainer" />
+                            <FormControlLabel value="team" control={<Radio />} label="Team" />
+                            <FormControlLabel value="player" control={<Radio />} label="Player" />
+                            <FormControlLabel value="trainer" control={<Radio />} label="Trainer" />
                         </RadioGroup>
                     </FormControl>
                 </Grid>
