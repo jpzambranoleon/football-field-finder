@@ -1,6 +1,7 @@
 import { Groups } from "@mui/icons-material";
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 const TeamPost = () => {
     return (
@@ -26,7 +27,7 @@ const TeamPost = () => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="success">View</Button>
+                    <Button component={Link} to="/post" size="small" color="success">View</Button>
                 </CardActions>
             </Card>
         </Grid>

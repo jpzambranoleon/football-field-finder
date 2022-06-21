@@ -17,11 +17,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/post" element={<PostPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/user" element={<User />} />
+          <Route path="/post" element={<PostPage />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/*" element={<Error404 />} />
         </Routes>

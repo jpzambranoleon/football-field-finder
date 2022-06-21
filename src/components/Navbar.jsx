@@ -29,6 +29,9 @@ const Navbar = () => {
                             <Button component={Link} to="/about" color="inherit">
                                 About
                             </Button>
+                            <Button component={Link} to="/user" color="inherit">
+                                My Posts
+                            </Button>
                         </Box>
                         <IconButton 
                             sx={{ display: { xs: 'flex', sm: 'none' } }}
