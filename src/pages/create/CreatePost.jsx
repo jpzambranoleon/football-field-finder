@@ -51,13 +51,13 @@ export default function CreatePost() {
                                             variant="h5"
                                             gutterBottom
                                         >
-                                            Free Agent
+                                            Player
                                         </Typography>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[400] }}>
                                             <Person fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Teams can recruit free agents that are looking for a team to join
+                                            Teams can recruit players that are looking for a team to join
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
