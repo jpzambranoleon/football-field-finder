@@ -44,14 +44,8 @@ export default function About() {
                                     This web app was created to help people who are interested in the sport of soccer 
                                     to meet up with local teams in the area that are looking for players to join 
                                 </Typography>
-                                <Grid container spacing={2} align="center">
+                                <Grid container spacing={2}>
                                     <Grid item sx={12} sm={4}>
-                                        <Typography
-                                            variant="h5"
-                                            gutterBottom
-                                        >
-                                            Team
-                                        </Typography>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}>
                                             <Groups fontSize="large" />
                                         </Avatar>
@@ -59,35 +53,23 @@ export default function About() {
                                             variant="body1" 
                                             color="text.secondary"
                                         >
-                                            You can create a team or join an existing one in your area
+                                            Designed to be a message board for soccer groups
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
-                                        <Typography
-                                            variant="h5"
-                                            gutterBottom
-                                        >
-                                            Free Agent
-                                        </Typography>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[400] }}>
                                             <Person fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Teams can recruit free agents that are looking for a team to join
+                                            Anyone looking for a group to play soccer with
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
-                                        <Typography
-                                            variant="h5"
-                                            gutterBottom
-                                        >
-                                            Trainer
-                                        </Typography>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: pink[400] }}>
                                             <Sports fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            If you are an experienced, you can offer training services
+                                            Coaches can offer training for individuals and teams
                                         </Typography>
                                     </Grid>
                                 </Grid>
