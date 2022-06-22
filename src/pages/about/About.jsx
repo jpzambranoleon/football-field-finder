@@ -44,7 +44,7 @@ export default function About() {
                                     This web app was created to help people who are interested in the sport of soccer 
                                     to meet up with local teams in the area that are looking for players to join 
                                 </Typography>
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} align="center">
                                     <Grid item sx={12} sm={4}>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}>
                                             <Laptop fontSize="large" />
