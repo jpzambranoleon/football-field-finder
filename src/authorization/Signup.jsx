@@ -1,5 +1,5 @@
 import { LockOutlined, SportsSoccer } from "@mui/icons-material";
-import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, Paper, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography } from "@mui/material";
 
 export default function Signup() {
     const handleSubmit = (event) => {
