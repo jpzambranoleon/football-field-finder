@@ -69,7 +69,7 @@ export default function About() {
                                             <Code fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Project is open source. The code is available for anyone to see and modify.
+                                            Project is open source. The code is available for any experienced developer to look at.
                                         </Typography>
                                     </Grid>
                                 </Grid>
