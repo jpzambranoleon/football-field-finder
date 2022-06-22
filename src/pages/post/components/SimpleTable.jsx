@@ -6,7 +6,6 @@ function createData(name, item) {
 
 const rows = [
     createData('Team Name', 'Team FC'),
-    createData('Number of players', 8),
     createData('Location', 'Hot Springs, AR'),
     createData('Phone', '555-555-5555'),
     createData('Email', 'something@gmail.com'),

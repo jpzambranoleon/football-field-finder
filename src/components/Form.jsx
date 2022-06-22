@@ -57,12 +57,11 @@ const Form = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        autoComplete="given-name"
-                        name="teamName"
+                        name="title"
                         required
                         fullWidth
-                        id="teamName"
-                        label="Team Name"
+                        id="title"
+                        label="Title"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
