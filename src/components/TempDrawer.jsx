@@ -39,6 +39,15 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                                 </ListItemText>
                             </ListItemButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton onClick={handleDrawerClose} component={Link} to="/user">
+                                <ListItemText>
+                                    <Typography>
+                                        My Posts
+                                    </Typography>
+                                </ListItemText>
+                            </ListItemButton>
+                        </ListItem>
                     </List>
                 </Box>  
             </ClickAwayListener> 
