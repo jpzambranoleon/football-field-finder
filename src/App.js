@@ -13,20 +13,22 @@ import CreatePost from "./pages/create/CreatePost";
 function App() {
   return (
     <div className="App">
+      <>
       <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<Signup />} />
           <Route path="/user" element={<User />} />
           <Route path="/post" element={<PostPage />} />
           <Route path="/create" element={<CreatePost />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<Signup />} />
           <Route path="/*" element={<Error404 />} />
         </Routes>
       </Router>
       <Copyright />
+      </>
     </div>
   );
 }
