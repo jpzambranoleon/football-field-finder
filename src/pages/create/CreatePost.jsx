@@ -71,7 +71,7 @@ export default function CreatePost() {
                                             <Sports fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            If you are an experienced, you can offer training services
+                                            If you are experienced, you can offer training services
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12} sm={12}>
