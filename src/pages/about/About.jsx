@@ -138,7 +138,7 @@ export default function About() {
                         </Grid>
                         <Grid item xs={12} sm={6} md={4} xl={3}>
                             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                                <CardMedia component="img" height="260" image="/images/zurab_cio.JPG" alt="zura" />
+                                <CardMedia component="img" height="260" image="/images/zura_cio.JPG" alt="zura" />
                                 <CardContent sx={{ flexGrow: 1 }}>
                                     <Typography gutterBottom variant="h5" component="div">
                                         Zurab Sabakhtarishvili
