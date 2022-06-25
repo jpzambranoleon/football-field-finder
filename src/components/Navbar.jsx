@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <>
             <TempDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
-            <AppBar position="relative" sx={{ bgcolor: 'success.main' }}>
+            <AppBar position="static" sx={{ bgcolor: 'success.main' }}>
                 <Toolbar sx={{ width: { xl: '76%', lg: '90%' }, margin: { xl: '0 auto', lg: '0 auto' }, justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <SportsSoccer fontSize="large" sx= {{ mr: 1 }} />
