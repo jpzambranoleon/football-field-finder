@@ -1,4 +1,4 @@
-import { Code, Facebook, GitHub, Laptop, LinkedIn, Palette, } from "@mui/icons-material";
+import { Facebook, Favorite, GitHub, Laptop, LinkedIn, Palette, } from "@mui/icons-material";
 import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, ImageListItem, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 
@@ -61,15 +61,15 @@ export default function About() {
                                             <Palette fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Designed to look sleek and modern. Developed using advance React Frameworks.
+                                            Designed to look modern. Developed using the React and NodeJS frameworks.
                                         </Typography>
                                     </Grid>
                                     <Grid item sx={12} sm={4}>
                                         <Avatar sx={{ width: 60, height: 60, mb: 2, bgcolor: pink[400] }}>
-                                            <Code fontSize="large" />
+                                            <Favorite fontSize="large" />
                                         </Avatar>
                                         <Typography variant="body1" color="text.secondary">
-                                            Project is open source. The code is available for any experienced developer to look at.
+                                            Continuous updates. There will be new features added in the future.
                                         </Typography>
                                     </Grid>
                                 </Grid>
