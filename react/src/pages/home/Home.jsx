@@ -4,6 +4,7 @@ import TeamPost from "../../components/TeamPost";
 import TrainerPost from "../../components/TrainerPost";
 import FeedFilter from "./components/FeedFilter";
 import { Link } from "react-router-dom";
+import Feed from "../../components/Feed";
 
 export default function Home() {
     return (
@@ -52,15 +53,7 @@ export default function Home() {
             <Container sx={{ py: 8 }} maxWidth="md">
                 <FeedFilter />
                 <Grid container spacing={2}>
-                    <TeamPost />
-                    <FreeAgentPost />
-                    <TrainerPost />
-                    <TeamPost />
-                    <FreeAgentPost />
-                    <TrainerPost />
-                    <TeamPost />
-                    <FreeAgentPost />
-                    <TrainerPost />
+                    <Feed />
                 </Grid>
             </Container>
         </main>

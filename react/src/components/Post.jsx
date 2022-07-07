@@ -3,7 +3,7 @@ import { Groups } from "@mui/icons-material";
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
-import { Users } from "../../dummyData";
+import { Users } from '../dummyData';
 
 
 const Post = ({ post }) => {
@@ -16,18 +16,16 @@ const Post = ({ post }) => {
                             <Groups />
                         </Avatar>   
                     }
-                    title={post.title}
+                    title={Users.filter((u) => u.id === post?.userId)[0].username}
                     subheader={post.date}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <React.Fragment>
-                        <Typography variant="h7" aria-label="city" paragraph>
-                            {post.city}
-                        </Typography>
-                        <Typography variant="h7" aria-label="state" paragraph>
-                            {post.state}
-                        </Typography>
-                    </React.Fragment>
+                    <Typography variant="h6" fontSize={20} gutterBottom aria-label="title">
+                        {post.title}
+                    </Typography>
+                    <Typography variant="h7" aria-label="city" paragraph>
+                        {post.city}, {post.state}
+                    </Typography>
                     <Typography variant="body2" aria-label="description" color="text.secondary">
                         {post.desc}
                     </Typography>
