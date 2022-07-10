@@ -3,9 +3,9 @@ import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
 import SimpleTable from "./components/SimpleTable";
 import { Users } from "../../dummyData";
-import Post from "../../components/Post";
+import { Posts } from "../../dummyData";
 
-const Page = ({ post }) => {
+const PostPage = ({ post }) => {
     return (
         <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
             <Container>
@@ -27,13 +27,13 @@ const Page = ({ post }) => {
                 </Grid>
             </Container>
         </Box>
-    )
-}
+    );
+};
 
-export default function PostPage() {
+export default function PostPageFeed() {
     return (
-       <main>
-           <Page />
-       </main> 
-    )
+        <>
+            <PostPage  />
+        </>
+    );
 };
