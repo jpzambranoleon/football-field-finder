@@ -5,7 +5,7 @@ import SimpleTable from "./components/SimpleTable";
 import { Users } from "../../dummyData";
 import { Posts } from "../../dummyData";
 
-const PostPage = ({ post }) => {
+export default function PostPageFeed() {
     return (
         <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
             <Container>
@@ -16,24 +16,16 @@ const PostPage = ({ post }) => {
                                 <Groups fontSize="large" />
                             </Avatar> 
                             <Typography variant="h5" fontWeight="bold">
-                                {post.title}
+                                Title
                             </Typography>
                         </Box>
                         <Typography variant="body1" paragraph>
-                            {post.desc}
+                            Hello bois!
                         </Typography>
                     </Grid>
                     <SimpleTable />
                 </Grid>
             </Container>
         </Box>
-    );
-};
-
-export default function PostPageFeed() {
-    return (
-        <>
-            <PostPage  />
-        </>
     );
 };
