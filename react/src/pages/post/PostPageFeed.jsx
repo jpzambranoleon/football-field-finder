@@ -20,7 +20,7 @@ export default function PostPageFeed() {
                             </Typography>
                         </Box>
                         <Typography variant="body1" paragraph>
-                            Hello bois!
+                            Hello bois! This a test component!
                         </Typography>
                     </Grid>
                     <SimpleTable />
