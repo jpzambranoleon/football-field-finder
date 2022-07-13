@@ -10,20 +10,22 @@ export default function PostPageFeed() {
         <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6, }}>
             <Container>
                 <Grid container>
-                    <Grid item>
+                    <Grid item xs={12}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 5 }}>
                             <Avatar sx={{ bgcolor: green[400], mr: 2, height: '55px', width: '55px' }} >
                                 <Groups fontSize="large" />
                             </Avatar> 
                             <Typography variant="h5" fontWeight="bold">
-                                Title
+                                Need to find a team asap! Looking for a team to join!
                             </Typography>
                         </Box>
-                        <Typography variant="body1" paragraph>
-                            Hello bois! This a test component!
-                        </Typography>
                     </Grid>
-                    <SimpleTable />
+                    <Grid item xs={12}>
+                        <Typography variant="body1" paragraph>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id fuga eaque aperiam vitae numquam ab porro ex suscipit enim libero consequatur molestias nemo laborum, velit perferendis quia hic consectetur! Voluptatum!
+                        </Typography>
+                        <SimpleTable />
+                    </Grid>
                 </Grid>
             </Container>
         </Box>
