@@ -1,34 +1,46 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
 
-const userSchema = new Schema(
-  {
-    name: { type: String, required: true },
-    email: { type: String, required: () => this.phone !== undefined, unique: true, lowercase: true },
-    phone: { type: String, required: () => this.email !== undefined, unique: true },
-    active: { type: Boolean, default: true },
-    password: { type: String, required: true },
-    otpToken: { type: String, default: null },
-    otpTokenExpires: { type: Date, default: null },
-    resetPasswordToken: { type: String, default: null },
-    resetPasswordExpires: { type: Date, default: null },
-  },
-  {
-    timestamps: {
-      createdAt: "createdAt",
-      updatedAt: "updatedAt",
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        min: 3,
+        max: 20,
+        unique: true
     },
-  }
+    email: {
+        type: String,
+        required: true,
+        max: 50,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+        min: 6,
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    desc: {
+        type: String,
+        max: 50,
+    },
+    city: {
+        type: String,
+        max: 50,
+    },
+    from: {
+        type: String,
+        max: 50
+    },
+    relationship: {
+        type: Number,
+        enum:[1,2,3],
+    } 
+},
+    {timestamps: true}
 );
-const User = mongoose.model("user", userSchema);
-module.exports = User;
 
-module.exports.hashPassword = async (password) => {
-  try {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
-  } catch (error) {
-    throw new Error("Hashing failed", error);
-  }
-};
+module.exports = mongoose.model("User", userSchema);

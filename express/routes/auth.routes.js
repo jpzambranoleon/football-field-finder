@@ -1,18 +1,42 @@
-const express = require("express");
-const router = express.Router();
-const AuthController = require("../controllers/user.controller");
-const { checkDuplicatePhone, checkDuplicateEmail } = require("../middlewares/signup.middleware");
-const { verifyCaptcha } = require("../middlewares/captcha.verify.middleware");
-const RateLimit = require("../middlewares/rate.limit.middleware");
-const { validateToken } = require("../middlewares/validate.jwt.middleware");
+const router = require("express").Router();
+const User = require("../models/user.model");
+const bcrypt = require("bcryptjs");
 
-router.use(RateLimit);
-router.post("/signup", [checkDuplicatePhone, checkDuplicateEmail, verifyCaptcha], AuthController.Signup);
-router.post("/login", [verifyCaptcha], AuthController.Login);
-router.post("/send-otp", [verifyCaptcha], AuthController.SendOTP);
-router.post("/activate", [verifyCaptcha], AuthController.Activate);
-router.post("/forgot", [verifyCaptcha], AuthController.ForgotPassword);
-router.post("/reset", [verifyCaptcha], AuthController.ResetPassword);
-router.get("/profile", validateToken, AuthController.GetProfileData);
+// REGISTER 
+router.post("/register", async(req, res) => {
+    try {
+        // generate new password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+        // create new user
+        const newUser = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword
+        });
+
+        // save user and response
+        const user = await newUser.save();
+        res.status(200).json(user);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+});
+
+// LOGIN
+router.post("/login", async(req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        !user && res.status(404).json("user not found");
+
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        !validPassword && res.status(400).json("wrong password");
+        
+        res.status(200).json(user);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
