@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const userRoute = require("./routes/users.routes");
 const authRoute = require("./routes/auth.routes");
+const postRoute = require("./routes/posts.routes");
 
 require("dotenv").config();
 
@@ -27,6 +28,7 @@ app.use(cors());
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/posts", postRoute);
 
 app.listen(5200, () => {
   console.log("Server started listening on PORT : " + 5200);
