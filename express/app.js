@@ -12,12 +12,15 @@ require("dotenv").config();
 // create application with express
 const app = express();
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}, () => {
-  console.log("Connected to MongoDB");
-}
+mongoose.connect(
+  process.env.MONGO_URL,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Connected to MongoDB");
+  }
 );
 
 //middleware
