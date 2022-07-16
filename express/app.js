@@ -1,29 +1,20 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-const mongoose = require("mongoose");
+const MongooseConnection = require("./utility/mongoose.connection");
 const morgan = require("morgan");
 const userRoute = require("./routes/users.routes");
 const authRoute = require("./routes/auth.routes");
 const postRoute = require("./routes/posts.routes");
 
+// connect to database
 require("dotenv").config();
+MongooseConnection();
 
 // create application with express
 const app = express();
 
-mongoose.connect(
-  process.env.MONGO_URL,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => {
-    console.log("Connected to MongoDB");
-  }
-);
-
-//middleware
+// middleware
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
