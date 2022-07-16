@@ -4,6 +4,7 @@ const { checkDuplicateEmail } = require("../middlewares/register.middleware");
 
 // Register
 router.post("/register", [checkDuplicateEmail], AuthController.Register);
+// Login
 router.post("/login", AuthController.Login);
 
 module.exports = router;
