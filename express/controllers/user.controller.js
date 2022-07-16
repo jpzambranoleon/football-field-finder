@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 
+// REGISTER
 exports.Register = async (req, res) => {
   try {
     // generate hashed password
@@ -25,6 +26,7 @@ exports.Register = async (req, res) => {
   }
 };
 
+// LOGIN
 exports.Login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
