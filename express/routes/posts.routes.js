@@ -7,5 +7,6 @@ router.post("/", PostController.Submit);
 router.put("/:id", PostController.UpdatePost);
 // Delete a Post
 router.delete("/:id", PostController.DeletePost);
+// Get a Post
 
 module.exports = router;
