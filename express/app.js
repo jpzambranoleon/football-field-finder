@@ -20,8 +20,6 @@ app.use(cors());
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/user", require("./routes/users.routes"));
 app.use("/api/post", require("./routes/posts.routes"));
-app.use("", require() );
-// Add city route seriously tho
 
 app.listen(5200, () => {
   console.log("Server started listening on PORT : " + 5200);
