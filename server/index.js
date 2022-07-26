@@ -1,6 +1,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const MongooseConnection = require("./utility/mongoose.connection");
+const cors = require("cors");
 const morgan = require("morgan");
 
 // Create application with express
@@ -12,6 +13,7 @@ MongooseConnection();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
 
