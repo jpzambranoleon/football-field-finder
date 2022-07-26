@@ -3,11 +3,11 @@ import Post from "./Post";
 import { Posts } from "../dummyData";
 
 export default function Feed() {
-    return (
-        <>
-            {Posts.map((p) => (
-                <Post key={p.id} post={p}/>
-            ))}
-        </>
-    );
-};
+  return (
+    <>
+      {Posts.map((p) => (
+        <Post key={p.id} post={p} />
+      ))}
+    </>
+  );
+}
