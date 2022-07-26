@@ -15,6 +15,10 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
+app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/users", require("./routes/users.routes"));
+app.use("/api/posts", require("./routes/posts.routes"));
+
 app.listen(8800, () => {
   console.log("Backend server is running!");
 });

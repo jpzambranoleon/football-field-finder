@@ -1,8 +1,5 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
-const {
-  ExportConfigurationInstance,
-} = require("twilio/lib/rest/bulkexports/v1/exportConfiguration");
 
 // REGISTER
 exports.Register = async (req, res) => {
