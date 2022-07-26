@@ -10,6 +10,6 @@ router.delete("/:id", PostController.DeletePost);
 // Get a Post
 router.get("/:id", PostController.GetPost);
 // Get Timeline of User Posts
-router.get("/myposts/:userId", PostController.GetUserPosts);
+router.get("/myposts/all", PostController.GetUserPosts);
 
 module.exports = router;
