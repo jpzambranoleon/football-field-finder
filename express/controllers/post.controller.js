@@ -53,13 +53,13 @@ exports.GetPost = async (req, res) => {
   }
 };
 
-// GET TIMELINE POSTS
-exports.GetTimeline = async (req, res) => {
+// GET USER POSTS
+exports.GetUserPosts = async (req, res) => {
   try {
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id }).exec();
 
-    res.json(userPosts);
+    res.status(200).json(userPosts);
   } catch (err) {
     res.status(500).json(err);
   }
