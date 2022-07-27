@@ -1,8 +1,8 @@
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import FeedFilter from "../../components/FeedFilter";
+import FeedFilter from "../components/FeedFilter";
 import { Link } from "react-router-dom";
-import Post from "../../components/Post";
-import { Posts } from "../../dummyData";
+import Post from "../components/Post";
+import { Posts } from "../dummyData";
 
 export default function Home() {
   return (

@@ -1,9 +1,9 @@
 import { Groups } from "@mui/icons-material";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
-import SimpleTable from "./components/SimpleTable";
-import { Users } from "../../dummyData";
-import { Posts } from "../../dummyData";
+import SimpleTable from "../components/SimpleTable";
+import { Users } from "../dummyData";
+import { Posts } from "../dummyData";
 
 export default function PostPageFeed() {
   return (

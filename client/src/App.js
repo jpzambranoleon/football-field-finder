@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import About from "./pages/about/About";
+import About from "./pages/About";
 import Login from "./authorization/Login";
 import Signup from "./authorization/Signup";
 import Copyright from "./components/Copyright";
-import Home from "./pages/home/Home";
-import User from "./pages/user/User";
-import Error404 from "./pages/error404/Error404";
-import CreatePost from "./pages/create/CreatePost";
+import Home from "./pages/Home";
+import User from "./pages/User";
+import Error404 from "./pages/Error404";
+import CreatePost from "./pages/CreatePost";
 import axios from "axios";
-import PostPageFeed from "./pages/post/PostPageFeed";
+import PostPageFeed from "./pages/PostPageFeed";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:5200";

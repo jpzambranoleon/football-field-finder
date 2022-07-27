@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import Post from "../../components/Post";
-import api from "../../api/server";
+import Post from "../components/Post";
+import api from "../api/server";
 
 export default function User() {
   const [posts, setPosts] = useState([]);
