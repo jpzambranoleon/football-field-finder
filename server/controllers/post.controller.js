@@ -67,7 +67,8 @@ exports.GetUserPosts = async (req, res) => {
 // GET TIMELINE
 exports.GetTimelinePosts = async (req, res) => {
   try {
-    const allPosts = await Post.find({}).toArray();
+    const allPosts = await Post.find();
+
     res.status(200).json(allPosts);
   } catch (err) {
     res.status(500).json(err);

@@ -13,6 +13,6 @@ router.get("/:id", PostController.GetPost);
 router.get("/myposts/:userId", PostController.GetUserPosts);
 
 // Get Timeline of All Posts
-router.get("/timeline", PostController.GetTimelinePosts);
+router.get("/timeline/all", PostController.GetTimelinePosts);
 
 module.exports = router;
