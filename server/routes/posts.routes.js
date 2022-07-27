@@ -12,4 +12,7 @@ router.get("/:id", PostController.GetPost);
 // Get Timeline of User Posts
 router.get("/myposts/:userId", PostController.GetUserPosts);
 
+// Get Timeline of All Posts
+router.get("/timeline", PostController.GetTimelinePosts);
+
 module.exports = router;
