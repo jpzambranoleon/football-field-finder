@@ -15,7 +15,7 @@ import {
 import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../api/server";
+import axios from "axios";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
@@ -26,7 +26,7 @@ const Post = ({ post }) => {
   };
 
   useEffect(() => {
-    api.get(`users/${post.userId}`).then((res) => {
+    axios.get(`users/${post.userId}`).then((res) => {
       setUser(res.data);
     });
   }, []);

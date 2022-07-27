@@ -12,7 +12,7 @@ import axios from "axios";
 import PostPageFeed from "./pages/PostPageFeed";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:5200";
+  axios.defaults.baseURL = "http://localhost:8800/api";
   return (
     <div className="App">
       <>

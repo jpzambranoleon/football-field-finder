@@ -1,13 +1,13 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Post from "../components/Post";
-import api from "../api/server";
+import axios from "axios";
 
 export default function User() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    api.get("posts/myposts/62df98e664eb28ada61acfcb").then((res) => {
+    axios.get("posts/myposts/62df98e664eb28ada61acfcb").then((res) => {
       setPosts(res.data);
     });
   }, []);
