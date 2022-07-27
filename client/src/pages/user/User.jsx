@@ -1,16 +1,15 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import UserPost from "./components/UserPost";
-import { Posts } from "../../dummyData";
-import Post from "../../components/Post";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Post from "../../components/Post";
+import api from "../../api/server";
 
 export default function User() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const res = axios.get("post/");
-    console.log(res);
+    api.get("posts/myposts/62df98e664eb28ada61acfcb").then((res) => {
+      setPosts(res.data);
+    });
   }, []);
 
   return (
@@ -31,8 +30,8 @@ export default function User() {
         </Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={2}>
-            {Posts.map((p) => (
-              <Post key={p.id} post={p} />
+            {posts.map((post, index) => (
+              <Post key={index} post={post} />
             ))}
           </Grid>
         </Container>
