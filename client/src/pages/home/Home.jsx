@@ -1,7 +1,8 @@
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import FeedFilter from "./components/FeedFilter";
+import FeedFilter from "../../components/FeedFilter";
 import { Link } from "react-router-dom";
-import Feed from "../../components/Feed";
+import Post from "../../components/Post";
+import { Posts } from "../../dummyData";
 
 export default function Home() {
   return (
@@ -58,7 +59,9 @@ export default function Home() {
       <Container sx={{ py: 8 }} maxWidth="md">
         <FeedFilter />
         <Grid container spacing={2}>
-          <Feed />
+          {Posts.map((p) => (
+            <Post key={p.id} post={p} />
+          ))}
         </Grid>
       </Container>
     </main>
