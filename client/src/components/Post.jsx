@@ -16,6 +16,7 @@ import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import convertTime from "../utils/convertTime";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
@@ -71,7 +72,7 @@ const Post = ({ post }) => {
             loading ? (
               <Skeleton animation="wave" height={10} width="40%" />
             ) : (
-              post.createdAt
+              convertTime(post.createdAt)
             )
           }
         />
