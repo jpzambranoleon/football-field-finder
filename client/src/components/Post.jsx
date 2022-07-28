@@ -67,7 +67,7 @@ const Post = ({ post }) => {
                 style={{ marginBottom: 6 }}
               />
             ) : (
-              user.name
+              user.username
             )
           }
           subheader={
