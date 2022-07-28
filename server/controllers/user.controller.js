@@ -85,11 +85,11 @@ exports.DeleteUser = async (req, res) => {
 // GET A USER
 exports.GetUser = async (req, res) => {
   const userId = req.query.userId;
-  const name = req.query.name;
+  const username = req.query.username;
   try {
     const user = userId
       ? await User.findById(userId)
-      : await User.findOne({ name: name });
+      : await User.findOne({ username: username });
     const { password, updatedAt, ...other } = user._doc;
     res.status(200).json(other);
   } catch (err) {
