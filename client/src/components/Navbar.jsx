@@ -13,21 +13,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import TempDrawer from "./TempDrawer";
 
-const Navbar = ({ userId }) => {
+const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
 
   const [user, setUser] = useState({});
-
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/${userId}`);
+      const res = await axios.get(`/users?username=Jean-Paul Zambrano-Leon`);
       setUser(res.data);
     };
     fetchUser();
-  }, [userId]);
+  }, []);
 
   return (
     <>
@@ -56,7 +55,7 @@ const Navbar = ({ userId }) => {
               </Button>
               <Button
                 component={Link}
-                to={`myposts/${user.name}`}
+                to={`myposts/${user.username}`}
                 color="inherit"
               >
                 My Posts
