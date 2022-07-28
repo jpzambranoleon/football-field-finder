@@ -1,26 +1,27 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Feed from "../components/Feed";
+import { useParams } from "react-router";
 
 export default function MyPosts() {
   const [user, setUser] = useState({});
+  const username = useParams().username;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?name=Jean-Paul Zambrano-Leon`);
+      const res = await axios.get(`/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
-  }, []);
+  }, [username]);
 
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
           <Typography component="h1" variant="h4" align="center" gutterBottom>
-            Welcome, {user.name}!
+            Welcome, {user.username}!
           </Typography>
           <Typography
             variant="h6"
@@ -33,7 +34,7 @@ export default function MyPosts() {
         </Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={2}>
-            <Feed name="Jean-Paul Zambrano-Leon" />
+            <Feed username={username} />
           </Grid>
         </Container>
       </Box>
