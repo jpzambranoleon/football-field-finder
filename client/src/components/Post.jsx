@@ -27,10 +27,12 @@ const Post = ({ post }) => {
   };
 
   useEffect(() => {
-    axios.get(`users/${post.userId}`).then((res) => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users/${post.userId}`);
       setUser(res.data);
-    });
-  }, []);
+    };
+    fetchUser();
+  }, [post.userId]);
 
   setTimeout(() => {
     setLoading(false);
