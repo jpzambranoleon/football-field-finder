@@ -6,6 +6,6 @@ router.put("/:id", UserController.UpdateUser);
 // DELETE USER
 router.delete("/:id", UserController.DeleteUser);
 // GET USER
-router.get("/:id", UserController.GetUser);
+router.get("/", UserController.GetUser);
 
 module.exports = router;
