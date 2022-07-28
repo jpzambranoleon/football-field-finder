@@ -1,13 +1,26 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 import Feed from "../components/Feed";
 
 export default function MyPosts() {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?name=Jean-Paul Zambrano-Leon`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, []);
+
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
           <Typography component="h1" variant="h4" align="center" gutterBottom>
-            Welcome, User!
+            Welcome, {user.name}!
           </Typography>
           <Typography
             variant="h6"
