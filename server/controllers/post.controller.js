@@ -68,8 +68,18 @@ exports.GetUserPosts = async (req, res) => {
 exports.GetTimelinePosts = async (req, res) => {
   try {
     const allPosts = await Post.find();
-
     res.status(200).json(allPosts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// GET USER'S ALL POSTS
+exports.GetUserPostsAll = async (req, res) => {
+  try {
+    const user = await User.findOne({ name: req.params.name });
+    const posts = await Post.find({ userId: user._id });
+    res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }

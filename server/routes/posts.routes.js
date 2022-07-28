@@ -10,7 +10,7 @@ router.delete("/:id", PostController.DeletePost);
 // Get a Post
 router.get("/:id", PostController.GetPost);
 // Get Timeline of User Posts
-router.get("/myposts/:userId", PostController.GetUserPosts);
+router.get("/myposts/:name", PostController.GetUserPostsAll);
 
 // Get Timeline of All Posts
 router.get("/timeline/all", PostController.GetTimelinePosts);
