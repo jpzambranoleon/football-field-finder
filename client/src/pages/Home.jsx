@@ -9,9 +9,11 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("posts/timeline/all").then((res) => {
+    const fetchPosts = async () => {
+      const res = await axios.get("posts/timeline/all");
       setPosts(res.data);
-    });
+    };
+    fetchPosts();
   }, []);
 
   return (
@@ -68,8 +70,8 @@ export default function Home() {
       <Container sx={{ py: 8 }} maxWidth="md">
         <FeedFilter />
         <Grid container spacing={2}>
-          {posts.map((post, index) => (
-            <Post key={index} post={post} />
+          {posts.map((p) => (
+            <Post key={p._id} post={p} />
           ))}
         </Grid>
       </Container>
