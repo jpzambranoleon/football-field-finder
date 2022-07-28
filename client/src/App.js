@@ -17,11 +17,11 @@ function App() {
     <div className="App">
       <>
         <Router>
-          <Navbar userId="62df98e664eb28ada61acfcb" />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/myposts/:name" element={<MyPosts />} />
+            <Route path="/myposts/:username" element={<MyPosts />} />
             <Route path="/post" element={<PostPageFeed />} />
             <Route path="/create" element={<CreatePost />} />
             <Route path="/login" element={<Login />} />
