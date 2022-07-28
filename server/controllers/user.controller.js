@@ -88,7 +88,7 @@ exports.GetUser = async (req, res) => {
   const name = req.query.name;
   try {
     const user = userId
-      ? await User.findById(req.params.id)
+      ? await User.findById(userId)
       : await User.findOne({ name: name });
     const { password, updatedAt, ...other } = user._doc;
     res.status(200).json(other);
