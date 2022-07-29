@@ -13,24 +13,6 @@ import {
   Typography,
 } from "@mui/material";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://leonedigitale.com/">
-        Leone Digitale
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 export default function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -116,7 +98,6 @@ export default function Signup() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
   );
 }

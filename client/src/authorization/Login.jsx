@@ -17,24 +17,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { InfoContext } from "../utils/InfoProvider";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://leonedigitale.com">
-        Leone Digitale
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 export default function Login() {
   const { setStatus, setAuthorized } = useContext(InfoContext);
   const navigate = useNavigate();
@@ -126,7 +108,6 @@ export default function Login() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
 }

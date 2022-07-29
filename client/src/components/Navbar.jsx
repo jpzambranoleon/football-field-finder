@@ -53,12 +53,15 @@ const Navbar = () => {
               <Button component={Link} to="/about" color="inherit">
                 About
               </Button>
+              <Button component={Link} to="/login" color="inherit">
+                Login
+              </Button>
               <Button
                 component={Link}
-                to={`myposts/${user.username}`}
+                to={`profile/${user.username}`}
                 color="inherit"
               >
-                My Posts
+                Profile
               </Button>
             </Box>
             <IconButton

@@ -1,18 +1,23 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Login from "./authorization/Login";
 import Signup from "./authorization/Signup";
-import Copyright from "./components/Copyright";
 import Home from "./pages/Home";
 import Error404 from "./pages/Error404";
 import CreatePost from "./pages/CreatePost";
 import axios from "axios";
 import PostPageFeed from "./pages/PostPageFeed";
-import MyPosts from "./pages/MyPosts";
+import Profile from "./pages/Profile";
+import { useContext } from "react";
+import { InfoContext } from "./utils/InfoProvider";
+import Navbar from "./components/Navbar";
+import Copyright from "./components/Copyright";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
+
+  const { authorized } = useContext(InfoContext);
+
   return (
     <div className="App">
       <>
@@ -21,15 +26,16 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/myposts/:username" element={<MyPosts />} />
             <Route path="/post" element={<PostPageFeed />} />
             <Route path="/create" element={<CreatePost />} />
+            <Route path="/profile/:username" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<Signup />} />
             <Route path="/*" element={<Error404 />} />
+            {authorized ? <></> : null}
           </Routes>
+          <Copyright />
         </Router>
-        <Copyright />
       </>
     </div>
   );
