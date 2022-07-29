@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { InfoContext } from "../utils/InfoProvider";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const { authorized } = useContext(InfoContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -58,7 +61,7 @@ export default function Home() {
             </Button>
             <Button
               component={Link}
-              to="/create"
+              to={authorized ? "/post/create" : "/register"}
               variant="outlined"
               color="success"
             >
