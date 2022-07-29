@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Login from "./authorization/Login";
-import Signup from "./authorization/Signup";
+import Register from "./authorization/Register";
 import Home from "./pages/Home";
 import Error404 from "./pages/Error404";
 import CreatePost from "./pages/CreatePost";
@@ -27,10 +27,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/post" element={<PostPageFeed />} />
-            <Route path="/create" element={<CreatePost />} />
+            <Route path="/post/create" element={<CreatePost />} />
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/sign-up" element={<Signup />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/*" element={<Error404 />} />
             {authorized ? <></> : null}
           </Routes>
