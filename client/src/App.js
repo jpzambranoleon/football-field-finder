@@ -1,9 +1,13 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import About from "./pages/About";
 import Login from "./authorization/Login";
 import Register from "./authorization/Register";
 import Home from "./pages/Home";
-import Error404 from "./pages/Error404";
 import CreatePost from "./pages/CreatePost";
 import axios from "axios";
 import PostPageFeed from "./pages/PostPageFeed";
@@ -27,12 +31,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/post" element={<PostPageFeed />} />
-            <Route path="/post/create" element={<CreatePost />} />
-            <Route path="/profile/:username" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/*" element={<Error404 />} />
-            {authorized ? <></> : null}
+            {authorized ? (
+              <>
+                <Route path="/post/create" element={<CreatePost />} />
+                <Route path="/profile/:username" element={<Profile />} />
+              </>
+            ) : null}
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Copyright />
         </Router>
