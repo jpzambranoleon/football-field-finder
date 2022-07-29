@@ -4,24 +4,33 @@ const bcrypt = require("bcryptjs");
 // REGISTER
 exports.Register = async (req, res) => {
   try {
+    console.log(req.body);
+    if (!req.body.email) throw new Error("Cannot signup without an email");
+    if (!req.body.username) throw new Error("Cannot signup without a username");
+    if (!req.body.firstname || !req.body.lastname)
+      throw new Error("Cannot signup without first name and last name");
+
     // generate hashed password
     const hash = await User.hashPassword(req.body.password);
     req.body.password = hash;
 
     // create new user
     const newUser = new User(req.body);
+    // save new user
+    await newUser.save();
 
-    // save user and response
-    const user = await newUser.save();
-    res.status(200).json(user);
-  } catch (error) {
-    if (error.name === "ValidationError") {
-      res.status(400).send({ error: true, message: error.message });
+    res.status(200).send({
+      success: true,
+      message: "Registration Success",
+    });
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      res.status(400).send({ error: true, message: err.message });
       return;
     }
     res.status(500).send({
       error: true,
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -29,17 +38,25 @@ exports.Register = async (req, res) => {
 // LOGIN
 exports.Login = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
-    !user && res.status(404).json("user not found");
+    const { email, password } = req.body;
+    if (!email || !password) throw new Error("Please make a valid request");
+
+    const user = await User.findOne({ email: email });
+    if (!user) throw new Error("User not found");
 
     const validPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!validPassword) throw new Error("Invalid credentials");
 
-    res.status(200).json(user);
-  } catch (error) {
+    await user.save();
+
+    res.status(200).send({
+      success: true,
+      message: "User logged in successfully",
+    });
+  } catch (err) {
     res.status(500).send({
       error: true,
-      message: error.message,
+      message: err.message,
     });
   }
 };
