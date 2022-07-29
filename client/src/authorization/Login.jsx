@@ -12,6 +12,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../utils/InfoProvider";
 
 function Copyright(props) {
   return (
@@ -32,13 +36,30 @@ function Copyright(props) {
 }
 
 export default function Login() {
+  const { setStatus, setAuthorized } = useContext(InfoContext);
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const data = Object.fromEntries(new FormData(event.currentTarget));
+
+    axios
+      .post("/auth/login", data)
+      .then((res) => {
+        setStatus({
+          open: true,
+          message: res.data.message,
+          severity: "success",
+        });
+        setAuthorized(true);
+        localStorage.setItem("token", res.data.accessToken);
+        axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+        navigate("/");
+      })
+      .catch((err) => {
+        let message = err.response ? err.response.data.message : err.message;
+        setStatus({ open: true, message: message, severity: "error" });
+      });
   };
 
   return (
