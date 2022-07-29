@@ -15,6 +15,14 @@ const postSchema = new Schema(
       type: String,
       max: 500,
     },
+    city: {
+      type: String,
+      max: 20,
+    },
+    state: {
+      type: String,
+      max: 20,
+    },
   },
   { timestamps: true }
 );
