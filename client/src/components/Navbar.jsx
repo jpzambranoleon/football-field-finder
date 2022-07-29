@@ -8,13 +8,16 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { InfoContext } from "../utils/InfoProvider";
 import TempDrawer from "./TempDrawer";
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const { authorized } = useContext(InfoContext);
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
@@ -53,15 +56,12 @@ const Navbar = () => {
               <Button component={Link} to="/about" color="inherit">
                 About
               </Button>
-              <Button component={Link} to="/login" color="inherit">
-                Login
-              </Button>
               <Button
                 component={Link}
-                to={`profile/${user.username}`}
+                to={authorized ? `profile/${user.username}` : "/login"}
                 color="inherit"
               >
-                Profile
+                {authorized ? "Profile" : "Login"}
               </Button>
             </Box>
             <IconButton
