@@ -3,10 +3,8 @@ import {
   Avatar,
   Box,
   Button,
-  Checkbox,
   Container,
   CssBaseline,
-  FormControlLabel,
   Grid,
   Link,
   TextField,
@@ -37,7 +35,7 @@ export default function Register() {
         localStorage.setItem("token", res.data.accessToken);
         axios.defaults.headers.common["Authorization"] = res.data.accessToken;
 
-        navigate("/setup");
+        navigate("/login");
       })
       .catch((err) => {
         let message = err.response ? err.response.data.message : err.message;
@@ -71,7 +69,7 @@ export default function Register() {
                 required
                 fullWidth
                 id="username"
-                label="User Name"
+                label="Username"
                 autoFocus
               />
             </Grid>
@@ -83,15 +81,14 @@ export default function Register() {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
-                id="last_name"
-                label="LastName"
+                id="lastName"
+                label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
               />
@@ -115,12 +112,6 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="new-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
           </Grid>
