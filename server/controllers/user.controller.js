@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const { generateJwt } = require("../utility/generateJwt");
+const randomize = require("randomatic");
 
 // REGISTER
 exports.Register = async (req, res) => {
@@ -8,7 +9,7 @@ exports.Register = async (req, res) => {
     console.log(req.body);
     if (!req.body.email) throw new Error("Cannot signup without an email");
     if (!req.body.username) throw new Error("Cannot signup without a username");
-    if (!req.body.firstname || !req.body.lastname)
+    if (!req.body.firstName || !req.body.lastName)
       throw new Error("Cannot signup without first name and last name");
 
     // generate hashed password
@@ -77,19 +78,58 @@ exports.Login = async (req, res) => {
   }
 };
 
-exports.Activate = async (req, res) => {
+exports.SendOTP = async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) throw new Error("Please make a valid request");
 
+    const user = await User.findOne({ email: email });
+    if (!user) throw new Error("Account not found");
+
+    if (user.active) throw new Error("Account already activated");
+
+    user.otpToken = randomize("0", 4);
+    user.otpTokenExpires = new Date(Date.now() + 60 * 1000 * 15); //15 minutes
+    await user.save();
+    if (user.email) {
+      await SendEmail(
+        `Your verification code is - ${user.otpToken}`,
+        req.body.email,
+        "Verification Code"
+      ).catch((error) => {
+        throw new Error("Couldn't send email");
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "OTP sent successfully",
+      codeExpiration: user.otpTokenExpires,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: error.message,
+    });
+  }
+};
+
+exports.Activate = async (req, res) => {
+  try {
+    const { email, code } = req.body;
+    if (!email || !code) throw new Error("Please make a valid request");
+
     const user = await User.findOne({
       email: email,
+      otpToken: code,
+      otpTokenExpires: { $gt: Date.now() },
     });
 
     if (!user) throw new Error("Invalid details");
 
     if (user.active) throw new Error("Account already activated");
 
+    user.otpToken = "";
+    user.otpTokenExpires = null;
     user.active = true;
     const { error, token } = await generateJwt(user.username, user._id);
 
@@ -103,6 +143,76 @@ exports.Activate = async (req, res) => {
       success: true,
       message: "Account activated.",
       accessToken: token,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: error.message,
+    });
+  }
+};
+
+// FORGOT PASSWORD
+exports.ForgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) throw new Error("Cannot be processed");
+
+    const user = await User.findOne({
+      email: email,
+    });
+
+    if (!user) throw new Error("Account not found");
+
+    let code = randomize("Aa0", 60);
+    let expiry = Date.now() + 60 * 1000 * 15;
+    user.resetPasswordToken = code;
+    user.resetPasswordExpires = expiry;
+
+    if (user.email) {
+      await SendEmail(
+        `Follow the link to reset your password - <a clicktracking="off" href="https://uaunity.com/password/reset/${code}">Reset password</a>`,
+        user.email,
+        "Reset Password"
+      ).catch((_) => {
+        throw new Error("Couldn't send email");
+      });
+    }
+
+    await user.save();
+    res.status(200).send({
+      success: true,
+      message: "Sent notification to reset your password",
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: error.message,
+    });
+  }
+};
+
+// RESET PASSWORD
+exports.ResetPassword = async (req, res) => {
+  try {
+    const { token, newPassword } = req.body;
+    if (!token || !newPassword)
+      throw new Error("Provide token and a new password");
+
+    const user = await User.findOne({
+      resetPasswordToken: req.body.token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+    if (!user) throw new Error("Password reset token is invalid or expired.");
+
+    const hash = await User.hashPassword(req.body.newPassword);
+    user.password = hash;
+    user.resetPasswordToken = null;
+    user.resetPasswordExpires = "";
+    await user.save();
+    res.status(200).send({
+      success: true,
+      message: "Password has been changed",
     });
   } catch (error) {
     res.status(500).json({
@@ -169,7 +279,7 @@ exports.GetUser = async (req, res) => {
 exports.GetProfileData = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select(
-      "-password -accessToken"
+      "-password -otpToken -otpTokenExpires -resetPasswordToken -resetPasswordExpires -accessToken"
     );
     if (!user) throw new Error("Could not find user");
 
