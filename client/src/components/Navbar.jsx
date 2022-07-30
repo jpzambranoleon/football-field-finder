@@ -17,19 +17,37 @@ import TempDrawer from "./TempDrawer";
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { authorized } = useContext(InfoContext);
+  const [user, setUser] = useState({});
+  const { setStatus, authorized } = useContext(InfoContext);
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
 
-  const [user, setUser] = useState({});
+  {
+    /* const [user, setUser] = useState({});
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=jpzl_12`);
       setUser(res.data);
     };
     fetchUser();
-  }, []);
+  }, []); */
+  }
+
+  useEffect(() => {
+    axios
+      .get(`/auth/profile`)
+      .then((res) => {
+        setUser(res.data.profile);
+      })
+      .catch((err) => {
+        setStatus({
+          open: true,
+          message: err.response ? err.response.data.message : err.message,
+          severity: "error",
+        });
+      });
+  }, [setStatus]);
 
   return (
     <>
