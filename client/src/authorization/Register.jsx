@@ -12,15 +12,37 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../utils/InfoProvider";
 
 export default function Register() {
+  const { setStatus, setAuthorized } = useContext(InfoContext);
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const data = Object.fromEntries(new FormData(event.currentTarget));
+
+    axios
+      .post("/auth/register", data)
+      .then((res) => {
+        setStatus({
+          open: true,
+          message: res.data.message,
+          severity: "success",
+        });
+        setAuthorized(true);
+        localStorage.setItem("token", res.data.accessToken);
+        axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+
+        navigate("/setup");
+      })
+      .catch((err) => {
+        let message = err.response ? err.response.data.message : err.message;
+        setStatus({ open: true, message: message, severity: "error" });
+      });
   };
 
   return (
@@ -45,12 +67,33 @@ export default function Register() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="given-name"
-                name="userName"
+                name="username"
                 required
                 fullWidth
-                id="userName"
+                id="username"
                 label="User Name"
                 autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="given-name"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id="last_name"
+                label="LastName"
+                name="lastName"
+                autoComplete="family-name"
               />
             </Grid>
             <Grid item xs={12}>
