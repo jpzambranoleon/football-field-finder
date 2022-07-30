@@ -25,7 +25,7 @@ const Navbar = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=Jean-Paul Zambrano-Leon`);
+      const res = await axios.get(`/users?username=jpzl_12`);
       setUser(res.data);
     };
     fetchUser();
