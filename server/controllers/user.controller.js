@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
+const { generateJwt } = require("../utility/generateJwt");
 
 // REGISTER
 exports.Register = async (req, res) => {
@@ -17,6 +18,14 @@ exports.Register = async (req, res) => {
     // create new user
     const newUser = new User(req.body);
     // save new user
+    await newUser.save();
+
+    const { error, token } = await generateJwt(newUser.name, newUser._id);
+    if (error)
+      throw new Error("Couldn't create access token. Please try again later");
+
+    newUser.accessToken = token;
+
     await newUser.save();
 
     res.status(200).send({
@@ -47,11 +56,18 @@ exports.Login = async (req, res) => {
     const validPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!validPassword) throw new Error("Invalid credentials");
 
+    const { error, token } = await generateJwt(user.name, user._id);
+    if (error)
+      throw new Error("Couldn't create access token. Please try again later.");
+
+    user.accessToken = token;
+
     await user.save();
 
     res.status(200).send({
       success: true,
       message: "User logged in successfully",
+      accessToken: token,
     });
   } catch (err) {
     res.status(500).send({
