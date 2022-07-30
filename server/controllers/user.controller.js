@@ -17,20 +17,20 @@ exports.Register = async (req, res) => {
 
     // create new user
     const newUser = new User(req.body);
-    // save new user
-    await newUser.save();
 
-    const { error, token } = await generateJwt(newUser.name, newUser._id);
+    const { error, token } = await generateJwt(newUser.username, newUser._id);
     if (error)
       throw new Error("Couldn't create access token. Please try again later");
 
     newUser.accessToken = token;
 
+    // save new user
     await newUser.save();
 
     res.status(200).send({
       success: true,
       message: "Registration Success",
+      accessToken: token,
     });
   } catch (err) {
     if (err.name === "ValidationError") {
@@ -56,7 +56,7 @@ exports.Login = async (req, res) => {
     const validPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!validPassword) throw new Error("Invalid credentials");
 
-    const { error, token } = await generateJwt(user.name, user._id);
+    const { error, token } = await generateJwt(user.username, user._id);
     if (error)
       throw new Error("Couldn't create access token. Please try again later.");
 
@@ -73,6 +73,41 @@ exports.Login = async (req, res) => {
     res.status(500).send({
       error: true,
       message: err.message,
+    });
+  }
+};
+
+exports.Activate = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) throw new Error("Please make a valid request");
+
+    const user = await User.findOne({
+      email: email,
+    });
+
+    if (!user) throw new Error("Invalid details");
+
+    if (user.active) throw new Error("Account already activated");
+
+    user.active = true;
+    const { error, token } = await generateJwt(user.username, user._id);
+
+    if (error)
+      throw new Error("Couldn't create access token. Please try again later");
+
+    user.accessToken = token;
+
+    await user.save();
+    res.status(200).json({
+      success: true,
+      message: "Account activated.",
+      accessToken: token,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: error.message,
     });
   }
 };
@@ -127,5 +162,25 @@ exports.GetUser = async (req, res) => {
     res.status(200).json(other);
   } catch (err) {
     res.status(500).json(err);
+  }
+};
+
+// Get Profile Data
+exports.GetProfileData = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select(
+      "-password -accessToken"
+    );
+    if (!user) throw new Error("Could not find user");
+
+    res.status(200).send({
+      success: true,
+      profile: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: true,
+      message: error.message,
+    });
   }
 };
