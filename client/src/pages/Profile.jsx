@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Feed from "../components/Feed";
@@ -16,6 +16,11 @@ export default function Profile() {
     fetchUser();
   }, [username]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
@@ -31,6 +36,7 @@ export default function Profile() {
           >
             Let's take a look at the posts that you have.
           </Typography>
+          <Button onClick={handleLogout}>Logout</Button>
         </Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={2}>
