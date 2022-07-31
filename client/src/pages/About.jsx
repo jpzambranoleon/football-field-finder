@@ -157,7 +157,7 @@ export default function About() {
                     Jean-Paul Zambrano-Leon
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Front-end Developer
+                    Full Stack Developer
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -192,7 +192,7 @@ export default function About() {
                     Zurab Sabakhtarishvili
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Back-end Developer
+                    Full Stack Developer
                   </Typography>
                 </CardContent>
                 <CardActions>
