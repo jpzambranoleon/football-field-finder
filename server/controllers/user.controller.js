@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const { generateJwt } = require("../utility/generateJwt");
+const SendEmail = require("../utility/notification/sendEmail");
 const randomize = require("randomatic");
 
 // REGISTER
@@ -69,6 +70,7 @@ exports.Login = async (req, res) => {
       success: true,
       message: "User logged in successfully",
       accessToken: token,
+      user: user._id,
     });
   } catch (err) {
     res.status(500).send({

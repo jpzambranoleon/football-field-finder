@@ -7,7 +7,9 @@ const { validateToken } = require("../middlewares/validate.jwt.middleware");
 router.post("/register", [checkDuplicateEmail], AuthController.Register);
 // Login
 router.post("/login", AuthController.Login);
-//
+// Send OTP
+router.post("/send-otp", AuthController.SendOTP);
+// Activate
 router.post("/activate", AuthController.Activate);
 // Get Profile Data
 router.get("/profile", validateToken, AuthController.GetProfileData);
