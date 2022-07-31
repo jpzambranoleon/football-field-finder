@@ -43,7 +43,7 @@ export default function About() {
             About Project
           </Typography>
           <Grid container spacing={4}>
-            <Grid item sx={12} sm={6} xl={6}>
+            <Grid item xs={12} sm={6} xl={6}>
               <Box>
                 <Typography
                   component="h1"
@@ -65,7 +65,7 @@ export default function About() {
                   that are looking for players to join
                 </Typography>
                 <Grid container spacing={2} align="center">
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Avatar
                       sx={{ width: 60, height: 60, mb: 2, bgcolor: green[400] }}
                     >
@@ -76,7 +76,7 @@ export default function About() {
                       mobile device.
                     </Typography>
                   </Grid>
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Avatar
                       sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[400] }}
                     >
@@ -87,7 +87,7 @@ export default function About() {
                       NodeJS frameworks.
                     </Typography>
                   </Grid>
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Avatar
                       sx={{ width: 60, height: 60, mb: 2, bgcolor: pink[400] }}
                     >
