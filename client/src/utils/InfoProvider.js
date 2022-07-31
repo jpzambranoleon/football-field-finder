@@ -2,10 +2,13 @@ import { useState, createContext, useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { isExpired } from "react-jwt";
+import axios from "axios";
+
 export const InfoContext = createContext();
 
 export const InfoProvider = (props) => {
   const [authorized, setAuthorized] = useState(false);
+  const [user, setUser] = useState({});
   const [status, setStatus] = useState({
     open: false,
     message: "",
@@ -17,10 +20,19 @@ export const InfoProvider = (props) => {
       const token = localStorage.getItem("token");
       if (isExpired(token)) {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         setAuthorized(false);
       } else {
         setAuthorized(true);
       }
+    }
+    if (localStorage.getItem("user")) {
+      const authorizedUser = localStorage.getItem("user");
+      const fetchUser = async () => {
+        const res = await axios.get(`/users?userId=${authorizedUser}`);
+        setUser(res.data);
+      };
+      fetchUser();
     }
   }, [status]);
 
@@ -35,7 +47,9 @@ export const InfoProvider = (props) => {
   };
 
   return (
-    <InfoContext.Provider value={{ setStatus, authorized, setAuthorized }}>
+    <InfoContext.Provider
+      value={{ setStatus, authorized, setAuthorized, user, setUser }}
+    >
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         open={status.open}
