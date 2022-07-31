@@ -34,6 +34,7 @@ export default function Login() {
           severity: "success",
         });
         localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem("user", res.data.user);
         axios.defaults.headers.common["Authorization"] = res.data.accessToken;
 
         setAuthorized(true);
