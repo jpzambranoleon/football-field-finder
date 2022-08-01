@@ -1,9 +1,24 @@
 import { Groups } from "@mui/icons-material";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SimpleTable from "../components/SimpleTable";
 
 export default function PostPageFeed() {
+  const [post, setPost] = useState({});
+  const postId = useParams().postId;
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const res = await axios.get(`/posts/${postId}`);
+      setPost(res.data);
+      console.log(res.data);
+    };
+    fetchPost();
+  }, [postId]);
+
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
@@ -22,18 +37,15 @@ export default function PostPageFeed() {
                   <Groups fontSize="large" />
                 </Avatar>
                 <Typography variant="h5" fontWeight="bold">
-                  Need to find a team asap! Looking for a team to join!
+                  {post.title}
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1" paragraph>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id
-                fuga eaque aperiam vitae numquam ab porro ex suscipit enim
-                libero consequatur molestias nemo laborum, velit perferendis
-                quia hic consectetur! Voluptatum!
+                {post.desc}
               </Typography>
-              <SimpleTable />
+              <SimpleTable post={post} />
             </Grid>
           </Grid>
         </Container>
