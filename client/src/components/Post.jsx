@@ -22,21 +22,15 @@ const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
 
-  Post.propTypes = {
-    loading: PropTypes.bool,
-  };
-
   useEffect(() => {
+    setLoading(true);
     const fetchUser = async () => {
       const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
+      setLoading(false);
     };
     fetchUser();
   }, [post.userId]);
-
-  setTimeout(() => {
-    setLoading(false);
-  }, [3000]);
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -88,7 +82,8 @@ const Post = ({ post }) => {
             {loading ? <Skeleton /> : post.title}
           </Typography>
           <Typography variant="h7" aria-label="city" paragraph>
-            {loading ? <Skeleton /> : "Hot Springs, AR"}
+            {loading ? <Skeleton /> : post.city},{" "}
+            {loading ? <Skeleton /> : post.state}
           </Typography>
           {loading ? (
             <React.Fragment>
