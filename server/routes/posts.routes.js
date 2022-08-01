@@ -9,6 +9,7 @@ router.put("/:id", PostController.UpdatePost);
 router.delete("/:id", PostController.DeletePost);
 // Get a Post
 router.get("/:id", PostController.GetPost);
+
 // Get Timeline of User Posts
 router.get("/profile/:username", PostController.GetUserPostsAll);
 
