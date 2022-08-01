@@ -96,7 +96,7 @@ const Form = () => {
 
   function handleSubmit() {
     axios
-      .post("/api/post/submit", formData)
+      .post("/posts/submit", formData)
       .then((res) => {
         console.log(res);
       })
@@ -158,7 +158,7 @@ const Form = () => {
             <InputLabel id="simple-select-label">State</InputLabel>
             <Select
               labelId="simple-select-label"
-              id="simple-select"
+              id="state"
               value={formData.state}
               label="State"
               onChange={(e) => {
@@ -189,10 +189,11 @@ const Form = () => {
         <Grid item xs={12}>
           <TextField
             onChange={(e) =>
-              setFormData((prev) => ({ ...prev, description: e.target.value }))
+              setFormData((prev) => ({ ...prev, desc: e.target.value }))
             }
             margin="normal"
-            id="outlined-multiline-static"
+            id="desc"
+            name="desc"
             label="Description"
             multiline
             rows={4}
@@ -206,9 +207,9 @@ const Form = () => {
             }
             margin="normal"
             fullWidth
-            id="telephone"
-            label="Telephone Number"
-            name="telephone"
+            id="phone"
+            label="Phone Number"
+            name="phone"
           />
         </Grid>
         <Grid item xs={12}>
