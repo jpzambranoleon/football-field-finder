@@ -1,7 +1,7 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useContext } from "react";
-import Feed from "../components/Feed";
-import { InfoContext } from "../utils/InfoProvider";
+import Feed from "./components/Feed";
+import { InfoContext } from "../../utils/InfoProvider";
 
 export default function Profile() {
   const { user } = useContext(InfoContext);

@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
-import Form from "../components/Form";
+import Form from "./components/Form";
 
 const itemData = [
   {

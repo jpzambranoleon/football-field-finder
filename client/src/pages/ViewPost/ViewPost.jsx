@@ -4,9 +4,9 @@ import { green } from "@mui/material/colors";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SimpleTable from "../components/SimpleTable";
+import SimpleTable from "./components/SimpleTable";
 
-export default function PostPageFeed() {
+export default function ViewPost() {
   const [post, setPost] = useState({});
   const postId = useParams().postId;
 

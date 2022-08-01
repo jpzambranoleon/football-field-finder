@@ -14,6 +14,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { InfoContext } from "../../../utils/InfoProvider";
+import { useNavigate } from "react-router-dom";
 
 const ITEM_HEIGHT = 35;
 const ITEM_PADDING_TOP = 8;
@@ -80,12 +83,16 @@ const states = [
 ];
 
 const Form = () => {
+  const { setStatus, user } = useContext(InfoContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     types: {
       team: true,
       player: false,
       trainer: false,
     },
+    userId: `${user._id}`,
     title: "",
     state: "",
     city: "",
@@ -94,16 +101,25 @@ const Form = () => {
     email: "",
   });
 
-  function handleSubmit() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     axios
       .post("/posts/submit", formData)
       .then((res) => {
-        console.log(res);
+        setStatus({
+          open: true,
+          message: res.data.message,
+          severity: "success",
+        });
+        navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        let message = err.response ? err.response.data.message : err.message;
+        setStatus({ open: true, message: message, severity: "error" });
       });
-  }
+  };
+
   return (
     <Box>
       <Grid container spacing={2}>
@@ -146,24 +162,27 @@ const Form = () => {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, title: e.target.value }))
             }
-            name="title"
+            margin="normal"
             required
             fullWidth
             id="title"
             label="Title"
+            name="title"
+            autoFocus
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth margin="normal">
             <InputLabel id="simple-select-label">State</InputLabel>
             <Select
-              labelId="simple-select-label"
-              id="state"
-              value={formData.state}
-              label="State"
               onChange={(e) => {
                 setFormData((prev) => ({ ...prev, state: e.target.value }));
               }}
+              value={formData.state}
+              labelId="simple-select-label"
+              name="state"
+              id="state"
+              label="State"
               MenuProps={MenuProps}
             >
               {states.map((name) => (

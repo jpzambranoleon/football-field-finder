@@ -1,11 +1,11 @@
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import FeedFilter from "../components/FeedFilter";
+import FeedFilter from "./components/FeedFilter";
 import { Link } from "react-router-dom";
-import Post from "../components/Post";
+import Post from "../../components/Post";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
-import { InfoContext } from "../utils/InfoProvider";
+import { InfoContext } from "../../utils/InfoProvider";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
