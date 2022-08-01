@@ -23,7 +23,7 @@ export default function CreatePost() {
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
           <Grid container spacing={4}>
-            <Grid item sx={12} sm={6} xl={6}>
+            <Grid item xs={12} sm={6} xl={6}>
               <Box>
                 <Typography
                   component="h1"
@@ -36,7 +36,7 @@ export default function CreatePost() {
                   Create Post
                 </Typography>
                 <Grid container spacing={2} align="center">
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Typography variant="h5" gutterBottom>
                       Team
                     </Typography>
@@ -49,7 +49,7 @@ export default function CreatePost() {
                       You can create a team or join an existing one in your area
                     </Typography>
                   </Grid>
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Typography variant="h5" gutterBottom>
                       Player
                     </Typography>
@@ -63,7 +63,7 @@ export default function CreatePost() {
                       join
                     </Typography>
                   </Grid>
-                  <Grid item sx={12} sm={4}>
+                  <Grid item xs={12} sm={4}>
                     <Typography variant="h5" gutterBottom>
                       Trainer
                     </Typography>
