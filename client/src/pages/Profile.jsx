@@ -1,8 +1,6 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Feed from "../components/Feed";
-import { useParams } from "react-router";
 import { InfoContext } from "../utils/InfoProvider";
 
 export default function Profile() {
