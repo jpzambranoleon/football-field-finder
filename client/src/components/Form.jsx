@@ -1,4 +1,17 @@
-import { Box, Button, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 
@@ -76,7 +89,7 @@ const Form = () => {
     title: "",
     state: "",
     city: "",
-    description: "",
+    desc: "",
     phone: "",
     email: "",
   });
@@ -115,13 +128,30 @@ const Form = () => {
               }
             >
               <FormControlLabel value="team" control={<Radio />} label="Team" />
-              <FormControlLabel value="player" control={<Radio />} label="Player" />
-              <FormControlLabel value="trainer" control={<Radio />} label="Trainer" />
+              <FormControlLabel
+                value="player"
+                control={<Radio />}
+                label="Player"
+              />
+              <FormControlLabel
+                value="trainer"
+                control={<Radio />}
+                label="Trainer"
+              />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))} name="title" required fullWidth id="title" label="Title" />
+          <TextField
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, title: e.target.value }))
+            }
+            name="title"
+            required
+            fullWidth
+            id="title"
+            label="Title"
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth margin="normal">
@@ -146,7 +176,9 @@ const Form = () => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            onChange={(e) => setFormData((prev) => ({ ...prev, city: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, city: e.target.value }))
+            }
             margin="normal"
             name="city"
             fullWidth
@@ -156,7 +188,9 @@ const Form = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, description: e.target.value }))
+            }
             margin="normal"
             id="outlined-multiline-static"
             label="Description"
@@ -167,7 +201,9 @@ const Form = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, phone: e.target.value }))
+            }
             margin="normal"
             fullWidth
             id="telephone"
@@ -177,8 +213,9 @@ const Form = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-            required
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, email: e.target.value }))
+            }
             margin="normal"
             fullWidth
             id="email"
@@ -188,7 +225,13 @@ const Form = () => {
           />
         </Grid>
       </Grid>
-      <Button onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} color="success">
+      <Button
+        onClick={handleSubmit}
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+        color="success"
+      >
         Submit Post
       </Button>
     </Box>
