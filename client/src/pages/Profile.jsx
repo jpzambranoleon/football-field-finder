@@ -1,26 +1,20 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Feed from "../components/Feed";
 import { useParams } from "react-router";
+import { InfoContext } from "../utils/InfoProvider";
 
 export default function Profile() {
-  const [user, setUser] = useState({});
-  const username = useParams().username;
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [username]);
+  const { user } = useContext(InfoContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.location.reload();
   };
+
+  console.log(user.username);
 
   return (
     <main>
@@ -41,7 +35,7 @@ export default function Profile() {
         </Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={2}>
-            <Feed username={username} />
+            <Feed username={user.username} />
           </Grid>
         </Container>
       </Box>
