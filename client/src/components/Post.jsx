@@ -112,7 +112,7 @@ const Post = ({ post }) => {
           <CardActions>
             <Button
               component={Link}
-              to="/post/view"
+              to={`post/view/${post._id}`}
               size="small"
               color="success"
             >
