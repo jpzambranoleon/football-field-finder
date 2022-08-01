@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Groups } from "@mui/icons-material";
-import PropTypes from "prop-types";
 import {
   Avatar,
   Button,
