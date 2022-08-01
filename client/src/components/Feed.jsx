@@ -8,8 +8,8 @@ const Feed = ({ username }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
-        ? await axios.get("posts/myposts/" + username)
-        : await axios.get("posts/myposts/");
+        ? await axios.get("posts/profile/" + username)
+        : await axios.get("posts/profile/");
       setPosts(res.data);
     };
     fetchPosts();
