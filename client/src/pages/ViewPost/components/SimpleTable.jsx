@@ -8,19 +8,32 @@ import {
   Typography,
   Table,
 } from "@mui/material";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
-function createData(name, item) {
-  return { name, item };
-}
+const SimpleTable = ({ post }) => {
+  const [user, setUser] = useState({});
 
-const rows = [
-  createData("Title", "Team FC"),
-  createData("Location", "Hot Springs, AR"),
-  createData("Phone", "555-555-5555"),
-  createData("Email", "something@gmail.com"),
-];
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${post.userId}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [post.userId]);
 
-const SimpleTable = () => {
+  function createData(name, item) {
+    return { name, item };
+  }
+
+  const rows = [
+    createData("Author", user.username),
+    createData("Location", post.city + (", " + post.state)),
+    createData("Phone", post.phone),
+    createData("Email", post.email),
+  ];
+
   return (
     <Grid item xs={12} sm={6} md={6}>
       <Typography variant="h5" paragraph fontWeight="bold">
