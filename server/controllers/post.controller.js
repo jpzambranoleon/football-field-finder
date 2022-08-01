@@ -3,12 +3,40 @@ const User = require("../models/user.model");
 
 // CREATE A POST
 exports.SubmitPost = async (req, res) => {
-  const newPost = new Post(req.body);
   try {
-    const savedPost = await newPost.save();
-    res.status(200).json(savedPost);
-  } catch (error) {
-    res.status(500).json(error);
+    let commonPostInfo = {
+      userId: req.body.userId,
+      title: req.body.title,
+      desc: req.body.desc,
+      state: req.body.state,
+      city: req.body.city,
+      email: req.body.email,
+      phone: req.body.phone,
+    };
+
+    let postsToSave = [];
+
+    postsToSave.push(new Post(commonPostInfo));
+
+    for (let i = 0; i < postsToSave.length; i++) {
+      let post = await postsToSave[i].save();
+      if (!post) throw new Error("Error while saving post");
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Post submitted successfully",
+      post: postsToSave[0],
+    });
+  } catch (err) {
+    console.error(err);
+    if (err.name === "ValidationError") {
+      return res.status(400).send({ error: true, message: err.message });
+    }
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
   }
 };
 
