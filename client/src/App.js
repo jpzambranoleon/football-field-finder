@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/post/view" element={<PostPageFeed />} />
+            <Route path="/post/view/:postId" element={<PostPageFeed />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             {authorized ? (
