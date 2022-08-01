@@ -110,7 +110,12 @@ const Post = ({ post }) => {
         </CardContent>
         {loading ? null : (
           <CardActions>
-            <Button component={Link} to="/post" size="small" color="success">
+            <Button
+              component={Link}
+              to="/post/view"
+              size="small"
+              color="success"
+            >
               View
             </Button>
           </CardActions>
