@@ -9,6 +9,7 @@ const postSchema = new Schema(
     },
     title: {
       type: String,
+      required: true,
       max: 100,
     },
     desc: {
@@ -20,6 +21,14 @@ const postSchema = new Schema(
       max: 20,
     },
     state: {
+      type: String,
+      max: 20,
+    },
+    email: {
+      type: String,
+      max: 20,
+    },
+    phone: {
       type: String,
       max: 20,
     },
