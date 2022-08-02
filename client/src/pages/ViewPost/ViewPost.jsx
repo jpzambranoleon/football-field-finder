@@ -19,8 +19,8 @@ export default function ViewPost() {
         return setPostType("Team");
       } else if (res.data.types.player === true) {
         return setPostType("Player");
-      } else if (res.data.types.coach === true) {
-        return setPostType("Coach");
+      } else if (res.data.types.trainer === true) {
+        return setPostType("Trainer");
       }
     };
     fetchPost();
@@ -43,7 +43,7 @@ export default function ViewPost() {
           <Person fontSize="large" />
         </Avatar>
       );
-    } else if (postType === "Coach") {
+    } else if (postType === "Trainer") {
       return (
         <Avatar
           sx={{ bgcolor: pink[400], mr: 2, height: "55px", width: "55px" }}
