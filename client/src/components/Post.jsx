@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Groups } from "@mui/icons-material";
+import { Groups, Person, Sports } from "@mui/icons-material";
 import {
   Avatar,
   Button,
@@ -11,7 +11,7 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { blue, green, pink } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -32,12 +32,38 @@ const Post = ({ post }) => {
   }, [post.userId]);
 
   function fetchTypes(post) {
-    if (post.types.team === true) return "Team";
-    if (post.types.player === true) return "Player";
-    if (post.types.coach === true) return "Coach";
+    if (post.types.team === true) {
+      return "Team";
+    } else if (post.types.player === true) {
+      return "Player";
+    } else if (post.types.coach === true) {
+      return "Coach";
+    }
   }
 
   const postType = fetchTypes(post);
+
+  const PostIcon = () => {
+    if (postType === "Team") {
+      return (
+        <Avatar sx={{ bgcolor: green[400] }}>
+          <Groups />
+        </Avatar>
+      );
+    } else if (postType === "Player") {
+      return (
+        <Avatar sx={{ bgcolor: blue[400] }}>
+          <Person />
+        </Avatar>
+      );
+    } else if (postType === "Coach") {
+      return (
+        <Avatar sx={{ bgcolor: pink[400] }}>
+          <Sports />
+        </Avatar>
+      );
+    }
+  };
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -54,9 +80,7 @@ const Post = ({ post }) => {
                 height={40}
               />
             ) : (
-              <Avatar sx={{ bgcolor: green[400] }}>
-                <Groups />
-              </Avatar>
+              <PostIcon />
             )
           }
           title={
