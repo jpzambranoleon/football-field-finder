@@ -17,7 +17,7 @@ const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { authorized } = useContext(InfoContext);
 
-  const { user } = useContext(InfoContext);
+  const { authorizedUser } = useContext(InfoContext);
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -50,7 +50,9 @@ const Navbar = () => {
               </Button>
               <Button
                 component={Link}
-                to={authorized ? `profile/${user.username}` : "/login"}
+                to={
+                  authorized ? `profile/${authorizedUser.username}` : "/login"
+                }
                 color="inherit"
               >
                 {authorized ? "Profile" : "Login"}
