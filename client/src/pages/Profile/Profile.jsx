@@ -4,7 +4,7 @@ import Feed from "./components/Feed";
 import { InfoContext } from "../../utils/InfoProvider";
 
 export default function Profile() {
-  const { user } = useContext(InfoContext);
+  const { authorizedUser } = useContext(InfoContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -12,14 +12,14 @@ export default function Profile() {
     window.location.reload();
   };
 
-  console.log(user.username);
+  console.log(authorizedUser.username);
 
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
           <Typography component="h1" variant="h4" align="center" gutterBottom>
-            Welcome, {user.username}!
+            Welcome, {authorizedUser.username}!
           </Typography>
           <Typography
             variant="h6"
@@ -33,7 +33,7 @@ export default function Profile() {
         </Container>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={2}>
-            <Feed username={user.username} />
+            <Feed username={authorizedUser.username} />
           </Grid>
         </Container>
       </Box>
