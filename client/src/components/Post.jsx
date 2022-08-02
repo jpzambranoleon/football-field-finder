@@ -36,8 +36,8 @@ const Post = ({ post }) => {
       return "Team";
     } else if (post.types.player === true) {
       return "Player";
-    } else if (post.types.coach === true) {
-      return "Coach";
+    } else if (post.types.trainer === true) {
+      return "Trainer";
     }
   }
 
@@ -56,7 +56,7 @@ const Post = ({ post }) => {
           <Person />
         </Avatar>
       );
-    } else if (postType === "Coach") {
+    } else if (postType === "Trainer") {
       return (
         <Avatar sx={{ bgcolor: pink[400] }}>
           <Sports />
@@ -139,7 +139,7 @@ const Post = ({ post }) => {
           <CardActions>
             <Button
               component={Link}
-              to={`post/view/${post._id}`}
+              to={`/post/view/${post._id}`}
               size="small"
               color="success"
             >
