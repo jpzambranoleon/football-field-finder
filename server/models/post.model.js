@@ -10,7 +10,7 @@ const postSchema = new Schema(
     types: {
       team: { type: Boolean, default: true, required: true },
       player: { type: Boolean, default: false, required: true },
-      coach: { type: Boolean, default: false, required: true },
+      trainer: { type: Boolean, default: false, required: true },
     },
     title: {
       type: String,
