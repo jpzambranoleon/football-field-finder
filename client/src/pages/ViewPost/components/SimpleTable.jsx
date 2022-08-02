@@ -12,7 +12,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const SimpleTable = ({ post }) => {
+const SimpleTable = ({ post, postType }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -23,12 +23,15 @@ const SimpleTable = ({ post }) => {
     fetchUser();
   }, [post.userId]);
 
+  console.log(post.userId);
+
   function createData(name, item) {
     return { name, item };
   }
 
   const rows = [
     createData("Author", user.username),
+    createData("Type", postType),
     createData("Location", post.city + (", " + post.state)),
     createData("Phone", post.phone),
     createData("Email", post.email),
