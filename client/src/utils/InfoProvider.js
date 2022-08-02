@@ -8,7 +8,7 @@ export const InfoContext = createContext();
 
 export const InfoProvider = (props) => {
   const [authorized, setAuthorized] = useState(false);
-  const [user, setUser] = useState({});
+  const [authorizedUser, setAuthorizedUser] = useState({});
   const [status, setStatus] = useState({
     open: false,
     message: "",
@@ -27,10 +27,10 @@ export const InfoProvider = (props) => {
       }
     }
     if (localStorage.getItem("user")) {
-      const authorizedUser = localStorage.getItem("user");
+      const user = localStorage.getItem("user");
       const fetchUser = async () => {
-        const res = await axios.get(`/users?username=${authorizedUser}`);
-        setUser(res.data);
+        const res = await axios.get(`/users?username=${user}`);
+        setAuthorizedUser(res.data);
       };
       fetchUser();
     }
@@ -48,7 +48,13 @@ export const InfoProvider = (props) => {
 
   return (
     <InfoContext.Provider
-      value={{ setStatus, authorized, setAuthorized, user, setUser }}
+      value={{
+        setStatus,
+        authorized,
+        setAuthorized,
+        authorizedUser,
+        setAuthorizedUser,
+      }}
     >
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
