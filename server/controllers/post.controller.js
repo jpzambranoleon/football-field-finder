@@ -6,6 +6,7 @@ exports.SubmitPost = async (req, res) => {
   try {
     let commonPostInfo = {
       userId: req.body.userId,
+      types: req.body.types,
       title: req.body.title,
       desc: req.body.desc,
       state: req.body.state,
