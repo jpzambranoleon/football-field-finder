@@ -88,7 +88,7 @@ const Form = () => {
 
   const [formData, setFormData] = useState({
     types: {
-      team: true,
+      team: false,
       player: false,
       trainer: false,
     },
@@ -125,11 +125,12 @@ const Form = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <FormControl>
-            <FormLabel id="row-radio-buttons-group-label">Type</FormLabel>
+            <FormLabel>Type</FormLabel>
             <RadioGroup
               row
               aria-labelledby="row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
+              name="types"
+              id="types"
               defaultValue="team"
               onChange={(e) =>
                 setFormData({
