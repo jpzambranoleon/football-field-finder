@@ -31,6 +31,14 @@ const Post = ({ post }) => {
     fetchUser();
   }, [post.userId]);
 
+  function fetchTypes(post) {
+    if (post.types.team === true) return "Team";
+    if (post.types.player === true) return "Player";
+    if (post.types.coach === true) return "Coach";
+  }
+
+  const postType = fetchTypes(post);
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card
@@ -72,15 +80,10 @@ const Post = ({ post }) => {
           }
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography
-            variant="h6"
-            fontSize={20}
-            gutterBottom
-            aria-label="title"
-          >
-            {loading ? <Skeleton /> : post.title}
+          <Typography variant="h7" fontSize={18} paragraph aria-label="type">
+            {loading ? <Skeleton /> : `Type: ${postType}`}
           </Typography>
-          <Typography variant="h7" aria-label="city" paragraph>
+          <Typography variant="h7" fontSize={13} aria-label="city" paragraph>
             {loading ? <Skeleton /> : post.city},{" "}
             {loading ? <Skeleton /> : post.state}
           </Typography>
