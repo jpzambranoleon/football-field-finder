@@ -12,8 +12,6 @@ export default function Profile() {
     window.location.reload();
   };
 
-  console.log(authorizedUser.username);
-
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
