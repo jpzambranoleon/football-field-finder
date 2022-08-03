@@ -15,7 +15,8 @@ import Profile from "./pages/Profile/Profile";
 import { useContext } from "react";
 import { InfoContext } from "./utils/InfoProvider";
 import Navbar from "./components/Navbar";
-import Copyright from "./components/Copyright";
+import StickyFooter from "./components/StickyFooter";
+import { Box } from "@mui/material";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -26,22 +27,30 @@ function App() {
     <div className="App">
       <>
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/post/view/:postId" element={<ViewPost />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {authorized ? (
-              <>
-                <Route path="/post/create" element={<CreatePost />} />
-                <Route path="/profile/:username" element={<Profile />} />
-              </>
-            ) : null}
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-          <Copyright />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: "100vh",
+            }}
+          >
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/post/view/:postId" element={<ViewPost />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              {authorized ? (
+                <>
+                  <Route path="/post/create" element={<CreatePost />} />
+                  <Route path="/profile/:username" element={<Profile />} />
+                </>
+              ) : null}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+            <StickyFooter />
+          </Box>
         </Router>
       </>
     </div>
