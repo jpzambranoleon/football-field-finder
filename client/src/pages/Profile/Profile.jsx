@@ -11,9 +11,6 @@ export default function Profile() {
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
-          <Typography component="h1" variant="h4" align="center" gutterBottom>
-            Welcome, {authorizedUser.username}!
-          </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={3}>
               <Bio authorizedUser={authorizedUser} />
