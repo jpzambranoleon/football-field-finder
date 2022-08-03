@@ -72,7 +72,13 @@ const Post = ({ post }) => {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card
-        sx={{ mb: 2, height: "100%", display: "flex", flexDirection: "column" }}
+        sx={{
+          mb: 2,
+          height: 320,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         <CardHeader
           avatar={
@@ -134,6 +140,13 @@ const Post = ({ post }) => {
               variant="body2"
               aria-label="description"
               color="text.secondary"
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "5",
+                WebkitBoxOrient: "vertical",
+              }}
             >
               {post.desc}
             </Typography>
