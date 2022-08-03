@@ -59,15 +59,21 @@ exports.UpdatePost = async (req, res) => {
 // DELETE A POST
 exports.DeletePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    if (post.userId === req.body.userId) {
-      await post.deleteOne();
-      res.status(200).json("the post has been deleted");
-    } else {
-      res.status(403).json("you can delete only your post");
-    }
+    let post = await Post.findById(req.params.id);
+
+    if (!post) throw new Error("Invalid post");
+
+    await post.deleteOne();
+
+    res.status(200).json({
+      success: true,
+      message: "Post deleted successfully",
+    });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
   }
 };
 
