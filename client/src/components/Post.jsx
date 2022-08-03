@@ -16,14 +16,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import convertTime from "../utils/convertTime";
-import { useContext } from "react";
-import { InfoContext } from "../utils/InfoProvider";
-import DeletePostButton from "./DeletePostButton";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const { authorizedUser } = useContext(InfoContext);
 
   useEffect(() => {
     setLoading(true);
@@ -162,9 +158,6 @@ const Post = ({ post }) => {
             >
               View
             </Button>
-            {authorizedUser._id !== post.userId ? null : (
-              <DeletePostButton post={post} />
-            )}
           </CardActions>
         )}
       </Card>
