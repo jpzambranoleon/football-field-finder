@@ -15,9 +15,7 @@ import TempDrawer from "./TempDrawer";
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { authorized } = useContext(InfoContext);
-
-  const { authorizedUser } = useContext(InfoContext);
+  const { authorized, authorizedUser } = useContext(InfoContext);
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
