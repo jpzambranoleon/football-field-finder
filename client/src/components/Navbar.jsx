@@ -1,4 +1,4 @@
-import { Menu, SportsSoccer } from "@mui/icons-material";
+import { Logout, Menu, SportsSoccer } from "@mui/icons-material";
 import {
   AppBar,
   Box,
@@ -19,6 +19,12 @@ const Navbar = () => {
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.reload();
   };
 
   return (
@@ -55,6 +61,15 @@ const Navbar = () => {
               >
                 {authorized ? "Profile" : "Login"}
               </Button>
+              {!authorized ? null : (
+                <IconButton
+                  sx={{ ml: 2 }}
+                  onClick={handleLogout}
+                  color="inherit"
+                >
+                  <Logout />
+                </IconButton>
+              )}
             </Box>
             <IconButton
               sx={{ display: { xs: "flex", sm: "none" } }}
