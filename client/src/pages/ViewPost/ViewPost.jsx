@@ -1,13 +1,5 @@
 import { Groups, Person, Sports } from "@mui/icons-material";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 import axios from "axios";
 import { useContext } from "react";
@@ -15,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { InfoContext } from "../../utils/InfoProvider";
 import DeletePostButton from "./components/DeletePostButton";
+import EditPostButton from "./components/EditPostButton";
 import SimpleTable from "./components/SimpleTable";
 
 export default function ViewPost() {
@@ -88,7 +81,7 @@ export default function ViewPost() {
           </Grid>
           {authorizedUser._id !== post.userId ? null : (
             <Stack spacing={2} direction="row" sx={{ mt: 2 }}>
-              <Button color="success">Edit</Button>
+              <EditPostButton post={post} />
               <DeletePostButton post={post} />
             </Stack>
           )}
