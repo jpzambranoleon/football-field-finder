@@ -83,16 +83,16 @@ const states = [
 ];
 
 const Form = () => {
-  const { setStatus, user } = useContext(InfoContext);
+  const { setStatus, authorizedUser } = useContext(InfoContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     types: {
-      team: false,
+      team: true,
       player: false,
       trainer: false,
     },
-    userId: `${user._id}`,
+    userId: `${authorizedUser._id}`,
     title: "",
     state: "",
     city: "",
