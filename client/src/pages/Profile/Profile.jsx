@@ -1,16 +1,11 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import { useContext } from "react";
 import Feed from "./components/Feed";
 import { InfoContext } from "../../utils/InfoProvider";
+import Bio from "./components/Bio";
 
 export default function Profile() {
   const { authorizedUser } = useContext(InfoContext);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location.reload();
-  };
 
   return (
     <main>
@@ -19,19 +14,27 @@ export default function Profile() {
           <Typography component="h1" variant="h4" align="center" gutterBottom>
             Welcome, {authorizedUser.username}!
           </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color="text.secondary"
-            paragraph
-          >
-            Let's take a look at the posts that you have.
-          </Typography>
-          <Button onClick={handleLogout}>Logout</Button>
-        </Container>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={2}>
-            <Feed username={authorizedUser.username} />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={3}>
+              <Bio authorizedUser={authorizedUser} />
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <Paper>
+                <Box p={2}>
+                  <Typography
+                    variant="h6"
+                    align="center"
+                    color="text.secondary"
+                    paragraph
+                  >
+                    My Posts
+                  </Typography>
+                  <Grid container spacing={2}>
+                    <Feed username={authorizedUser.username} />
+                  </Grid>
+                </Box>
+              </Paper>
+            </Grid>
           </Grid>
         </Container>
       </Box>
