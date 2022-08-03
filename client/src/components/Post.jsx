@@ -18,6 +18,7 @@ import axios from "axios";
 import convertTime from "../utils/convertTime";
 import { useContext } from "react";
 import { InfoContext } from "../utils/InfoProvider";
+import DeletePostButton from "./DeletePostButton";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
@@ -149,9 +150,7 @@ const Post = ({ post }) => {
               View
             </Button>
             {authorizedUser._id !== post.userId ? null : (
-              <Button size="small" color="error">
-                Delete
-              </Button>
+              <DeletePostButton post={post} />
             )}
           </CardActions>
         )}
