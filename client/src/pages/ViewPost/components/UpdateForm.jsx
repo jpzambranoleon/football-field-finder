@@ -16,7 +16,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { InfoContext } from "../../../utils/InfoProvider";
-import { useNavigate } from "react-router-dom";
 
 const ITEM_HEIGHT = 35;
 const ITEM_PADDING_TOP = 8;
@@ -82,24 +81,57 @@ const states = [
   "WY",
 ];
 
-const UpdateForm = () => {
+const UpdateForm = ({ post }) => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
-  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    axios
+      .put(`/posts/update/${post._id}`, {
+        userId: authorizedUser._id,
+        data: formData,
+      })
+      .then((res) => {
+        setStatus({
+          open: true,
+          message: res.data.message,
+          severity: "success",
+        });
+        window.location.reload();
+      })
+      .catch((err) => {
+        let message = err.response ? err.response.data.message : err.message;
+        setStatus({ open: true, message: message, severity: "error" });
+      });
+  };
 
   const [formData, setFormData] = useState({
     types: {
-      team: true,
-      player: false,
-      trainer: false,
+      team: post.types.team,
+      player: post.types.player,
+      trainer: post.types.trainer,
     },
     userId: `${authorizedUser._id}`,
-    title: "",
-    state: "",
-    city: "",
-    desc: "",
-    phone: "",
-    email: "",
+    title: `${post.title}`,
+    state: `${post.state}`,
+    city: `${post.city}`,
+    desc: `${post.desc}`,
+    phone: `${post.phone}`,
+    email: `${post.email}`,
   });
+
+  function fetchTypes(post) {
+    if (post.types.team === true) {
+      return "team";
+    } else if (post.types.player === true) {
+      return "player";
+    } else if (post.types.trainer === true) {
+      return "trainer";
+    }
+  }
+
+  const postType = fetchTypes(post);
 
   return (
     <Box>
@@ -112,7 +144,7 @@ const UpdateForm = () => {
               aria-labelledby="row-radio-buttons-group-label"
               name="types"
               id="types"
-              defaultValue="team"
+              defaultValue={postType}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -151,6 +183,7 @@ const UpdateForm = () => {
             label="Title"
             name="title"
             autoFocus
+            defaultValue={post.title}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -185,6 +218,7 @@ const UpdateForm = () => {
             fullWidth
             id="city"
             label="City"
+            defaultValue={post.city}
           />
         </Grid>
         <Grid item xs={12}>
@@ -196,6 +230,7 @@ const UpdateForm = () => {
             id="desc"
             name="desc"
             label="Description"
+            defaultValue={post.desc}
             multiline
             rows={4}
             fullWidth
@@ -211,6 +246,7 @@ const UpdateForm = () => {
             id="phone"
             label="Phone Number"
             name="phone"
+            defaultValue={post.phone}
           />
         </Grid>
         <Grid item xs={12}>
@@ -224,11 +260,13 @@ const UpdateForm = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
+            defaultValue={post.email}
           />
         </Grid>
       </Grid>
       <Button
         fullWidth
+        onClick={handleSubmit}
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         color="success"
