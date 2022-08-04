@@ -18,7 +18,7 @@ export default function ViewPost() {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get(`/posts/${postId}`);
+      const res = await axios.get(`/posts/get/${postId}`);
       setPost(res.data);
       if (res.data.types.team === true) {
         return setPostType("Team");
