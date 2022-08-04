@@ -11,6 +11,10 @@ router.post("/login", AuthController.Login);
 router.post("/send-otp", AuthController.SendOTP);
 // Activate
 router.post("/activate", AuthController.Activate);
+// Fotgot Password
+router.post("/forgot", AuthController.ForgotPassword);
+// Reset Password
+router.post("/rest", AuthController.ResetPassword);
 // Get Profile Data
 router.get("/profile", validateToken, AuthController.GetProfileData);
 
