@@ -44,15 +44,22 @@ exports.SubmitPost = async (req, res) => {
 // UPDATE A POST
 exports.UpdatePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    if (post.userId === req.body.userId) {
-      await post.updateOne({ $set: req.body });
-      res.status(200).json("the post has been updated");
-    } else {
-      res.status(403).json("you can update only your post");
-    }
+    let post = await Post.findById(req.params.id);
+
+    if (post.userId !== req.body.userId)
+      throw new Error("You can update only your post");
+
+    await post.updateOne({ $set: req.body.data });
+
+    res.status(200).json({
+      success: true,
+      message: "Post updated successfully",
+    });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
   }
 };
 
@@ -82,18 +89,6 @@ exports.GetPost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     res.status(200).json(post);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
-// GET USER POSTS
-exports.GetUserPosts = async (req, res) => {
-  try {
-    const currentUser = await User.findById(req.params.userId);
-    const userPosts = await Post.find({ userId: currentUser._id });
-
-    res.status(200).json(userPosts);
   } catch (err) {
     res.status(500).json(err);
   }
