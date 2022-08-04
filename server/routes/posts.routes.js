@@ -6,7 +6,7 @@ router.post("/submit", PostController.SubmitPost);
 // Update a Post
 router.put("/:id", PostController.UpdatePost);
 // Delete a Post
-router.delete("/:id", PostController.DeletePost);
+router.delete("/delete/:id", PostController.DeletePost);
 // Get a Post
 router.get("/:id", PostController.GetPost);
 
