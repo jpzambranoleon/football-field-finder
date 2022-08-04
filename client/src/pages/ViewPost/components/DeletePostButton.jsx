@@ -24,11 +24,10 @@ const DeletePostButton = ({ post }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = async (event) => {
+  const handleOnDelete = async (event) => {
     event.preventDefault();
-
     axios
-      .delete(`/posts/${post._id}`)
+      .delete(`/posts/delete/${post._id}`)
       .then((res) => {
         setStatus({
           open: true,
@@ -38,8 +37,11 @@ const DeletePostButton = ({ post }) => {
         navigate("/");
       })
       .catch((err) => {
-        let message = err.response ? err.response.data.message : err.message;
-        setStatus({ open: true, message: message, severity: "error" });
+        setStatus({
+          open: true,
+          message: err.response ? err.response.data.message : err.message,
+          severity: "error",
+        });
       });
   };
 
@@ -68,7 +70,7 @@ const DeletePostButton = ({ post }) => {
           </CustomBox>
           <Stack spacing={2}>
             <Button
-              onClick={handleSubmit}
+              onClick={handleOnDelete}
               variant="contained"
               color="error"
               size="small"
