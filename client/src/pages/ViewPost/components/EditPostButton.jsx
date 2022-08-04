@@ -1,7 +1,6 @@
 import { Box, Button, Modal, styled } from "@mui/material";
 import { Container } from "@mui/system";
-import { useContext, useState } from "react";
-import { InfoContext } from "../../../utils/InfoProvider";
+import { useState } from "react";
 import UpdateForm from "./UpdateForm";
 
 const StyledModal = styled(Modal)({
@@ -12,7 +11,6 @@ const StyledModal = styled(Modal)({
 
 const EditPostButton = ({ post }) => {
   const [open, setOpen] = useState(false);
-  const { setStatus } = useContext(InfoContext);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -34,7 +32,7 @@ const EditPostButton = ({ post }) => {
           borderRadius={2}
         >
           <Container maxWidth="sm">
-            <UpdateForm />
+            <UpdateForm post={post} />
           </Container>
         </Box>
       </StyledModal>
