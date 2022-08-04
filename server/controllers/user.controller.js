@@ -98,7 +98,7 @@ exports.SendOTP = async (req, res) => {
         `Your verification code is - ${user.otpToken}`,
         req.body.email,
         "Verification Code"
-      ).catch((error) => {
+      ).catch((err) => {
         throw new Error("Couldn't send email");
       });
     }
@@ -107,10 +107,10 @@ exports.SendOTP = async (req, res) => {
       message: "OTP sent successfully",
       codeExpiration: user.otpTokenExpires,
     });
-  } catch (error) {
+  } catch (e) {
     res.status(500).json({
       error: true,
-      message: error.message,
+      message: e.message,
     });
   }
 };
@@ -177,7 +177,7 @@ exports.ForgotPassword = async (req, res) => {
         user.email,
         "Reset Password"
       ).catch((_) => {
-        throw new Error("Couldn't send email");
+        throw new Error("Couldn't send email, try authorizing using phone");
       });
     }
 
@@ -212,6 +212,7 @@ exports.ResetPassword = async (req, res) => {
     user.resetPasswordToken = null;
     user.resetPasswordExpires = "";
     await user.save();
+
     res.status(200).send({
       success: true,
       message: "Password has been changed",
