@@ -1,4 +1,12 @@
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Pagination,
+  Stack,
+  Typography,
+} from "@mui/material";
 import FeedFilter from "./components/FeedFilter";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
@@ -77,6 +85,15 @@ export default function Home() {
             <Post key={p._id} post={p} />
           ))}
         </Grid>
+        <Box
+          sx={{
+            justifyContent: "center",
+            display: "flex",
+            mt: 2,
+          }}
+        >
+          <Pagination count={10} variant="outlined" color="success" />
+        </Box>
       </Container>
     </main>
   );
