@@ -9,7 +9,7 @@ export default function Profile() {
 
   return (
     <main>
-      <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
+      <Box sx={{ bgcolor: "background.paper", pt: 4, pb: 6 }}>
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={3}>

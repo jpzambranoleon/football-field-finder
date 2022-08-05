@@ -31,7 +31,7 @@ const itemData = [
 export default function About() {
   return (
     <main>
-      <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
+      <Box sx={{ bgcolor: "background.paper", pt: 6, pb: 6 }}>
         <Container>
           <Typography
             component="h1"

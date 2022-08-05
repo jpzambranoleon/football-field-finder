@@ -14,7 +14,6 @@ import ViewPost from "./pages/ViewPost/ViewPost";
 import Profile from "./pages/Profile/Profile";
 import { useContext } from "react";
 import { InfoContext } from "./utils/InfoProvider";
-import Navbar from "./components/Navbar";
 import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
 import Header from "./components/Header";

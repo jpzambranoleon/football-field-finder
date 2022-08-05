@@ -61,7 +61,7 @@ export default function ViewPost() {
 
   return (
     <main>
-      <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
+      <Box sx={{ bgcolor: "background.paper", pt: 4, pb: 6 }}>
         <Container>
           <Grid container>
             <Grid item xs={12}>
