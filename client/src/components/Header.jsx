@@ -83,8 +83,9 @@ const Header = () => {
                     sx={{ ml: 2 }}
                     onClick={handleLogout}
                     color="success"
+                    size="small"
                   >
-                    <Logout />
+                    <Logout fontSize="small" />
                   </IconButton>
                 )}
               </Stack>
