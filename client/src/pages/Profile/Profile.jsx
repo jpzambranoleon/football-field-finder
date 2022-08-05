@@ -1,11 +1,17 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
-import { useContext } from "react";
+import { Box, Container, Grid, Tab, Tabs } from "@mui/material";
+import React, { useContext } from "react";
 import Feed from "./components/Feed";
 import { InfoContext } from "../../utils/InfoProvider";
 import Bio from "./components/Bio";
 
 export default function Profile() {
   const { authorizedUser } = useContext(InfoContext);
+
+  const [value, setValue] = React.useState("one");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <main>
@@ -16,21 +22,20 @@ export default function Profile() {
               <Bio authorizedUser={authorizedUser} />
             </Grid>
             <Grid item xs={12} sm={9}>
-              <Paper>
-                <Box p={2}>
-                  <Typography
-                    variant="h6"
-                    align="center"
-                    color="text.secondary"
-                    paragraph
-                  >
-                    My Posts
-                  </Typography>
-                  <Grid container spacing={2}>
-                    <Feed username={authorizedUser.username} />
-                  </Grid>
-                </Box>
-              </Paper>
+              <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  textColor="secondary"
+                  indicatorColor="secondary"
+                  aria-label="basic tabs example"
+                >
+                  <Tab value="one" label="My Posts" />
+                </Tabs>
+              </Box>
+              <Grid container spacing={2}>
+                <Feed username={authorizedUser.username} />
+              </Grid>
             </Grid>
           </Grid>
         </Container>
