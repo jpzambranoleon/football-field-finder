@@ -1,12 +1,4 @@
-import { Delete, Edit } from "@mui/icons-material";
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Button, Paper, Typography } from "@mui/material";
 
 const Bio = ({ authorizedUser }) => {
   return (
@@ -22,14 +14,9 @@ const Bio = ({ authorizedUser }) => {
           Username: {authorizedUser.username}
         </Typography>
         <Typography align="center"> Email: {authorizedUser.email}</Typography>
-        <Stack spacing={2} direction="row" sx={{ mt: 3 }}>
-          <IconButton color="success">
-            <Edit />
-          </IconButton>
-          <IconButton color="error">
-            <Delete />
-          </IconButton>
-        </Stack>
+        <Button fullWidth color="success" variant="outlined" sx={{ mt: 3 }}>
+          Edit Profile
+        </Button>
       </Box>
     </Paper>
   );
