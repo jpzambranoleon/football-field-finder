@@ -27,7 +27,7 @@ const StickyFooter = () => {
             : theme.palette.grey[800],
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Copyright />
       </Container>
     </Box>
