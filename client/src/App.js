@@ -17,6 +17,7 @@ import { InfoContext } from "./utils/InfoProvider";
 import Navbar from "./components/Navbar";
 import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
+import Header from "./components/Header";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -34,7 +35,7 @@ function App() {
               minHeight: "100vh",
             }}
           >
-            <Navbar />
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
