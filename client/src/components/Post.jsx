@@ -154,7 +154,7 @@ const Post = ({ post }) => {
               component={Link}
               to={`/post/view/${post._id}`}
               size="small"
-              color="success"
+              color="primary"
             >
               View
             </Button>

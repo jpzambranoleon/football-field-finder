@@ -37,7 +37,7 @@ export default function About() {
             component="h1"
             variant="h6"
             align="center"
-            color="success.main"
+            color="primary"
             gutterBottom
           >
             About Project
@@ -122,7 +122,7 @@ export default function About() {
             component="h1"
             variant="h6"
             align="center"
-            color="success.main"
+            color="primary"
             gutterBottom
           >
             Development Team
@@ -162,13 +162,13 @@ export default function About() {
                 </CardContent>
                 <CardActions>
                   <IconButton href="https://www.facebook.com/jeanpaul.zambranoleon/">
-                    <Facebook color="success" />
+                    <Facebook color="primary" />
                   </IconButton>
                   <IconButton href="https://www.linkedin.com/in/jpzambranoleon/">
-                    <LinkedIn color="success" />
+                    <LinkedIn color="primary" />
                   </IconButton>
                   <IconButton href="https://github.com/jpzambranoleon">
-                    <GitHub color="success" />
+                    <GitHub color="primary" />
                   </IconButton>
                 </CardActions>
               </Card>
@@ -197,13 +197,13 @@ export default function About() {
                 </CardContent>
                 <CardActions>
                   <IconButton href="https://www.facebook.com/zurab.sabakhtarishvili">
-                    <Facebook color="success" />
+                    <Facebook color="primary" />
                   </IconButton>
                   <IconButton href="https://www.linkedin.com/in/zurab-sabakhtarishvili-33b2731b4/">
-                    <LinkedIn color="success" />
+                    <LinkedIn color="primary" />
                   </IconButton>
                   <IconButton href="https://github.com/ZSabakh">
-                    <GitHub color="success" />
+                    <GitHub color="primary" />
                   </IconButton>
                 </CardActions>
               </Card>

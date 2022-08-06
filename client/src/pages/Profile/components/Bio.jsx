@@ -23,7 +23,7 @@ const Bio = ({ authorizedUser }) => {
         component={Link}
         to="/settings/profile"
         fullWidth
-        color="success"
+        color="primary"
         variant="outlined"
         sx={{ mt: 2 }}
       >

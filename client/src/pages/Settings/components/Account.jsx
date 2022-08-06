@@ -14,7 +14,12 @@ const Account = () => {
           Change username
         </Typography>
       </Box>
-      <Button variant="contained" size="small" sx={{ textTransform: "none" }}>
+      <Button
+        variant="contained"
+        size="small"
+        color="success"
+        sx={{ textTransform: "none" }}
+      >
         Change username
       </Button>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
@@ -22,7 +27,12 @@ const Account = () => {
           Change password
         </Typography>
       </Box>
-      <Button variant="contained" size="small" sx={{ textTransform: "none" }}>
+      <Button
+        variant="contained"
+        size="small"
+        color="success"
+        sx={{ textTransform: "none" }}
+      >
         Change password
       </Button>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>

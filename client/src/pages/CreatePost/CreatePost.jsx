@@ -29,7 +29,7 @@ export default function CreatePost() {
                   component="h1"
                   variant="h4"
                   align="center"
-                  color="success.main"
+                  color="primary"
                   fontWeight="bold"
                   gutterBottom
                 >

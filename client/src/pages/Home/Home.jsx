@@ -35,7 +35,7 @@ export default function Home() {
             component="h1"
             variant="h2"
             align="center"
-            color="success.main"
+            color="primary"
             gutterBottom
           >
             Team Finder
@@ -57,7 +57,7 @@ export default function Home() {
           >
             <Button
               variant="contained"
-              color="success"
+              color="primary"
               onClick={() =>
                 window.scrollTo({
                   top: document.getElementById("filter").offsetTop,
@@ -71,7 +71,7 @@ export default function Home() {
               component={Link}
               to={authorized ? "/post/create" : "/register"}
               variant="outlined"
-              color="success"
+              color="primary"
             >
               Create a Post
             </Button>
@@ -92,7 +92,7 @@ export default function Home() {
             mt: 2,
           }}
         >
-          <Pagination count={10} variant="outlined" color="success" />
+          <Pagination count={10} variant="outlined" color="primary" />
         </Box>
       </Container>
     </main>

@@ -41,6 +41,7 @@ const PublicProfile = () => {
             <Button
               variant="contained"
               size="small"
+              color="success"
               sx={{ textTransform: "none", mt: 3 }}
             >
               Update Profile

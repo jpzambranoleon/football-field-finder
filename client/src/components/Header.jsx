@@ -33,8 +33,8 @@ const Header = () => {
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <SportsSoccer fontSize="large" color="success" sx={{ mr: 1 }} />
-            <Typography variant="h5" noWrap color="success.main">
+            <SportsSoccer fontSize="large" color="primary" sx={{ mr: 1 }} />
+            <Typography variant="h5" noWrap color="primary">
               Team Finder
             </Typography>
           </Box>
@@ -50,7 +50,7 @@ const Header = () => {
                   component={Link}
                   to="/"
                   variant="outlined"
-                  color="success"
+                  color="primary"
                   size="small"
                   sx={{ borderRadius: 5 }}
                 >
@@ -60,7 +60,7 @@ const Header = () => {
                   component={Link}
                   to="/about"
                   variant="outlined"
-                  color="success"
+                  color="primary"
                   size="small"
                   sx={{ borderRadius: 5 }}
                 >
@@ -72,7 +72,7 @@ const Header = () => {
                     authorized ? `profile/${authorizedUser.username}` : "/login"
                   }
                   variant="outlined"
-                  color="success"
+                  color="primary"
                   size="small"
                   sx={{ borderRadius: 5 }}
                 >
@@ -82,7 +82,7 @@ const Header = () => {
                   <IconButton
                     sx={{ ml: 2 }}
                     onClick={handleLogout}
-                    color="success"
+                    color="primary"
                     size="small"
                   >
                     <Logout fontSize="small" />
@@ -93,7 +93,7 @@ const Header = () => {
             <IconButton
               sx={{ display: { xs: "flex", sm: "none" } }}
               onClick={handleDrawerOpen}
-              color="success"
+              color="primary"
             >
               <Menu />
             </IconButton>

@@ -111,7 +111,7 @@ const FeedFilter = () => {
                 onChange={(e) => {
                   setFilters({ ...filters, team: e.target.checked });
                 }}
-                color="success"
+                color="primary"
               />
             }
             label="Team"
@@ -125,7 +125,7 @@ const FeedFilter = () => {
                 onChange={(e) => {
                   setFilters({ ...filters, trainer: e.target.checked });
                 }}
-                color="success"
+                color="primary"
               />
             }
             label="Trainer"
@@ -139,7 +139,7 @@ const FeedFilter = () => {
                 onChange={(e) => {
                   setFilters({ ...filters, player: e.target.checked });
                 }}
-                color="success"
+                color="primary"
               />
             }
             label="Player"
@@ -192,7 +192,7 @@ const FeedFilter = () => {
           sx={{ p: "10px" }}
           aria-label="directions"
         >
-          <Directions color="success" />
+          <Directions color="primary" />
         </IconButton>
       </Box>
     </Paper>
