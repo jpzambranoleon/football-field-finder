@@ -1,4 +1,5 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Bio = ({ authorizedUser }) => {
   return (
@@ -18,7 +19,14 @@ const Bio = ({ authorizedUser }) => {
         {authorizedUser.username}
       </Typography>
       <Typography> Email: {authorizedUser.email}</Typography>
-      <Button fullWidth color="success" variant="outlined" sx={{ mt: 2 }}>
+      <Button
+        component={Link}
+        to="/settings"
+        fullWidth
+        color="success"
+        variant="outlined"
+        sx={{ mt: 2 }}
+      >
         Edit Profile
       </Button>
     </Box>
