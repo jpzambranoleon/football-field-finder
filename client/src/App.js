@@ -17,6 +17,7 @@ import { InfoContext } from "./utils/InfoProvider";
 import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
 import Header from "./components/Header";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -45,6 +46,7 @@ function App() {
                 <>
                   <Route path="/post/create" element={<CreatePost />} />
                   <Route path="/profile/:username" element={<Profile />} />
+                  <Route path="/settings/profile" element={<Settings />} />
                 </>
               ) : null}
               <Route path="*" element={<Navigate to="/" />} />
