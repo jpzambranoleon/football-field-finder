@@ -21,7 +21,7 @@ const Bio = ({ authorizedUser }) => {
       <Typography> Email: {authorizedUser.email}</Typography>
       <Button
         component={Link}
-        to="/settings"
+        to="/settings/profile"
         fullWidth
         color="success"
         variant="outlined"
