@@ -5,8 +5,6 @@ import {
   Routes,
 } from "react-router-dom";
 import About from "./pages/About/About";
-import Login from "./authorization/Login";
-import Register from "./authorization/Register";
 import Home from "./pages/Home/Home";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import axios from "axios";
@@ -18,6 +16,8 @@ import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
 import Settings from "./pages/Settings/Settings";
 import Navbar from "./components/Navbar";
+import Login from "./pages/Authorization/Login";
+import Register from "./pages/Authorization/Register";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";

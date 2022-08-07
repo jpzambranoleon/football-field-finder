@@ -30,7 +30,14 @@ const Navbar = () => {
   return (
     <>
       <TempDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
-      <AppBar position="static" sx={{ bgcolor: "dark" }}>
+      <AppBar
+        position="static"
+        sx={{
+          bgcolor: "background.paper",
+          borderBottom: 1,
+          borderColor: "divider",
+        }}
+      >
         <Toolbar
           sx={{
             width: { xl: "76%", lg: "90%" },
@@ -39,17 +46,17 @@ const Navbar = () => {
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <SportsSoccer fontSize="large" sx={{ mr: 1 }} />
-            <Typography variant="h5" noWrap>
+            <SportsSoccer fontSize="large" color="primary" sx={{ mr: 1 }} />
+            <Typography color="primary" variant="h5" noWrap>
               Team Finder
             </Typography>
           </Box>
           <Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <Button component={Link} to="/" color="inherit">
+              <Button component={Link} to="/">
                 Home
               </Button>
-              <Button component={Link} to="/about" color="inherit">
+              <Button component={Link} to="/about">
                 About
               </Button>
               <Button
@@ -57,15 +64,14 @@ const Navbar = () => {
                 to={
                   authorized ? `profile/${authorizedUser.username}` : "/login"
                 }
-                color="inherit"
               >
                 {authorized ? "Profile" : "Login"}
               </Button>
               {!authorized ? null : (
                 <IconButton
+                  color="primary"
                   sx={{ ml: 2 }}
                   onClick={handleLogout}
-                  color="inherit"
                 >
                   <Logout />
                 </IconButton>
@@ -74,7 +80,6 @@ const Navbar = () => {
             <IconButton
               sx={{ display: { xs: "flex", sm: "none" } }}
               onClick={handleDrawerOpen}
-              color="inherit"
             >
               <Menu />
             </IconButton>
