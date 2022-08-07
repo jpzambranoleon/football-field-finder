@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { InfoContext } from "../../utils/InfoProvider";
 import Account from "./components/Account";
 import PublicProfile from "./components/PublicProfile";
@@ -33,7 +33,20 @@ function TabPanel(props) {
 export default function Settings() {
   const { authorizedUser } = useContext(InfoContext);
 
-  const [selectedTab, setSelectedTab] = useState(0);
+  const { page } = useParams();
+
+  const tabNameToIndex = {
+    0: "profile",
+    1: "account",
+    profile: 0,
+    account: 1,
+  };
+
+  console.log(page);
+
+  const [selectedTab, setSelectedTab] = useState(tabNameToIndex[page]);
+
+  console.log(selectedTab);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -68,11 +81,15 @@ export default function Settings() {
                 >
                   <Tab
                     label="Public profile"
+                    component={Link}
+                    to="/settings/profile"
                     index={0}
                     sx={{ textTransform: "none" }}
                   />
                   <Tab
                     label="Account"
+                    component={Link}
+                    to="/settings/account"
                     index={1}
                     sx={{ textTransform: "none" }}
                   />
