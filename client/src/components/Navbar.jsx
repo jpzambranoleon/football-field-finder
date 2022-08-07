@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <>
       <TempDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
-      <AppBar position="static" sx={{ bgcolor: "success.main" }}>
+      <AppBar position="static" sx={{ bgcolor: "dark" }}>
         <Toolbar
           sx={{
             width: { xl: "76%", lg: "90%" },
