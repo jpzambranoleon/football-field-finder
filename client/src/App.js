@@ -16,8 +16,8 @@ import { useContext } from "react";
 import { InfoContext } from "./utils/InfoProvider";
 import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
-import Header from "./components/Header";
 import Settings from "./pages/Settings/Settings";
+import Navbar from "./components/Navbar";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -35,7 +35,7 @@ function App() {
               minHeight: "100vh",
             }}
           >
-            <Header />
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -46,10 +46,13 @@ function App() {
                 <>
                   <Route path="/post/create" element={<CreatePost />} />
                   <Route path="/profile/:username" element={<Profile />} />
-                  <Route path="/settings/profile" element={<Settings />} />
+                  <Route
+                    path="/settings"
+                    element={<Navigate to="/settings/profile" />}
+                  />
+                  <Route path="/settings/:page" element={<Settings />} />
                 </>
               ) : null}
-              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <StickyFooter />
           </Box>
