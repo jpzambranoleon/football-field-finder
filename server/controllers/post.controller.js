@@ -2,7 +2,7 @@ const Post = require("../models/post.model");
 const User = require("../models/user.model");
 
 // CREATE A POST
-exports.SubmitPost = async (req, res) => {
+exports.submitPost = async (req, res) => {
   try {
     let commonPostInfo = {
       userId: req.body.userId,
@@ -42,7 +42,7 @@ exports.SubmitPost = async (req, res) => {
 };
 
 // UPDATE A POST
-exports.UpdatePost = async (req, res) => {
+exports.updatePost = async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
@@ -64,7 +64,7 @@ exports.UpdatePost = async (req, res) => {
 };
 
 // DELETE A POST
-exports.DeletePost = async (req, res) => {
+exports.deletePost = async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
@@ -85,7 +85,7 @@ exports.DeletePost = async (req, res) => {
 };
 
 // GET A POST
-exports.GetPost = async (req, res) => {
+exports.getPost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     res.status(200).json(post);
@@ -95,7 +95,7 @@ exports.GetPost = async (req, res) => {
 };
 
 // GET TIMELINE
-exports.GetTimelinePosts = async (req, res) => {
+exports.getTimelinePosts = async (req, res) => {
   try {
     const allPosts = await Post.find();
     res.status(200).json(allPosts);
@@ -105,12 +105,38 @@ exports.GetTimelinePosts = async (req, res) => {
 };
 
 // GET USER'S ALL POSTS
-exports.GetUserPostsAll = async (req, res) => {
+exports.getUserPostsAll = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
     const posts = await Post.find({ userId: user._id });
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
+  }
+};
+
+exports.getAll = async (req, res) => {
+  try {
+    let page = req.query.page || 1;
+    let amountOnPage = 9;
+    let searchCondition = { active: true };
+
+    let posts = await Post.find(searchCondition)
+      .sort({ _id: -1 })
+      .skip((page - 1) * amountOnPage)
+      .limit(amountOnPage);
+
+    let totalPages = Math.ceil(totalPages / amountOnPage);
+
+    res.status(200).json({
+      success: true,
+      posts: [...posts],
+      totalPages: totalPages,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
   }
 };
