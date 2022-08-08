@@ -1,31 +1,12 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Pagination,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import FeedFilter from "./components/FeedFilter";
 import { Link } from "react-router-dom";
-import Post from "../../components/Post";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { useContext } from "react";
 import { InfoContext } from "../../utils/InfoProvider";
+import Feed from "./components/Feed";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
   const { authorized } = useContext(InfoContext);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await axios.get("posts/timeline/all");
-      setPosts(res.data);
-    };
-    fetchPosts();
-  }, []);
 
   return (
     <main>
@@ -80,20 +61,7 @@ export default function Home() {
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
         <FeedFilter />
-        <Grid container spacing={2}>
-          {posts.map((p) => (
-            <Post key={p._id} post={p} />
-          ))}
-        </Grid>
-        <Box
-          sx={{
-            justifyContent: "center",
-            display: "flex",
-            mt: 2,
-          }}
-        >
-          <Pagination count={10} variant="outlined" color="primary" />
-        </Box>
+        <Feed />
       </Container>
     </main>
   );
