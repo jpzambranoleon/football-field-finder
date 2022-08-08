@@ -126,7 +126,9 @@ exports.getAll = async (req, res) => {
       .skip((page - 1) * amountOnPage)
       .limit(amountOnPage);
 
-    let totalPages = Math.ceil(totalPages / amountOnPage);
+    let totalPosts = await Post.countDocuments({});
+
+    let totalPages = Math.ceil(totalPosts / amountOnPage);
 
     res.status(200).json({
       success: true,
