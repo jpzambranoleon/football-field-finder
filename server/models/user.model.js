@@ -14,6 +14,12 @@ const userSchema = new Schema(
     otpTokenExpires: { type: Date, default: null },
     resetPasswordToken: { type: String, default: null },
     resetPasswordExpires: { type: Date, default: null },
+    profilePicture: { type: String, default: "" },
+    followers: { type: Array, default: [] },
+    followings: { type: Array, default: [] },
+    isAdmin: { type: Boolean, default: false },
+    desc: { type: String, max: 50 },
+    location: { type: String, max: 50 },
   },
   {
     timestamps: {
