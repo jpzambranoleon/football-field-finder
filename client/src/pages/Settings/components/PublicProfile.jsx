@@ -1,15 +1,22 @@
-const { AddPhotoAlternate } = require("@mui/icons-material");
-const {
+import {
   Box,
+  Button,
   Grid,
   Typography,
   Avatar,
   IconButton,
   TextField,
-  Button,
-} = require("@mui/material");
+} from "@mui/material";
+import { AddPhotoAlternate } from "@mui/icons-material";
+import { useContext } from "react";
+import { InfoContext } from "../../../utils/InfoProvider";
+import { useState } from "react";
 
 const PublicProfile = () => {
+  const { setStatus, authorizedUser } = useContext(InfoContext);
+
+  console.log(authorizedUser);
+
   return (
     <>
       <Box
@@ -29,15 +36,30 @@ const PublicProfile = () => {
             <Typography variant="h7" fontWeight={600}>
               Name
             </Typography>
-            <TextField fullWidth size="small" sx={{ mb: 2 }} />
+            <TextField
+              defaultValue={authorizedUser.name}
+              fullWidth
+              size="small"
+              sx={{ mb: 2 }}
+            />
             <Typography variant="h7" fontWeight={600}>
               Bio
             </Typography>
-            <TextField fullWidth multiline rows={3} sx={{ mb: 2 }} />
+            <TextField
+              defaultValue={authorizedUser.bio}
+              fullWidth
+              multiline
+              rows={3}
+              sx={{ mb: 2 }}
+            />
             <Typography variant="h7" fontWeight={600}>
               Location
             </Typography>
-            <TextField fullWidth size="small" />
+            <TextField
+              defaultValue={authorizedUser.location}
+              fullWidth
+              size="small"
+            />
             <Button
               variant="contained"
               size="small"
