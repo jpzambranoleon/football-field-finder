@@ -94,16 +94,6 @@ exports.getPost = async (req, res) => {
   }
 };
 
-// GET TIMELINE
-exports.getTimelinePosts = async (req, res) => {
-  try {
-    const allPosts = await Post.find();
-    res.status(200).json(allPosts);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
 // GET USER'S ALL POSTS
 exports.getUserPostsAll = async (req, res) => {
   try {
@@ -122,6 +112,33 @@ exports.getAll = async (req, res) => {
     let searchCondition = { active: true };
 
     let posts = await Post.find(searchCondition)
+      .sort({ _id: -1 })
+      .skip((page - 1) * amountOnPage)
+      .limit(amountOnPage);
+
+    let totalPosts = await Post.countDocuments({});
+
+    let totalPages = Math.ceil(totalPosts / amountOnPage);
+
+    res.status(200).json({
+      success: true,
+      posts: [...posts],
+      totalPages: totalPages,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
+  }
+};
+
+exports.getAllUsersPost = async (req, res) => {
+  try {
+    let user = await User.findOne({ username: req.params.username });
+    let page = req.query.page || 1;
+    let amountOnPage = 6;
+    let posts = await Post.find({ userId: user._id })
       .sort({ _id: -1 })
       .skip((page - 1) * amountOnPage)
       .limit(amountOnPage);
