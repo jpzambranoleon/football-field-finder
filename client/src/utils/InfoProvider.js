@@ -30,7 +30,7 @@ export const InfoProvider = (props) => {
       const user = localStorage.getItem("user");
       const fetchUser = async () => {
         const res = await axios.get(`/users?userId=${user}`);
-        setAuthorizedUser(res.data);
+        setAuthorizedUser(res.data.profile);
       };
       fetchUser();
     }
