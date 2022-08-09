@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Tab, Tabs } from "@mui/material";
 import React, { useContext } from "react";
-import Feed from "./components/Feed";
 import { InfoContext } from "../../utils/InfoProvider";
 import Bio from "./components/Bio";
+import MyPosts from "./components/MyPosts";
 
 export default function Profile() {
   const { authorizedUser } = useContext(InfoContext);
@@ -33,9 +33,7 @@ export default function Profile() {
                   <Tab value="one" label="My Posts" />
                 </Tabs>
               </Box>
-              <Grid container spacing={2}>
-                <Feed username={authorizedUser.username} />
-              </Grid>
+              <MyPosts username={authorizedUser.username} />
             </Grid>
           </Grid>
         </Container>
