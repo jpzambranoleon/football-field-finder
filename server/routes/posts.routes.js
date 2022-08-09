@@ -7,16 +7,15 @@ router.post("/submit", PostController.submitPost);
 router.put("/update/:id", PostController.updatePost);
 // Delete a Post
 router.delete("/delete/:id", PostController.deletePost);
-
+// Get all posts
 router.get("/get_all", PostController.getAll);
+// Get all user's posts
+router.get("/my_posts/:username", PostController.getAllUsersPost);
 
 // Get a Post
 router.get("/get/:id", PostController.getPost);
 
 // Get Timeline of User Posts
 router.get("/profile/:username", PostController.getUserPostsAll);
-
-// Get Timeline of All Posts
-router.get("/timeline/all", PostController.getTimelinePosts);
 
 module.exports = router;
