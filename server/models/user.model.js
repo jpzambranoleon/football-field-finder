@@ -7,6 +7,7 @@ const userSchema = new Schema(
     username: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    name: { type: String, max: 50 },
     email: { type: String, required: true, unique: true },
     active: { type: Boolean, default: true },
     password: { type: String, required: true },
@@ -18,7 +19,7 @@ const userSchema = new Schema(
     followers: { type: Array, default: [] },
     followings: { type: Array, default: [] },
     isAdmin: { type: Boolean, default: false },
-    desc: { type: String, max: 50 },
+    bio: { type: String, max: 50 },
     location: { type: String, max: 50 },
   },
   {
