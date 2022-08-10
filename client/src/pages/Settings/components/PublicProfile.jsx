@@ -8,15 +8,8 @@ import {
   TextField,
 } from "@mui/material";
 import { AddPhotoAlternate } from "@mui/icons-material";
-import { useContext } from "react";
-import { InfoContext } from "../../../utils/InfoProvider";
-import { useState } from "react";
 
-const PublicProfile = () => {
-  const { setStatus, authorizedUser } = useContext(InfoContext);
-
-  console.log(authorizedUser);
-
+const PublicProfile = ({ user }) => {
   return (
     <>
       <Box
@@ -37,8 +30,10 @@ const PublicProfile = () => {
               Name
             </Typography>
             <TextField
-              defaultValue={authorizedUser.name}
+              defaultValue={user.name}
               fullWidth
+              multiline
+              rows={1}
               size="small"
               sx={{ mb: 2 }}
             />
@@ -46,7 +41,7 @@ const PublicProfile = () => {
               Bio
             </Typography>
             <TextField
-              defaultValue={authorizedUser.bio}
+              defaultValue={user.bio}
               fullWidth
               multiline
               rows={3}
@@ -56,8 +51,10 @@ const PublicProfile = () => {
               Location
             </Typography>
             <TextField
-              defaultValue={authorizedUser.location}
+              defaultValue={user.location}
               fullWidth
+              multiline
+              rows={1}
               size="small"
             />
             <Button
