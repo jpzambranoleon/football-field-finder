@@ -15,7 +15,4 @@ router.get("/my_posts/:username", PostController.getAllUsersPost);
 // Get a Post
 router.get("/get/:id", PostController.getPost);
 
-// Get Timeline of User Posts
-router.get("/profile/:username", PostController.getUserPostsAll);
-
 module.exports = router;
