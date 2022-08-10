@@ -1,14 +1,15 @@
+import { LocationOnOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Bio = ({ authorizedUser }) => {
+const Bio = ({ user }) => {
   return (
     <Box>
       <Box sx={{ mb: 2 }}>
         <Avatar sx={{ width: 270, height: 270 }} />
       </Box>
       <Typography variant="h1" fontSize="22px" fontWeight={600}>
-        {authorizedUser.firstName} {authorizedUser.lastName}
+        {user.name}
       </Typography>
       <Typography
         variant="body1"
@@ -16,9 +17,9 @@ const Bio = ({ authorizedUser }) => {
         color="text.secondary"
         sx={{ mb: 2 }}
       >
-        {authorizedUser.username}
+        {user.username}
       </Typography>
-      <Typography> Email: {authorizedUser.email}</Typography>
+      <Typography>{user.bio}</Typography>
       <Button
         component={Link}
         to="/settings/profile"
@@ -29,6 +30,23 @@ const Bio = ({ authorizedUser }) => {
       >
         Edit Profile
       </Button>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          mt: 2,
+        }}
+      >
+        <LocationOnOutlined
+          color="primary"
+          fontSize="small"
+          sx={{ mr: 1, ml: -0.5 }}
+        />
+        <Typography variant="body2">{user.location}</Typography>
+      </Box>
+      <Typography variant="body2" sx={{ mt: 0.5 }}>
+        {user.email}
+      </Typography>
     </Box>
   );
 };
