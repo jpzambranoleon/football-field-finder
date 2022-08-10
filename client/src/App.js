@@ -22,7 +22,7 @@ import Register from "./pages/Authorization/Register";
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
 
-  const { authorized } = useContext(InfoContext);
+  const { authorized, authorizedUser } = useContext(InfoContext);
 
   return (
     <div className="App">
@@ -45,7 +45,7 @@ function App() {
               {authorized ? (
                 <>
                   <Route path="/post/create" element={<CreatePost />} />
-                  <Route path="/profile/:username" element={<Profile />} />
+                  <Route path="/:username" element={<Profile />} />
                   <Route
                     path="/settings"
                     element={<Navigate to="/settings/profile" />}
