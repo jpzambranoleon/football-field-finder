@@ -42,8 +42,6 @@ export default function Settings() {
     account: 1,
   };
 
-  console.log(page);
-
   const [selectedTab, setSelectedTab] = useState(tabNameToIndex[page]);
 
   console.log(selectedTab);
@@ -60,7 +58,7 @@ export default function Settings() {
             <Avatar sx={{ width: 56, height: 56 }} />
             <Box sx={{ ml: 2 }}>
               <Typography variant="h6" fontWeight={500}>
-                {authorizedUser.firstName} {authorizedUser.lastName}
+                {authorizedUser.name}
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Your personal account
