@@ -95,7 +95,7 @@ export default function Settings() {
               </Grid>
               <Grid item xs={12} sm={9}>
                 <TabPanel value={selectedTab} index={0}>
-                  <PublicProfile />
+                  <PublicProfile user={authorizedUser} />
                 </TabPanel>
                 <TabPanel value={selectedTab} index={1}>
                   <Account />
