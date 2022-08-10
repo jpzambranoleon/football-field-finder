@@ -265,26 +265,19 @@ exports.DeleteUser = async (req, res) => {
 
 // GET A USER
 exports.GetUser = async (req, res) => {
-  let userId = req.query.userId;
-  let username = req.query.username;
+  const userId = req.query.userId;
+  const username = req.query.username;
   try {
-    let user = userId
+    const user = userId
       ? await User.findById(userId)
       : await User.findOne({ username: username });
     const { password, updatedAt, ...other } = user._doc;
-    res.status(200).send({
-      success: true,
-      profile: other,
-    });
+    res.status(200).json(other);
   } catch (err) {
-    res.status(500).json({
-      error: true,
-      message: err.message,
-    });
+    res.status(500).json(err);
   }
 };
 
-// Get Profile Data
 exports.GetProfileData = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select(
