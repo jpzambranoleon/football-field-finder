@@ -61,9 +61,7 @@ const Navbar = () => {
               </Button>
               <Button
                 component={Link}
-                to={
-                  authorized ? `profile/${authorizedUser.username}` : "/login"
-                }
+                to={authorized ? `/${authorizedUser.username}` : "/login"}
               >
                 {authorized ? "Profile" : "Login"}
               </Button>
