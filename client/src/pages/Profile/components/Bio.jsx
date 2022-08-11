@@ -1,4 +1,4 @@
-import { LocationOnOutlined } from "@mui/icons-material";
+import { LocationOnOutlined, MailOutlineOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -44,9 +44,14 @@ const Bio = ({ user }) => {
         />
         <Typography variant="body2">{user.location}</Typography>
       </Box>
-      <Typography variant="body2" sx={{ mt: 0.5 }}>
-        {user.email}
-      </Typography>
+      <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+        <MailOutlineOutlined
+          color="primary"
+          fontSize="small"
+          sx={{ mr: 1, ml: -0.5 }}
+        />
+        <Typography variant="body2">{user.email}</Typography>
+      </Box>
     </Box>
   );
 };
