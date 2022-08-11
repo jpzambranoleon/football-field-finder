@@ -3,7 +3,7 @@ const UserController = require("../controllers/user.controller");
 const { validateToken } = require("../middlewares/validate.jwt.middleware");
 
 // UPDATE USER
-router.put("/:id", UserController.UpdateUser);
+router.put("/update/:id", UserController.UpdateUser);
 // DELETE USER
 router.delete("/:id", UserController.DeleteUser);
 // GET USER
