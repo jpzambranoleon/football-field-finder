@@ -8,10 +8,11 @@ const randomize = require("randomatic");
 exports.Register = async (req, res) => {
   try {
     console.log(req.body);
-    if (!req.body.email) throw new Error("Cannot signup without an email");
-    if (!req.body.username) throw new Error("Cannot signup without a username");
-    if (!req.body.firstName || !req.body.lastName)
-      throw new Error("Cannot signup without first name and last name");
+    if (!req.body.email) throw new Error("Cannot register without an email");
+    if (!req.body.username)
+      throw new Error("Cannot register without a username");
+    if (!req.body.password)
+      throw new Error("Cannot register without a password");
 
     // generate hashed password
     const hash = await User.hashPassword(req.body.password);
@@ -217,16 +218,17 @@ exports.ResetPassword = async (req, res) => {
       success: true,
       message: "Password has been changed",
     });
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
       error: true,
-      message: error.message,
+      message: err.message,
     });
   }
 };
 
 // UPDATE USER
 exports.UpdateUser = async (req, res) => {
+  console.log(req.body);
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
       try {
@@ -238,11 +240,17 @@ exports.UpdateUser = async (req, res) => {
     }
     try {
       const user = await User.findByIdAndUpdate(req.params.id, {
-        $set: req.body,
+        $set: req.body.data,
       });
-      res.status(200).json("Account has been updated");
+      res.status(200).send({
+        success: true,
+        message: "User has been updated",
+      });
     } catch (err) {
-      return res.status(500).json(err);
+      return res.status(500).json({
+        error: true,
+        message: err.message,
+      });
     }
   } else {
     return res.status(403).json("You can update only your account!");
