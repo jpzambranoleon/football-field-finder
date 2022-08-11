@@ -6,7 +6,7 @@ const Bio = ({ user }) => {
   return (
     <Box>
       <Box sx={{ mb: 2 }}>
-        <Avatar sx={{ width: 270, height: 270 }} />
+        <Avatar src={user.profilePicture} sx={{ width: 270, height: 270 }} />
       </Box>
       <Typography variant="h1" fontSize="22px" fontWeight={600}>
         {user.name}
