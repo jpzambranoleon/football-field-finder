@@ -7,6 +7,10 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+    },
     types: {
       team: { type: Boolean, default: true, required: true },
       player: { type: Boolean, default: false, required: true },
