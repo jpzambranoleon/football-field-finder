@@ -5,11 +5,8 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
-  InputLabel,
-  MenuItem,
   Radio,
   RadioGroup,
-  Select,
   TextField,
 } from "@mui/material";
 import { useState } from "react";
@@ -17,70 +14,6 @@ import axios from "axios";
 import { useContext } from "react";
 import { InfoContext } from "../../../utils/InfoProvider";
 import { useNavigate } from "react-router-dom";
-
-const ITEM_HEIGHT = 35;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 100,
-    },
-  },
-};
-
-const states = [
-  "AL",
-  "AK",
-  "AZ",
-  "AR",
-  "CA",
-  "CO",
-  "CT",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "ID",
-  "IL",
-  "IN",
-  "IA",
-  "KS",
-  "KY",
-  "LA",
-  "ME",
-  "MD",
-  "MA",
-  "MI",
-  "MN",
-  "MS",
-  "MO",
-  "MT",
-  "NE",
-  "NV",
-  "NH",
-  "NJ",
-  "NM",
-  "NY",
-  "NC",
-  "ND",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VT",
-  "VA",
-  "WA",
-  "WV",
-  "WI",
-  "WY",
-];
 
 const Form = () => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
@@ -93,6 +26,7 @@ const Form = () => {
       trainer: false,
     },
     userId: `${authorizedUser._id}`,
+    author: `${authorizedUser.username}`,
     title: "",
     state: "",
     city: "",
@@ -173,26 +107,16 @@ const Form = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormControl fullWidth margin="normal">
-            <InputLabel id="simple-select-label">State</InputLabel>
-            <Select
-              onChange={(e) => {
-                setFormData((prev) => ({ ...prev, state: e.target.value }));
-              }}
-              value={formData.state}
-              labelId="simple-select-label"
-              name="state"
-              id="state"
-              label="State"
-              MenuProps={MenuProps}
-            >
-              {states.map((name) => (
-                <MenuItem key={name} value={name}>
-                  {name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <TextField
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, state: e.target.value }))
+            }
+            margin="normal"
+            name="state"
+            fullWidth
+            id="state"
+            label="State"
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
