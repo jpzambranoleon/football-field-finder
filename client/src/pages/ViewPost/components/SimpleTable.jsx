@@ -8,29 +8,14 @@ import {
   Typography,
   Table,
 } from "@mui/material";
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const SimpleTable = ({ post, postType }) => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [post.userId]);
-
-  console.log(post.userId);
-
   function createData(name, item) {
     return { name, item };
   }
 
   const rows = [
-    createData("Author", user.username),
+    createData("Author", post.author),
     createData("Type", postType),
     createData("Location", post.city + (", " + post.state)),
     createData("Phone", post.phone),
