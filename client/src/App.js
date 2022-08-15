@@ -18,6 +18,7 @@ import Settings from "./pages/Settings/Settings";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Authorization/Login";
 import Register from "./pages/Authorization/Register";
+import Setup from "./pages/Authorization/Setup";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -42,6 +43,7 @@ function App() {
               <Route path="/post/view/:postId" element={<ViewPost />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/setup" element={<Setup />} />
               {authorized ? (
                 <>
                   <Route path="/post/create" element={<CreatePost />} />
