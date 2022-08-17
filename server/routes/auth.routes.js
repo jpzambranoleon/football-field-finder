@@ -4,18 +4,18 @@ const { checkDuplicateEmail } = require("../middlewares/register.middleware");
 const { validateToken } = require("../middlewares/validate.jwt.middleware");
 
 // Register
-router.post("/register", [checkDuplicateEmail], AuthController.Register);
+router.post("/register", [checkDuplicateEmail], AuthController.register);
 // Login
-router.post("/login", AuthController.Login);
+router.post("/login", AuthController.login);
 // Send OTP
-router.post("/send-otp", AuthController.SendOTP);
+router.post("/send-otp", AuthController.sendOTP);
 // Activate
-router.post("/activate", AuthController.Activate);
+router.post("/activate", AuthController.activate);
 // Fotgot Password
-router.post("/forgot", AuthController.ForgotPassword);
+router.post("/forgot", AuthController.forgotPassword);
 // Reset Password
-router.post("/rest", AuthController.ResetPassword);
+router.post("/rest", AuthController.resetPassword);
 // Get Profile Data
-router.get("/profile", validateToken, AuthController.GetProfileData);
+router.get("/profile", validateToken, AuthController.getProfileData);
 
 module.exports = router;
