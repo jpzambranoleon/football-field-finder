@@ -5,7 +5,7 @@ const SendEmail = require("../utility/notification/sendEmail");
 const randomize = require("randomatic");
 
 // REGISTER
-exports.Register = async (req, res) => {
+exports.register = async (req, res) => {
   try {
     console.log(req.body);
     if (!req.body.email) throw new Error("Cannot register without an email");
@@ -48,7 +48,7 @@ exports.Register = async (req, res) => {
 };
 
 // LOGIN
-exports.Login = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) throw new Error("Please make a valid request");
@@ -81,7 +81,7 @@ exports.Login = async (req, res) => {
   }
 };
 
-exports.SendOTP = async (req, res) => {
+exports.sendOTP = async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) throw new Error("Please make a valid request");
@@ -116,7 +116,7 @@ exports.SendOTP = async (req, res) => {
   }
 };
 
-exports.Activate = async (req, res) => {
+exports.activate = async (req, res) => {
   try {
     const { email, code } = req.body;
     if (!email || !code) throw new Error("Please make a valid request");
@@ -156,7 +156,7 @@ exports.Activate = async (req, res) => {
 };
 
 // FORGOT PASSWORD
-exports.ForgotPassword = async (req, res) => {
+exports.forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) throw new Error("Cannot be processed");
@@ -196,7 +196,7 @@ exports.ForgotPassword = async (req, res) => {
 };
 
 // RESET PASSWORD
-exports.ResetPassword = async (req, res) => {
+exports.resetPassword = async (req, res) => {
   try {
     const { token, newPassword } = req.body;
     if (!token || !newPassword)
@@ -226,8 +226,30 @@ exports.ResetPassword = async (req, res) => {
   }
 };
 
+exports.setPublicInfo = async (req, res) => {
+  try {
+    console.log(req.body);
+    const userId = req.body.userId;
+    if (!userId) throw new Error("User is not authorized");
+
+    await User.findByIdAndUpdate(userId, {
+      $set: req.body.data,
+    });
+
+    res.status(200).send({
+      success: true,
+      message: "User info has been saved",
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
+  }
+};
+
 // UPDATE USER
-exports.UpdateUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   console.log(req.body);
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
@@ -258,7 +280,7 @@ exports.UpdateUser = async (req, res) => {
 };
 
 // DELETE USER
-exports.DeleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(req.params.id);
@@ -272,7 +294,7 @@ exports.DeleteUser = async (req, res) => {
 };
 
 // GET A USER
-exports.GetUser = async (req, res) => {
+exports.getUser = async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;
   try {
@@ -286,7 +308,7 @@ exports.GetUser = async (req, res) => {
   }
 };
 
-exports.GetProfileData = async (req, res) => {
+exports.getProfileData = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select(
       "-password -otpToken -otpTokenExpires -resetPasswordToken -resetPasswordExpires -accessToken"
