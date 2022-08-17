@@ -68,12 +68,14 @@ export default function Setup() {
             }}
           >
             <Typography>Setup</Typography>
-            {file && (
-              <Avatar
-                src={URL.createObjectURL(file)}
-                sx={{ width: 200, height: 200 }}
-              />
-            )}
+            <Avatar sx={{ width: 200, height: 200 }}>
+              {file && (
+                <Avatar
+                  sx={{ width: 200, height: 200 }}
+                  src={URL.createObjectURL(file)}
+                />
+              )}
+            </Avatar>
             <Box component="form">
               <input
                 accept=".png, .jpg, .jpeg"
