@@ -7,12 +7,13 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Link,
   Grid,
   Skeleton,
   Typography,
 } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import convertTime from "../utils/convertTime";
@@ -70,7 +71,7 @@ const Post = ({ post }) => {
       <Card
         sx={{
           mb: 2,
-          height: 320,
+          height: 325,
           width: "100%",
           display: "flex",
           flexDirection: "column",
@@ -98,7 +99,9 @@ const Post = ({ post }) => {
                 style={{ marginBottom: 6 }}
               />
             ) : (
-              user.username
+              <Link href={user.username} underline="none" color="inherit">
+                {user.username}
+              </Link>
             )
           }
           subheader={
@@ -150,14 +153,15 @@ const Post = ({ post }) => {
         </CardContent>
         {loading ? null : (
           <CardActions>
-            <Button
-              component={Link}
-              to={`/post/view/${post._id}`}
-              size="small"
-              color="primary"
+            <Link
+              href={`/post/view/${post._id}`}
+              underline="none"
+              color="inerit"
             >
-              View
-            </Button>
+              <Button size="small" color="primary">
+                View
+              </Button>
+            </Link>
           </CardActions>
         )}
       </Card>
