@@ -37,8 +37,6 @@ export default function Setup() {
       data.append("image", file);
       newUser.profilePic = fileName;
 
-      console.log(data);
-
       axios.post("/upload", data);
     }
     axios
