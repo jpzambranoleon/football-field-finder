@@ -23,7 +23,7 @@ const Feed = () => {
         let message = err.response ? err.response.data.message : err.message;
         setStatus({ open: true, message: message, severity: "error" });
       });
-  }, [filterData]);
+  }, [filterData, setStatus]);
 
   return (
     <Box>
