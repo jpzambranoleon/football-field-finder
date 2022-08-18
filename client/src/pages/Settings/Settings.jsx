@@ -32,6 +32,7 @@ function TabPanel(props) {
 
 export default function Settings() {
   const { authorizedUser } = useContext(InfoContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const { page } = useParams();
 
@@ -55,7 +56,10 @@ export default function Settings() {
       <Box sx={{ bgcolor: "background.paper", pt: 6, pb: 6 }}>
         <Container>
           <Box sx={{ display: "flex" }}>
-            <Avatar sx={{ width: 56, height: 56 }} />
+            <Avatar
+              src={PF + "person/" + authorizedUser.profilePic}
+              sx={{ width: 56, height: 56 }}
+            />
             <Box sx={{ ml: 2 }}>
               <Typography variant="h6" fontWeight={500}>
                 {authorizedUser.name}

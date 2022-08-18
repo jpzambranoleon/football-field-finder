@@ -15,9 +15,10 @@ import { useState } from "react";
 
 const PublicProfile = ({ user }) => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [formData, setFormData] = useState({
     name: `${user.name}`,
-    profilePicture: `${user.profilePicture}`,
+    profilePic: `${user.profilePic}`,
     email: `${user.email}`,
     bio: `${user.bio}`,
     location: `${user.location}`,
@@ -141,7 +142,7 @@ const PublicProfile = ({ user }) => {
           </Typography>
           <Box>
             <Avatar
-              src={user.profilePicture}
+              src={PF + "person/" + user.profilePic}
               sx={{ width: 200, height: 200 }}
             />
             <Box sx={{ position: "absolute" }}>
