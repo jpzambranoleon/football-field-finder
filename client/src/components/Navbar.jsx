@@ -1,9 +1,12 @@
-import { Logout, Menu, SportsSoccer } from "@mui/icons-material";
+import { Logout, MenuTwoTone, SportsSoccer } from "@mui/icons-material";
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -13,18 +16,40 @@ import { Link } from "react-router-dom";
 import { InfoContext } from "../utils/InfoProvider";
 import TempDrawer from "./TempDrawer";
 
+const settings = ["Logout"];
+
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { authorized, authorizedUser } = useContext(InfoContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
+  };
+
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.location.reload();
+  };
+
+  const onContextMenuClick = (action) => {
+    setAnchorElUser(null);
+    if (action.toLowerCase() === "logout") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.reload();
+    }
   };
 
   return (
@@ -66,20 +91,41 @@ const Navbar = () => {
                 {authorized ? "Profile" : "Login"}
               </Button>
               {!authorized ? null : (
-                <IconButton
-                  color="primary"
-                  sx={{ ml: 2 }}
-                  onClick={handleLogout}
-                >
-                  <Logout />
+                <IconButton sx={{ ml: 2, p: 0 }} onClick={handleOpenUserMenu}>
+                  <Avatar src={PF + "person/" + authorizedUser.profilePic} />
                 </IconButton>
               )}
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem
+                    key={setting}
+                    onClick={() => onContextMenuClick(setting)}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
             <IconButton
               sx={{ display: { xs: "flex", sm: "none" } }}
               onClick={handleDrawerOpen}
             >
-              <Menu />
+              <MenuTwoTone />
             </IconButton>
           </Box>
         </Toolbar>
