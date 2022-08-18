@@ -3,11 +3,13 @@ import { Avatar, Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Bio = ({ user }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <Box>
       <Box sx={{ mb: 2 }}>
         <Avatar
-          src={"http://localhost:8800/images/1660778935916jp_ramen.jpg"}
+          src={PF + "person/" + user.profilePic}
           sx={{ width: 270, height: 270 }}
         />
       </Box>
