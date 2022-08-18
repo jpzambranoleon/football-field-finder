@@ -39,7 +39,7 @@ export default function Setup() {
 
       console.log(data);
 
-      axios.post("/single", data);
+      axios.post("/upload", data);
     }
     axios
       .put("/users/set", { userId: authorizedUser._id, data: newUser })
