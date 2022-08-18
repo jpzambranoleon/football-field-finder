@@ -1,4 +1,4 @@
-import { Logout, MenuTwoTone, SportsSoccer } from "@mui/icons-material";
+import { MenuTwoTone, SportsSoccer } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
@@ -35,12 +35,6 @@ const Navbar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location.reload();
   };
 
   const onContextMenuClick = (action) => {

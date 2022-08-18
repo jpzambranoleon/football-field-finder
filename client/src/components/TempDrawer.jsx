@@ -1,7 +1,11 @@
+import { Logout } from "@mui/icons-material";
 import {
+  Avatar,
   Box,
+  CardHeader,
   ClickAwayListener,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -14,9 +18,16 @@ import { InfoContext } from "../utils/InfoProvider";
 
 const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
   const { authorized, authorizedUser } = useContext(InfoContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleDrawerClose = () => {
     setOpenDrawer(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.reload();
   };
 
   return (
@@ -28,7 +39,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
               <Typography
                 component="h3"
                 variant="h5"
-                color="success.main"
+                color="primary"
                 gutterBottom
               >
                 Team Finder
@@ -60,9 +71,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
               <ListItemButton
                 onClick={handleDrawerClose}
                 component={Link}
-                to={
-                  authorized ? `profile/${authorizedUser.username}` : "/login"
-                }
+                to={authorized ? `/${authorizedUser.username}` : "/login"}
               >
                 <ListItemText>
                   <Typography>{authorized ? "Profile" : "Login"}</Typography>
@@ -70,6 +79,28 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
               </ListItemButton>
             </ListItem>
           </List>
+          {!authorized ? null : (
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                width: "100%",
+              }}
+            >
+              <CardHeader
+                avatar={
+                  <Avatar src={PF + "person/" + authorizedUser.profilePic} />
+                }
+                action={
+                  <IconButton color="primary" onClick={handleLogout}>
+                    <Logout />
+                  </IconButton>
+                }
+                title={authorizedUser.name}
+                subheader={authorizedUser.username}
+              />
+            </Box>
+          )}
         </Box>
       </ClickAwayListener>
     </Drawer>
