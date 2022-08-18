@@ -15,24 +15,28 @@ import { useState } from "react";
 
 const PublicProfile = ({ user }) => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
+  const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [formData, setFormData] = useState({
     name: `${user.name}`,
-    profilePic: `${user.profilePic}`,
     email: `${user.email}`,
     bio: `${user.bio}`,
     location: `${user.location}`,
   });
 
-  const [image, setImage] = useState("");
-
-  const handleChange = (e) => {
-    console.log(e.target.files);
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(file);
+
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("image", file);
+      formData.profilePic = fileName;
+
+      axios.post("/upload", data);
+    }
     axios
       .put(`/users/update/${authorizedUser._id}`, {
         userId: authorizedUser._id,
@@ -142,7 +146,11 @@ const PublicProfile = ({ user }) => {
           </Typography>
           <Box>
             <Avatar
-              src={PF + "person/" + user.profilePic}
+              src={
+                !file
+                  ? PF + "person/" + user.profilePic
+                  : URL.createObjectURL(file)
+              }
               sx={{ width: 200, height: 200 }}
             />
             <Box sx={{ position: "absolute" }}>
@@ -153,14 +161,12 @@ const PublicProfile = ({ user }) => {
                 component="label"
               >
                 <input
-                  accept="image/*"
+                  hidden
+                  accept=".png, .jpg, .jpeg"
                   type="file"
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      profilePicture: e.target.value,
-                    }))
-                  }
+                  name="image"
+                  id="image"
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
                 <AddPhotoAlternate fontSize="large" />
               </IconButton>
