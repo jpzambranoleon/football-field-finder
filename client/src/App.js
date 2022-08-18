@@ -23,7 +23,7 @@ import Setup from "./pages/Authorization/Setup";
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
 
-  const { authorized, authorizedUser } = useContext(InfoContext);
+  const { authorized } = useContext(InfoContext);
 
   return (
     <div className="App">
