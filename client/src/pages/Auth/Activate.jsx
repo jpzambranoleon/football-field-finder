@@ -1,17 +1,83 @@
-import { LockOutlined } from "@mui/icons-material";
+import { Email, LockOutlined, Phone } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Button,
   Container,
+  IconButton,
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
+import { useContext } from "react";
 import { useState } from "react";
 import Otp from "../../components/Otp";
+import { InfoContext } from "../../utils/InfoProvider";
+import MuiPhoneNumber from "mui-phone-number";
 
 export default function Activate() {
+  const [requireOtp, setRequireOtp] = useState(false);
+  const [sentData, setSentData] = useState({});
+  const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState("");
+  const [formData, setFormData] = useState({});
+  const { setStatus, setAuthorized } = useContext(InfoContext);
+  const [preferredMethod, setPreferredMethod] = useState("email");
+
+  const handleFormChange = () => {
+    setFormData({
+      ...Object.fromEntries(new FormData(document.getElementById("auth"))),
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    setLoading(true);
+
+    if (requireOtp) {
+      axios
+        .post("/auth/activate", { ...sentData, code: otp })
+        .then((res) => {
+          setStatus({
+            open: true,
+            message: res.data.message,
+            severity: "success",
+          });
+          setLoading(false);
+          localStorage.setItem("token", res.data.accessToken);
+          setAuthorized(true);
+          axios.defaults.headers.common["Authorized"] = res.data.accessToken;
+        })
+        .catch((err) => {
+          setLoading(false);
+          let message = err.response ? err.response.data.message : err.message;
+          setStatus({ open: true, message: message, severity: "error" });
+        });
+    } else {
+      axios
+        .post("/auth/send-otp", { ...formData })
+        .then((res) => {
+          setSentData(formData);
+          setLoading(false);
+          setRequireOtp(true);
+          setStatus({
+            open: true,
+            message: res.data.message,
+            severity: "success",
+          });
+        })
+        .catch((err) => {
+          setLoading(false);
+          let message = err.response ? err.response.data.message : err.message;
+          setStatus({ open: true, message: message, severity: "error" });
+        });
+    }
+  };
+
+  const handlePreferredMethodChange = (method) => {
+    setPreferredMethod(method);
+  };
 
   return (
     <main>
@@ -37,24 +103,67 @@ export default function Activate() {
               textAlign="center"
               fontSize="20px"
             >
-              We will send you a <b>One Time Password</b> on your email address
+              We will send you a <b>One Time Password</b> to your email address
             </Typography>
             <Box
               component="form"
-              // onSubmit={handleSubmit}
+              onSubmit={handleFormSubmit}
+              onChange={handleFormChange}
               noValidate
               sx={{ mt: 1 }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
+              {requireOtp ? (
+                <TextField />
+              ) : (
+                <>
+                  {preferredMethod === "phone" ? (
+                    <MuiPhoneNumber
+                      disableAreaCodes
+                      fullWidth
+                      type="text"
+                      label="Phone number"
+                      name="phone"
+                      variant="outlined"
+                      defaultCountry={"us"}
+                      autoFormat
+                      InputProps={{
+                        endAdorment: (
+                          <IconButton
+                            aria-label="Email"
+                            color="secondary"
+                            onClick={() => handlePreferredMethodChange("email")}
+                          >
+                            <Email />
+                          </IconButton>
+                        ),
+                      }}
+                    />
+                  ) : (
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      autoFocus
+                      InputLabelProps={{ shrink: true }}
+                      InputProps={{
+                        endAdornment: (
+                          <IconButton
+                            aria-label="Phone"
+                            color="secondary"
+                            onClick={() => handlePreferredMethodChange("phone")}
+                          >
+                            <Phone />
+                          </IconButton>
+                        ),
+                      }}
+                    />
+                  )}
+                </>
+              )}
 
               <Button
                 type="submit"
