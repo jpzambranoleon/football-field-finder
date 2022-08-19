@@ -16,9 +16,9 @@ import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
 import Settings from "./pages/Settings/Settings";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Authorization/Login";
-import Register from "./pages/Authorization/Register";
-import Setup from "./pages/Authorization/Setup";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
+import Setup from "./pages/Auth/Setup";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
