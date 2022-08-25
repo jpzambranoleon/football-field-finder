@@ -39,7 +39,9 @@ const Navbar = () => {
 
   const onContextMenuClick = (action) => {
     setAnchorElUser(null);
-    if (action.toLowerCase() === "logout") {
+    if (action.toLowerCase() === "profile") {
+      console.log("profile");
+    } else if (action.toLowerCase() === "logout") {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.reload();
@@ -69,24 +71,29 @@ const Navbar = () => {
             <Typography color="primary" variant="h5" noWrap>
               Team Finder
             </Typography>
-          </Box>
-          <Box>
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ ml: 2, display: { xs: "none", sm: "block" } }}>
               <Button component={Link} to="/">
                 Home
               </Button>
               <Button component={Link} to="/about">
                 About
               </Button>
+            </Box>
+          </Box>
+          <Box>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <Button
                 component={Link}
                 to={authorized ? `/${authorizedUser.username}` : "/login"}
               >
-                {authorized ? "Profile" : "Login"}
+                {authorized ? null : "Login"}
               </Button>
               {!authorized ? null : (
                 <IconButton sx={{ ml: 2, p: 0 }} onClick={handleOpenUserMenu}>
-                  <Avatar src={PF + "person/" + authorizedUser.profilePic} />
+                  <Avatar
+                    sx={{ height: 35, width: 35 }}
+                    src={PF + "person/" + authorizedUser.profilePic}
+                  />
                 </IconButton>
               )}
               <Menu
@@ -105,6 +112,13 @@ const Navbar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <MenuItem
+                  component={Link}
+                  to={`/${authorizedUser.username}`}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
                 {settings.map((setting) => (
                   <MenuItem
                     key={setting}
