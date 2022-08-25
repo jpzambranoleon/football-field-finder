@@ -14,6 +14,8 @@ import { useState } from "react";
 import Otp from "../../components/Otp";
 import { InfoContext } from "../../utils/InfoProvider";
 import MuiPhoneNumber from "mui-phone-number";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export default function Activate() {
   const [requireOtp, setRequireOtp] = useState(false);
@@ -118,14 +120,6 @@ export default function Activate() {
                 <>
                   {preferredMethod === "phone" ? (
                     <MuiPhoneNumber
-                      disableAreaCodes
-                      fullWidth
-                      type="text"
-                      label="Phone number"
-                      name="phone"
-                      variant="outlined"
-                      defaultCountry={"us"}
-                      autoFormat
                       InputProps={{
                         endAdorment: (
                           <IconButton
