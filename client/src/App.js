@@ -45,11 +45,11 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/register/activate" element={<Activate />} />
+              <Route path="/:username" element={<Profile />} />
               {authorized ? (
                 <>
                   <Route path="/setup" element={<Setup />} />
                   <Route path="/post/create" element={<CreatePost />} />
-                  <Route path="/:username" element={<Profile />} />
                   <Route
                     path="/settings"
                     element={<Navigate to="/settings/profile" />}
