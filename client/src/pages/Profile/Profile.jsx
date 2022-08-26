@@ -76,7 +76,11 @@ export default function Profile() {
                   indicatorColor="secondary"
                   aria-label="basic tabs example"
                 >
-                  <Tab value="one" label="My Posts" />
+                  <Tab
+                    value="one"
+                    label="Posts"
+                    sx={{ textTransform: "none" }}
+                  />
                 </Tabs>
               </Box>
               <TabPanel>
