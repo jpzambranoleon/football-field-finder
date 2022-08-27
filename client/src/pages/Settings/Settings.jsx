@@ -102,7 +102,7 @@ export default function Settings() {
                   <PublicProfile user={authorizedUser} />
                 </TabPanel>
                 <TabPanel value={selectedTab} index={1}>
-                  <Account />
+                  <Account user={authorizedUser} />
                 </TabPanel>
               </Grid>
             </Grid>
