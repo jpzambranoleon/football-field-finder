@@ -60,7 +60,6 @@ export default function Home() {
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
-        <FeedFilter />
         <Feed />
       </Container>
     </main>
