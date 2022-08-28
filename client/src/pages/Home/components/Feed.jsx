@@ -1,4 +1,17 @@
-import { Box, Grid, Pagination } from "@mui/material";
+import { Directions } from "@mui/icons-material";
+import {
+  Box,
+  Checkbox,
+  Divider,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  IconButton,
+  InputBase,
+  Pagination,
+  Paper,
+} from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Post from "../../../components/Post";
@@ -9,6 +22,10 @@ const Feed = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [filterData, setFilterData] = useState({
     page: 1,
+    team: true,
+    trainer: true,
+    player: true,
+    name: "",
   });
   const { setStatus } = useContext(InfoContext);
 
@@ -26,32 +43,110 @@ const Feed = () => {
   }, [filterData, setStatus]);
 
   return (
-    <Box>
-      <Grid container spacing={2}>
-        {posts.map((p) => (
-          <Post key={p._id} post={p} />
-        ))}
-      </Grid>
-      <Box
+    <>
+      <Paper
+        component="form"
+        id="filter"
         sx={{
-          justifyContent: "center",
-          display: "flex",
-          mt: 2,
+          p: "2px 4px",
+          display: { xs: "block", md: "flex" },
+          alignItems: "center",
+          mb: 5,
         }}
       >
-        <Pagination
-          count={totalPages}
-          onChange={(_, page) => {
-            setFilterData((prevState) => ({
-              ...prevState,
-              page: page,
-            }));
+        <FormControl component="fieldset" sx={{ ml: 1 }}>
+          <FormGroup aria-label="position" row>
+            <FormControlLabel
+              value="end"
+              control={
+                <Checkbox
+                  checked={filterData.team}
+                  onChange={(e) => {
+                    setFilterData({ ...filterData, team: e.target.checked });
+                  }}
+                  color="primary"
+                />
+              }
+              label="Team"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              value="end"
+              control={
+                <Checkbox
+                  checked={filterData.trainer}
+                  onChange={(e) => {
+                    setFilterData({ ...filterData, trainer: e.target.checked });
+                  }}
+                  color="primary"
+                />
+              }
+              label="Trainer"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              value="end"
+              control={
+                <Checkbox
+                  checked={filterData.player}
+                  onChange={(e) => {
+                    setFilterData({ ...filterData, player: e.target.checked });
+                  }}
+                  color="primary"
+                />
+              }
+              label="Player"
+              labelPlacement="end"
+            />
+          </FormGroup>
+        </FormControl>
+        <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search"
+            onChange={(e) => {
+              setFilterData({ ...filterData, name: e.target.value });
+            }}
+            inputProps={{ "aria-label": "search" }}
+          />
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton
+            type="submit"
+            color="primary"
+            sx={{ p: "10px" }}
+            aria-label="directions"
+          >
+            <Directions color="primary" />
+          </IconButton>
+        </Box>
+      </Paper>
+      <Box>
+        <Grid container spacing={2}>
+          {posts.map((p) => (
+            <Post key={p._id} post={p} />
+          ))}
+        </Grid>
+        <Box
+          sx={{
+            justifyContent: "center",
+            display: "flex",
+            mt: 2,
           }}
-          variant="outlined"
-          color="primary"
-        />
+        >
+          <Pagination
+            count={totalPages}
+            onChange={(_, page) => {
+              setFilterData((prevState) => ({
+                ...prevState,
+                page: page,
+              }));
+            }}
+            variant="outlined"
+            color="primary"
+          />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
