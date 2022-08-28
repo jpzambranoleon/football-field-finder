@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const { generateJwt } = require("../utility/generateJwt");
 const SendEmail = require("../utility/notification/sendEmail");
 const randomize = require("randomatic");
+const Post = require("../models/post.model");
 
 // REGISTER
 exports.register = async (req, res) => {
@@ -279,14 +280,89 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+// UPDATE USERNAME
+exports.updateUsername = async (req, res) => {
+  console.log(req.params.id);
+  if (req.body.userId === req.params.id) {
+    try {
+      if (!req.body.data.username) throw new Error("Username field is empty");
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        $set: req.body.data,
+      });
+      res.status(200).send({
+        success: true,
+        message: "Username has been updated",
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: true,
+        message: err.message,
+      });
+    }
+  } else {
+    return res.status(403).json("You can update only your account!");
+  }
+};
+
+// CHANGE PASSWORD
+exports.changePassword = async (req, res) => {
+  console.log(req.body);
+  if (req.body.userId === req.params.id) {
+    try {
+      if (!req.body.oldPassword) throw new Error("Password field is empty");
+      if (!req.body.newPassword) throw new Error("New password field is empty");
+      if (!req.body.data)
+        throw new Error("New password confirmed field is empty");
+      const user = await User.findById(req.params.id);
+      console.log(user.password);
+
+      if (req.body.newPassword === req.body.oldPassword)
+        throw new Error("New password cannot be the same as old password");
+
+      const validPassword = bcrypt.compareSync(
+        req.body.oldPassword,
+        user.password
+      );
+      if (!validPassword) throw new Error("Old password is incorrect");
+
+      if (req.body.newPassword !== req.body.data)
+        throw new Error("Passwords do not match");
+
+      const salt = await bcrypt.genSalt(10);
+      req.body.data = await bcrypt.hash(req.body.data, salt);
+
+      await User.findByIdAndUpdate(req.params.id, {
+        password: req.body.data,
+      });
+
+      res.status(200).send({
+        success: true,
+        message: "Password has been updated",
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: true,
+        message: err.message,
+      });
+    }
+  }
+};
+
 // DELETE USER
 exports.deleteUser = async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(req.params.id);
-      res.status(200).json("Account has been deleted");
+      await Post.findByIdAndDelete(req.params.id);
+      res.status(200).send({
+        success: true,
+        message: "Account has been successfully deleted",
+      });
     } catch (err) {
-      return res.status(500).json(err);
+      res.status(500).json({
+        error: true,
+        message: err.message,
+      });
     }
   } else {
     return res.status(403).json("You can delete only your account!");
