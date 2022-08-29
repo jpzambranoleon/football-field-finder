@@ -11,7 +11,6 @@ const StyledModal = styled(Modal)({
 });
 
 const CustomBox = styled(Box)({
-  display: "flex",
   alignItems: "center",
   gap: "10px",
   marginBottom: "20px",
@@ -72,6 +71,9 @@ const DeleteAccountButton = () => {
           <CustomBox>
             <Typography variant="h6" align="center">
               Are you sure you want to delete this account?
+            </Typography>
+            <Typography variant="body1" align="center" color="text.secondary">
+              Your account and all of your posts will be deleted
             </Typography>
           </CustomBox>
           <Stack spacing={2}>
