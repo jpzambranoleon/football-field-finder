@@ -212,7 +212,7 @@ const Account = () => {
         </Typography>
       </Box>
       <Typography variant="body1" color="text.secondary" gutterBottom>
-        Once you delete your account, there is no goin back. Please be certain.
+        Once you delete your account, there is no going back. Please be certain.
       </Typography>
       <DeleteAccountButton />
     </>
