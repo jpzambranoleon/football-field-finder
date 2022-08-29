@@ -44,11 +44,11 @@ function App() {
               <Route path="/post/view/:postId" element={<ViewPost />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/setup" element={<Setup />} />
               <Route path="/register/activate" element={<Activate />} />
               <Route path="/:username" element={<Profile />} />
               {authorized ? (
                 <>
-                  <Route path="/setup" element={<Setup />} />
                   <Route path="/post/create" element={<CreatePost />} />
                   <Route
                     path="/settings"
