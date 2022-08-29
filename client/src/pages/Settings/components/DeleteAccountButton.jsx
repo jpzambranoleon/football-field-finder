@@ -76,7 +76,7 @@ const DeleteAccountButton = () => {
               Your account and all of your posts will be deleted
             </Typography>
           </CustomBox>
-          <Stack spacing={2}>
+          <Stack spacing={2} direction="row">
             <Button
               onClick={handleOnDelete}
               variant="contained"
