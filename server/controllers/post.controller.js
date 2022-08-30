@@ -5,6 +5,7 @@ const User = require("../models/user.model");
 exports.submitPost = async (req, res) => {
   try {
     let commonPostInfo = {
+      author: req.body.author,
       userId: req.body.userId,
       types: req.body.types,
       title: req.body.title,
