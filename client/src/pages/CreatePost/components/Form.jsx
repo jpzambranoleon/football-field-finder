@@ -19,14 +19,16 @@ const Form = () => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
   const navigate = useNavigate();
 
+  console.log(authorizedUser.username);
+
   const [formData, setFormData] = useState({
     types: {
       team: true,
       player: false,
       trainer: false,
     },
-    userId: `${authorizedUser._id}`,
-    author: `${authorizedUser.username}`,
+    userId: "",
+    author: "",
     title: "",
     state: "",
     city: "",
@@ -35,9 +37,15 @@ const Form = () => {
     email: "",
   });
 
+  console.log(formData.author);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    formData.userId = `${authorizedUser._id}`;
+    formData.author = `${authorizedUser.username}`;
+
+    console.log(formData);
     axios
       .post("/posts/submit", formData)
       .then((res) => {
