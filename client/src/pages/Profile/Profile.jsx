@@ -1,4 +1,12 @@
-import { Box, Container, Grid, Pagination, Tab, Tabs } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Pagination,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -59,6 +67,8 @@ export default function Profile() {
     setValue(newValue);
   };
 
+  console.log(posts);
+
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 4, pb: 6 }}>
@@ -84,30 +94,38 @@ export default function Profile() {
                 </Tabs>
               </Box>
               <TabPanel>
-                <Grid container spacing={2}>
-                  {posts.map((p) => (
-                    <Post key={p._id} post={p} />
-                  ))}
-                </Grid>
-                <Box
-                  sx={{
-                    justifyContent: "center",
-                    display: "flex",
-                    mt: 2,
-                  }}
-                >
-                  <Pagination
-                    count={totalPages}
-                    onChange={(_, page) => {
-                      setFilterData((prevState) => ({
-                        ...prevState,
-                        page: page,
-                      }));
-                    }}
-                    variant="outlined"
-                    color="primary"
-                  />
-                </Box>
+                {posts.length === 0 ? (
+                  <Box>
+                    <Typography>No Posts</Typography>
+                  </Box>
+                ) : (
+                  <>
+                    <Grid container spacing={2}>
+                      {posts.map((p) => (
+                        <Post key={p._id} post={p} />
+                      ))}
+                    </Grid>
+                    <Box
+                      sx={{
+                        justifyContent: "center",
+                        display: "flex",
+                        mt: 2,
+                      }}
+                    >
+                      <Pagination
+                        count={totalPages}
+                        onChange={(_, page) => {
+                          setFilterData((prevState) => ({
+                            ...prevState,
+                            page: page,
+                          }));
+                        }}
+                        variant="outlined"
+                        color="primary"
+                      />
+                    </Box>
+                  </>
+                )}
               </TabPanel>
             </Grid>
           </Grid>
