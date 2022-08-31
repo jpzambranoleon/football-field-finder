@@ -350,10 +350,12 @@ exports.changePassword = async (req, res) => {
 
 // DELETE USER
 exports.deleteUser = async (req, res) => {
-  if (req.body.userId === req.params.id || req.body.isAdmin) {
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+  if (user._id.toString() === userId || req.body.isAdmin) {
     try {
-      await User.findByIdAndDelete(req.params.id);
-      await Post.findByIdAndDelete(req.params.id);
+      await User.findByIdAndDelete(userId);
+      await Post.findByIdAndDelete(userId);
       res.status(200).send({
         success: true,
         message: "Account has been successfully deleted",
