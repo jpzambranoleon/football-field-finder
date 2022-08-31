@@ -355,7 +355,6 @@ exports.deleteUser = async (req, res) => {
   if (user._id.toString() === userId || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(userId);
-      await Post.findByIdAndDelete(userId);
       res.status(200).send({
         success: true,
         message: "Account has been successfully deleted",
