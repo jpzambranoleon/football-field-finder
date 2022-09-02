@@ -1,23 +1,41 @@
+import * as React from "react";
 import { LocationOnOutlined, MailOutlineOutlined } from "@mui/icons-material";
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { useContext } from "react";
+import { Avatar, Box, Button, Skeleton, Typography } from "@mui/material";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { InfoContext } from "../../../utils/InfoProvider";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
-const Bio = ({ user }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+const Bio = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
   const { authorizedUser } = useContext(InfoContext);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
+  const { username } = useParams();
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data);
+      setLoading(false);
+    };
+    fetchUser();
+  }, [username]);
 
   return (
     <Box>
       <Box sx={{ mb: 2 }}>
-        <Avatar
-          src={PF + "person/" + user.profilePic}
-          sx={{ width: 270, height: 270 }}
-        />
+        {loading ? (
+          <Skeleton variant="circular" width={270} height={270} />
+        ) : (
+          <Avatar src={PF + user.profilePic} sx={{ width: 270, height: 270 }} />
+        )}
       </Box>
       <Typography variant="h1" fontSize="22px" fontWeight={600}>
-        {user.name}
+        {loading ? <Skeleton /> : user.name}
       </Typography>
       <Typography
         variant="body1"
@@ -25,7 +43,7 @@ const Bio = ({ user }) => {
         color="text.secondary"
         sx={{ mb: 2 }}
       >
-        {user.username}
+        {loading ? <Skeleton /> : user.username}
       </Typography>
       <Typography sx={{ mb: 2 }}>{user.bio}</Typography>
       {authorizedUser._id === user._id ? (
@@ -39,7 +57,13 @@ const Bio = ({ user }) => {
           Edit Profile
         </Button>
       ) : (
-        <Button fullWidth color="primary" variant="outlined">
+        <Button
+          disabled
+          fullWidth
+          color="primary"
+          variant="outlined"
+          sx={{ textTransform: "none" }}
+        >
           Follow
         </Button>
       )}
@@ -51,11 +75,7 @@ const Bio = ({ user }) => {
             mt: 2,
           }}
         >
-          <LocationOnOutlined
-            color="primary"
-            fontSize="small"
-            sx={{ mr: 1, ml: -0.5 }}
-          />
+          <LocationOnOutlined color="primary" fontSize="small" sx={{ mr: 1 }} />
           <Typography variant="body2">{user.location}</Typography>
         </Box>
       )}
@@ -64,7 +84,7 @@ const Bio = ({ user }) => {
           <MailOutlineOutlined
             color="primary"
             fontSize="small"
-            sx={{ mr: 1, ml: -0.5 }}
+            sx={{ mr: 1 }}
           />
           <Typography variant="body2">{user.email}</Typography>
         </Box>
