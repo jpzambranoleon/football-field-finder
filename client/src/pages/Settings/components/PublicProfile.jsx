@@ -7,7 +7,7 @@ import {
   IconButton,
   TextField,
 } from "@mui/material";
-import { AddPhotoAlternate } from "@mui/icons-material";
+import { AddPhotoAlternate, Cancel } from "@mui/icons-material";
 import { InfoContext } from "../../../utils/InfoProvider";
 import { useContext } from "react";
 import axios from "axios";
@@ -167,6 +167,15 @@ const PublicProfile = ({ user }) => {
                 />
                 <AddPhotoAlternate fontSize="large" />
               </IconButton>
+              {file === null ? null : (
+                <IconButton
+                  onClick={() => setFile(null)}
+                  color="error"
+                  sx={{ bottom: 200, left: 95 }}
+                >
+                  <Cancel fontSize="large" />
+                </IconButton>
+              )}
             </Box>
           </Box>
         </Grid>
