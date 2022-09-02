@@ -2,7 +2,6 @@ import { Logout } from "@mui/icons-material";
 import {
   Avatar,
   Box,
-  CardHeader,
   ClickAwayListener,
   Drawer,
   IconButton,
@@ -10,15 +9,20 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Skeleton,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { InfoContext } from "../utils/InfoProvider";
 
 const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
-  const { authorized, authorizedUser } = useContext(InfoContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { authorized } = useContext(InfoContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
+  const userId = localStorage.getItem("user");
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
 
   const handleDrawerClose = () => {
     setOpenDrawer(false);
@@ -29,6 +33,16 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
     localStorage.removeItem("user");
     window.location.reload();
   };
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${userId}`);
+      setUser(res.data);
+      setLoading(false);
+    };
+    fetchUser();
+  }, [userId]);
 
   return (
     <Drawer anchor="left" open={openDrawer} sx={{ display: { sm: "none" } }}>
@@ -71,7 +85,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
               <ListItemButton
                 onClick={handleDrawerClose}
                 component={Link}
-                to={authorized ? `/${authorizedUser.username}` : "/login"}
+                to={authorized ? `/${user.username}` : "/login"}
               >
                 <ListItemText>
                   <Typography>{authorized ? "Profile" : "Login"}</Typography>
@@ -87,18 +101,37 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                 width: "100%",
               }}
             >
-              <CardHeader
-                avatar={
-                  <Avatar src={PF + "person/" + authorizedUser.profilePic} />
-                }
-                action={
-                  <IconButton color="primary" onClick={handleLogout}>
-                    <Logout />
-                  </IconButton>
-                }
-                title={authorizedUser.name}
-                subheader={authorizedUser.username}
-              />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <Box sx={{ ml: 1 }}>
+                    {loading ? (
+                      <Skeleton variant="circular" width={30} height={30} />
+                    ) : (
+                      <Avatar
+                        sx={{ width: 30, height: 30 }}
+                        src={PF + user.profilePic}
+                      />
+                    )}
+                  </Box>
+                  <Box sx={{ ml: 2 }}>
+                    <Typography variant="body1" fontSize={12} fontWeight={600}>
+                      Jean-Paul Zambrano-Leon
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {user.username}
+                    </Typography>
+                  </Box>
+                </Box>
+                <IconButton color="primary" onClick={handleLogout}>
+                  <Logout />
+                </IconButton>
+              </Box>
             </Box>
           )}
         </Box>
