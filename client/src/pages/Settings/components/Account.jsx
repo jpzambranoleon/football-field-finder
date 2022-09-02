@@ -65,24 +65,6 @@ const Account = () => {
       });
   };
 
-  const deleteAccount = (event) => {
-    event.preventDefault();
-    axios
-      .delete(`/users/delete/${authorizedUser._id}`, {
-        userId: authorizedUser._id,
-      })
-      .then((res) => {
-        setStatus({
-          open: true,
-          message: res.data.message,
-          severity: "success",
-        }).catch((err) => {
-          let message = err.response ? err.response.data.message : err.message;
-          setStatus({ open: true, message: message, severity: "error" });
-        });
-      });
-  };
-
   return (
     <>
       <Box
