@@ -30,9 +30,9 @@ export default function Register() {
           message: res.data.message,
           severity: "success",
         });
-        setAuthorized(true);
-        localStorage.setItem("token", res.data.accessToken);
-        axios.defaults.headers.common["Authorization"] = res.data.accessToken;
+        // setAuthorized(true);
+        // localStorage.setItem("token", res.data.accessToken);
+        // axios.defaults.headers.common["Authorization"] = res.data.accessToken;
 
         navigate("/login");
       })
