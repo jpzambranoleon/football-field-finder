@@ -18,10 +18,10 @@ const PublicProfile = ({ user }) => {
   const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
   const [formData, setFormData] = useState({
-    name: "",
-    publicEmail: "",
-    bio: "",
-    location: "",
+    name: authorizedUser.name,
+    publicEmail: authorizedUser.publicEmail,
+    bio: authorizedUser.bio,
+    location: authorizedUser.location,
   });
 
   const handleSubmit = (event) => {
@@ -91,7 +91,7 @@ const PublicProfile = ({ user }) => {
               Public Email
             </Typography>
             <TextField
-              defaultValue={authorizedUser.email}
+              defaultValue={authorizedUser.publicEmail}
               id="email"
               onChange={(e) =>
                 setFormData((prev) => ({
