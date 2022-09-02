@@ -48,6 +48,7 @@ const PublicProfile = ({ user }) => {
           message: res.data.message,
           severity: "success",
         });
+        window.location.reload();
       })
       .catch((err) => {
         let message = err.response ? err.response.data.message : err.message;
