@@ -139,7 +139,7 @@ const Account = () => {
       </Button>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
         <Typography variant="h5" gutterBottom>
-          Change password
+          Update password
         </Typography>
       </Box>
       <Grid container>
@@ -204,7 +204,7 @@ const Account = () => {
         onClick={handleChangePasswordSubmit}
         sx={{ textTransform: "none", mb: 5 }}
       >
-        Change password
+        Update password
       </Button>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
         <Typography variant="h5" gutterBottom color="error">
