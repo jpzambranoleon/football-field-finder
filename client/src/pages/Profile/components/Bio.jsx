@@ -92,14 +92,14 @@ const Bio = () => {
           <Typography variant="body2">{user.location}</Typography>
         </Box>
       )}
-      {!user.email ? null : (
+      {!user.publicEmail ? null : (
         <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
           <MailOutlineOutlined
             color="primary"
             fontSize="small"
             sx={{ mr: 1 }}
           />
-          <Typography variant="body2">{user.email}</Typography>
+          <Typography variant="body2">{user.publicEmail}</Typography>
         </Box>
       )}
     </Box>
