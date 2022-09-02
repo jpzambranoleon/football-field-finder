@@ -29,9 +29,21 @@ const Bio = () => {
     <Box>
       <Box sx={{ mb: 2 }}>
         {loading ? (
-          <Skeleton variant="circular" width={270} height={270} />
+          <Skeleton
+            variant="circular"
+            sx={{
+              width: { sm: 180, xs: 270, lg: 270 },
+              height: { sm: 180, xs: 270, lg: 270 },
+            }}
+          />
         ) : (
-          <Avatar src={PF + user.profilePic} sx={{ width: 270, height: 270 }} />
+          <Avatar
+            src={PF + user.profilePic}
+            sx={{
+              width: { sm: 170, xs: 270, lg: 270 },
+              height: { sm: 170, xs: 270, lg: 270 },
+            }}
+          />
         )}
       </Box>
       <Typography variant="h1" fontSize="22px" fontWeight={600}>
