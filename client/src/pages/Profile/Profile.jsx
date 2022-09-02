@@ -1,4 +1,6 @@
+import { Laptop } from "@mui/icons-material";
 import {
+  Avatar,
   Box,
   Container,
   Grid,
@@ -7,6 +9,7 @@ import {
   Tabs,
   Typography,
 } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -97,6 +100,11 @@ export default function Profile() {
                 {posts.length === 0 ? (
                   <Box>
                     <Typography>No Posts</Typography>
+                    <Avatar
+                      sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[50] }}
+                    >
+                      <Laptop color="primary" />
+                    </Avatar>
                   </Box>
                 ) : (
                   <>
