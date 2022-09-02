@@ -18,7 +18,7 @@ const CustomBox = styled(Box)({
 
 const DeleteAccountButton = () => {
   const [open, setOpen] = useState(false);
-  const { setStatus, setAuthorized, authorizedUser } = useContext(InfoContext);
+  const { setStatus, authorizedUser } = useContext(InfoContext);
   const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -33,8 +33,10 @@ const DeleteAccountButton = () => {
           message: res.data.message,
           severity: "success",
         });
-        setAuthorized(false);
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         setStatus({
