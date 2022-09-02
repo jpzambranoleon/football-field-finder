@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { InfoContext } from "../../utils/InfoProvider";
 
 export default function Register() {
-  const { setStatus, setAuthorized } = useContext(InfoContext);
+  const { setStatus } = useContext(InfoContext);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
