@@ -7,10 +7,12 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Skeleton,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import axios from "axios";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { InfoContext } from "../utils/InfoProvider";
@@ -20,8 +22,11 @@ const settings = ["Logout"];
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { authorized, authorizedUser } = useContext(InfoContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { authorized } = useContext(InfoContext);
+  const userId = localStorage.getItem("user");
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -47,6 +52,16 @@ const Navbar = () => {
       window.location.reload();
     }
   };
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${userId}`);
+      setUser(res.data);
+      setLoading(false);
+    };
+    fetchUser();
+  }, [userId]);
 
   return (
     <>
@@ -82,18 +97,20 @@ const Navbar = () => {
           </Box>
           <Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <Button
-                component={Link}
-                to={authorized ? `/${authorizedUser.username}` : "/login"}
-              >
-                {authorized ? null : "Login"}
-              </Button>
-              {!authorized ? null : (
+              {!authorized ? (
+                <Button component={Link} to={"/login"}>
+                  Login
+                </Button>
+              ) : (
                 <IconButton sx={{ ml: 2, p: 0 }} onClick={handleOpenUserMenu}>
-                  <Avatar
-                    sx={{ height: 35, width: 35 }}
-                    src={PF + "person/" + authorizedUser.profilePic}
-                  />
+                  {loading ? (
+                    <Skeleton variant="circular" width={35} height={35} />
+                  ) : (
+                    <Avatar
+                      sx={{ height: 35, width: 35 }}
+                      src={PF + user.profilePic}
+                    />
+                  )}
                 </IconButton>
               )}
               <Menu
@@ -114,7 +131,7 @@ const Navbar = () => {
               >
                 <MenuItem
                   component={Link}
-                  to={`/${authorizedUser.username}`}
+                  to={`/${user.username}`}
                   onClick={handleCloseUserMenu}
                 >
                   <Typography textAlign="center">Profile</Typography>
