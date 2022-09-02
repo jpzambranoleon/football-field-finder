@@ -106,7 +106,15 @@ export default function Profile() {
                 {posts.length === 0 ? (
                   <>
                     {loading ? (
-                      <CircularProgress />
+                      <Box
+                        sx={{
+                          mt: { sm: 15, xs: "none" },
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <CircularProgress size="140px" />
+                      </Box>
                     ) : (
                       <Box sx={{ mt: { sm: 10, xs: "none" } }}>
                         <Typography variant="h4" align="center" gutterBottom>
