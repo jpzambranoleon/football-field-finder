@@ -1,7 +1,8 @@
-import { Laptop } from "@mui/icons-material";
+import { AddBox, Laptop, LibraryAdd } from "@mui/icons-material";
 import {
   Avatar,
   Box,
+  CircularProgress,
   Container,
   Grid,
   Pagination,
@@ -36,6 +37,7 @@ function TabPanel(props) {
 export default function Profile() {
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(1);
   const [filterData, setFilterData] = useState({
     page: 1,
@@ -72,6 +74,10 @@ export default function Profile() {
 
   console.log(posts);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, [3000]);
+
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 4, pb: 6 }}>
@@ -98,14 +104,39 @@ export default function Profile() {
               </Box>
               <TabPanel>
                 {posts.length === 0 ? (
-                  <Box>
-                    <Typography>No Posts</Typography>
-                    <Avatar
-                      sx={{ width: 60, height: 60, mb: 2, bgcolor: blue[50] }}
-                    >
-                      <Laptop color="primary" />
-                    </Avatar>
-                  </Box>
+                  <>
+                    {loading ? (
+                      <CircularProgress />
+                    ) : (
+                      <Box sx={{ mt: { sm: 10, xs: "none" } }}>
+                        <Typography variant="h4" align="center" gutterBottom>
+                          Wow, such empty!
+                        </Typography>
+                        <Box sx={{ display: "flex", justifyContent: "center" }}>
+                          <Avatar
+                            sx={{
+                              width: 150,
+                              height: 150,
+                              bgcolor: blue[50],
+                              mb: 2,
+                            }}
+                          >
+                            <LibraryAdd
+                              color="primary"
+                              sx={{ width: 50, height: 50 }}
+                            />
+                          </Avatar>
+                        </Box>
+                        <Typography
+                          align="center"
+                          variant="h6"
+                          color="text.secondary"
+                        >
+                          Create a post to see it appear in your post feed
+                        </Typography>
+                      </Box>
+                    )}
+                  </>
                 ) : (
                   <>
                     <Grid container spacing={2}>
