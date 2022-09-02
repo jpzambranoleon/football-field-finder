@@ -53,6 +53,7 @@ const Bio = () => {
           fullWidth
           color="primary"
           variant="outlined"
+          sx={{ textTransform: "none" }}
         >
           Edit Profile
         </Button>
