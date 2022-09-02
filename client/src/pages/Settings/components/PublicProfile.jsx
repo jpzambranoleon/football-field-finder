@@ -18,10 +18,10 @@ const PublicProfile = ({ user }) => {
   const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
   const [formData, setFormData] = useState({
-    name: `${user.name}`,
-    email: `${user.email}`,
-    bio: `${user.bio}`,
-    location: `${user.location}`,
+    name: "",
+    publicEmail: "",
+    bio: "",
+    location: "",
   });
 
   const handleSubmit = (event) => {
@@ -94,7 +94,10 @@ const PublicProfile = ({ user }) => {
               defaultValue={authorizedUser.email}
               id="email"
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, email: e.target.value }))
+                setFormData((prev) => ({
+                  ...prev,
+                  publicEmail: e.target.value,
+                }))
               }
               fullWidth
               multiline
