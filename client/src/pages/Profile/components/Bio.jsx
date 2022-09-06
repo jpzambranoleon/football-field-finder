@@ -80,27 +80,49 @@ const Bio = () => {
           Follow
         </Button>
       )}
-      {!user.location ? null : (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            mt: 2,
-          }}
-        >
-          <LocationOnOutlined color="primary" fontSize="small" sx={{ mr: 1 }} />
-          <Typography variant="body2">{user.location}</Typography>
-        </Box>
+      {loading ? (
+        <Skeleton sx={{ mt: 2 }} />
+      ) : (
+        <>
+          {" "}
+          {!user.location ? null : (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                mt: 2,
+              }}
+            >
+              <LocationOnOutlined
+                color="primary"
+                fontSize="small"
+                sx={{ mr: 1 }}
+              />
+              <Typography variant="body2">
+                {loading ? <Skeleton /> : user.location}
+              </Typography>
+            </Box>
+          )}
+        </>
       )}
-      {!user.publicEmail ? null : (
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <MailOutlineOutlined
-            color="primary"
-            fontSize="small"
-            sx={{ mr: 1 }}
-          />
-          <Typography variant="body2">{user.publicEmail}</Typography>
-        </Box>
+      {loading ? (
+        <Skeleton />
+      ) : (
+        <>
+          {" "}
+          {!user.publicEmail ? null : (
+            <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+              <MailOutlineOutlined
+                color="primary"
+                fontSize="small"
+                sx={{ mr: 1 }}
+              />
+              <Typography variant="body2">
+                {loading ? <Skeleton /> : user.publicEmail}
+              </Typography>
+            </Box>
+          )}
+        </>
       )}
     </Box>
   );
