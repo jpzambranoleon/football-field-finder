@@ -18,23 +18,14 @@ exports.register = async (req, res) => {
     if (req.body.password.length < 6)
       throw new Error("Password must be at least 6 characters long");
 
-    const activeUsername = await User.findOne({ username: req.body.username });
-    const activeEmail = await User.findOne({ email: req.body.email });
-
-    if (req.body.username === activeUsername.username)
-      throw new Error(
-        "Username is not available please choose a different username"
-      );
-
-    if (req.body.email === activeEmail.email)
-      throw new Error("An account with this email already exists");
-
     // generate hashed password
     const hash = await User.hashPassword(req.body.password);
     req.body.password = hash;
 
     // create new user
     const newUser = new User(req.body);
+
+    console.log(newUser);
 
     const { error, token } = await generateJwt(newUser.username, newUser._id);
     if (error)
