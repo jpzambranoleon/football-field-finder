@@ -67,7 +67,7 @@ const Bio = () => {
           variant="outlined"
           sx={{ textTransform: "none" }}
         >
-          Edit Profile
+          Edit profile
         </Button>
       ) : (
         <Button
