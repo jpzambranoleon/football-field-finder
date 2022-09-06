@@ -1,6 +1,13 @@
 import * as React from "react";
 import { LocationOnOutlined, MailOutlineOutlined } from "@mui/icons-material";
-import { Avatar, Box, Button, Skeleton, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  CircularProgress,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { InfoContext } from "../../../utils/InfoProvider";
@@ -12,6 +19,7 @@ const Bio = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
   const { authorizedUser } = useContext(InfoContext);
   const [loading, setLoading] = useState(true);
+  const [loadButton, setLoadButton] = useState(true);
   const [user, setUser] = useState({});
   const { username } = useParams();
 
@@ -24,6 +32,10 @@ const Bio = () => {
     };
     fetchUser();
   }, [username]);
+
+  setTimeout(() => {
+    setLoadButton(false);
+  }, [3000]);
 
   return (
     <Box>
@@ -59,26 +71,43 @@ const Bio = () => {
       </Typography>
       <Typography sx={{ mb: 2 }}>{user.bio}</Typography>
       {authorizedUser._id === user._id ? (
-        <Button
-          component={Link}
-          to="/settings/profile"
-          fullWidth
-          color="primary"
-          variant="outlined"
-          sx={{ textTransform: "none" }}
-        >
-          Edit profile
-        </Button>
+        <>
+          {loadButton ? (
+            <Button disabled fullWidth color="primary" variant="outlined">
+              <CircularProgress size="25px" />
+            </Button>
+          ) : (
+            <Button
+              component={Link}
+              to="/settings/profile"
+              fullWidth
+              color="primary"
+              variant="outlined"
+              sx={{ textTransform: "none" }}
+            >
+              Edit profile
+            </Button>
+          )}
+        </>
       ) : (
-        <Button
-          disabled
-          fullWidth
-          color="primary"
-          variant="outlined"
-          sx={{ textTransform: "none" }}
-        >
-          Follow
-        </Button>
+        <>
+          {loadButton ? (
+            <Button disabled fullWidth color="primary" variant="outlined">
+              <CircularProgress size="25px" />
+            </Button>
+          ) : (
+            <Button
+              disabled
+              fullWidth
+              color="primary"
+              variant="outlined"
+              sx={{ textTransform: "none" }}
+            >
+              {" "}
+              Follow{" "}
+            </Button>
+          )}{" "}
+        </>
       )}
       {loading ? (
         <Skeleton sx={{ mt: 2 }} />
