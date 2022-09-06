@@ -58,7 +58,7 @@ const Feed = () => {
           p: "2px 4px",
           display: { xs: "block", md: "flex" },
           alignItems: "center",
-          mb: 5,
+          mb: 2,
         }}
       >
         <FormControl component="fieldset" sx={{ ml: 1 }}>
@@ -127,7 +127,8 @@ const Feed = () => {
           </IconButton>
         </Box>
       </Paper>
-      <Box>
+      <Divider />
+      <Box sx={{ mt: 2 }}>
         {posts.length === 0 ? (
           <>
             {loading ? (
