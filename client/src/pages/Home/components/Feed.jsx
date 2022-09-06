@@ -1,7 +1,9 @@
-import { Directions } from "@mui/icons-material";
+import { Directions, LibraryAdd } from "@mui/icons-material";
 import {
+  Avatar,
   Box,
   Checkbox,
+  CircularProgress,
   Divider,
   FormControl,
   FormControlLabel,
@@ -11,7 +13,9 @@ import {
   InputBase,
   Pagination,
   Paper,
+  Typography,
 } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Post from "../../../components/Post";
@@ -19,6 +23,7 @@ import { InfoContext } from "../../../utils/InfoProvider";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(1);
   const [filterData, setFilterData] = useState({
     page: 1,
@@ -30,11 +35,13 @@ const Feed = () => {
   const { setStatus } = useContext(InfoContext);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("/posts/get_all", { params: filterData })
       .then((res) => {
         setPosts(res.data.posts);
         setTotalPages(res.data.totalPages);
+        setLoading(false);
       })
       .catch((err) => {
         let message = err.response ? err.response.data.message : err.message;
@@ -121,30 +128,86 @@ const Feed = () => {
         </Box>
       </Paper>
       <Box>
-        <Grid container spacing={2}>
-          {posts.map((p) => (
-            <Post key={p._id} post={p} />
-          ))}
-        </Grid>
-        <Box
-          sx={{
-            justifyContent: "center",
-            display: "flex",
-            mt: 2,
-          }}
-        >
-          <Pagination
-            count={totalPages}
-            onChange={(_, page) => {
-              setFilterData((prevState) => ({
-                ...prevState,
-                page: page,
-              }));
-            }}
-            variant="outlined"
-            color="primary"
-          />
-        </Box>
+        {posts.length === 0 ? (
+          <>
+            {loading ? (
+              <Box
+                sx={{
+                  mt: { sm: 15, xs: "none" },
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <CircularProgress size="140px" />
+              </Box>
+            ) : (
+              <Box sx={{ mt: { sm: 10, xs: "none" } }}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Wow, such empty!
+                </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <Avatar
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      bgcolor: blue[50],
+                      mb: 2,
+                    }}
+                  >
+                    <LibraryAdd
+                      color="primary"
+                      sx={{ width: 50, height: 50 }}
+                    />
+                  </Avatar>
+                </Box>
+                <Typography align="center" variant="h6" color="text.secondary">
+                  Create a post to see it appear in your post feed
+                </Typography>
+              </Box>
+            )}
+          </>
+        ) : (
+          <>
+            {loading ? (
+              <Box
+                sx={{
+                  mt: { sm: 15, xs: "none" },
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <CircularProgress size="140px" />
+              </Box>
+            ) : (
+              <>
+                <Grid container spacing={2}>
+                  {posts.map((p) => (
+                    <Post key={p._id} post={p} />
+                  ))}
+                </Grid>
+                <Box
+                  sx={{
+                    justifyContent: "center",
+                    display: "flex",
+                    mt: 2,
+                  }}
+                >
+                  <Pagination
+                    count={totalPages}
+                    onChange={(_, page) => {
+                      setFilterData((prevState) => ({
+                        ...prevState,
+                        page: page,
+                      }));
+                    }}
+                    variant="outlined"
+                    color="primary"
+                  />
+                </Box>
+              </>
+            )}
+          </>
+        )}
       </Box>
     </>
   );
