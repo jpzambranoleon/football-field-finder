@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { InfoContext } from "../utils/InfoProvider";
 import TempDrawer from "./TempDrawer";
+import { useNavigate } from "react-router-dom";
 
 const settings = ["Logout"];
 
@@ -26,6 +27,7 @@ const Navbar = () => {
   const userId = localStorage.getItem("user");
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
 
   const handleDrawerOpen = () => {
@@ -49,6 +51,7 @@ const Navbar = () => {
     } else if (action.toLowerCase() === "logout") {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      navigate("/");
       window.location.reload();
     }
   };
