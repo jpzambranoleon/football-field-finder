@@ -47,11 +47,13 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true);
       axios
         .get("/posts/my_posts/" + username, { params: filterData })
         .then((res) => {
           setPosts(res.data.posts);
           setTotalPages(res.data.totalPages);
+          setLoading(false);
         })
         .catch((err) => {
           let message = err.response ? err.response.data.message : err.message;
@@ -73,10 +75,6 @@ export default function Profile() {
   };
 
   console.log(posts);
-
-  setTimeout(() => {
-    setLoading(false);
-  }, [3000]);
 
   return (
     <main>
@@ -147,30 +145,44 @@ export default function Profile() {
                   </>
                 ) : (
                   <>
-                    <Grid container spacing={2}>
-                      {posts.map((p) => (
-                        <Post key={p._id} post={p} />
-                      ))}
-                    </Grid>
-                    <Box
-                      sx={{
-                        justifyContent: "center",
-                        display: "flex",
-                        mt: 2,
-                      }}
-                    >
-                      <Pagination
-                        count={totalPages}
-                        onChange={(_, page) => {
-                          setFilterData((prevState) => ({
-                            ...prevState,
-                            page: page,
-                          }));
+                    {loading ? (
+                      <Box
+                        sx={{
+                          mt: { sm: 15, xs: "none" },
+                          display: "flex",
+                          justifyContent: "center",
                         }}
-                        variant="outlined"
-                        color="primary"
-                      />
-                    </Box>
+                      >
+                        <CircularProgress size="140px" />
+                      </Box>
+                    ) : (
+                      <>
+                        <Grid container spacing={2}>
+                          {posts.map((p) => (
+                            <Post key={p._id} post={p} />
+                          ))}
+                        </Grid>
+                        <Box
+                          sx={{
+                            justifyContent: "center",
+                            display: "flex",
+                            mt: 2,
+                          }}
+                        >
+                          <Pagination
+                            count={totalPages}
+                            onChange={(_, page) => {
+                              setFilterData((prevState) => ({
+                                ...prevState,
+                                page: page,
+                              }));
+                            }}
+                            variant="outlined"
+                            color="primary"
+                          />
+                        </Box>
+                      </>
+                    )}
                   </>
                 )}
               </TabPanel>
