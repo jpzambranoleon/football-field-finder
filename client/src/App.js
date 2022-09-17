@@ -21,6 +21,7 @@ import Register from "./pages/Auth/Register";
 import Setup from "./pages/Auth/Setup";
 import Activate from "./pages/Auth/Activate";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import Forgot from "./pages/Auth/Forgot";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
@@ -49,6 +50,7 @@ function App() {
                 <Route path="/setup" element={<Setup />} />
                 <Route path="/register/activate" element={<Activate />} />
                 <Route path="/:username" element={<Profile />} />
+                <Route path="/password/forgot" element={<Forgot />} />
                 {authorized ? (
                   <>
                     <Route path="/post/create" element={<CreatePost />} />
