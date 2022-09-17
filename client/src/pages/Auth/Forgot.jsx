@@ -1,11 +1,14 @@
 import { Box } from "@mui/material";
-import { useCallback } from "react";
+import axios from "axios";
+import { useCallback, useContext } from "react";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { InfoContext } from "../../utils/InfoProvider";
 
 export default function Forgot(props) {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const { setStatus } = useContext(InfoContext);
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleReCaptchaVerify = useCallback(async () => {
