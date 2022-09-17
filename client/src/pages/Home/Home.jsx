@@ -1,5 +1,4 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import FeedFilter from "./components/FeedFilter";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { InfoContext } from "../../utils/InfoProvider";
