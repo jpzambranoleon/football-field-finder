@@ -50,7 +50,7 @@ const Bio = () => {
           />
         ) : (
           <Avatar
-            src={PF + user.profilePic}
+            src={!user.profilePic ? "/broken-image.jpg" : PF + user.profilePic}
             sx={{
               width: { sm: 170, xs: 270, lg: 270 },
               height: { sm: 170, xs: 270, lg: 270 },
