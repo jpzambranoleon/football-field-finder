@@ -35,13 +35,15 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${userId}`);
-      setUser(res.data);
-      setLoading(false);
-    };
-    fetchUser();
+    if (authorized) {
+      setLoading(true);
+      const fetchUser = async () => {
+        const res = await axios.get(`/users?userId=${userId}`);
+        setUser(res.data);
+        setLoading(false);
+      };
+      fetchUser();
+    }
   }, [userId]);
 
   return (
@@ -121,7 +123,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                   </Box>
                   <Box sx={{ ml: 2 }}>
                     <Typography variant="body1" fontSize={12} fontWeight={600}>
-                      Jean-Paul Zambrano-Leon
+                      {user.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {user.username}

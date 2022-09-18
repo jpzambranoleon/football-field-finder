@@ -57,13 +57,15 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${userId}`);
-      setUser(res.data);
-      setLoading(false);
-    };
-    fetchUser();
+    if (authorized) {
+      setLoading(true);
+      const fetchUser = async () => {
+        const res = await axios.get(`/users?userId=${userId}`);
+        setUser(res.data);
+        setLoading(false);
+      };
+      fetchUser();
+    }
   }, [userId]);
 
   return (
