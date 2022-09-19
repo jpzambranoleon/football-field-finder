@@ -113,7 +113,11 @@ const Navbar = () => {
                   ) : (
                     <Avatar
                       sx={{ height: 35, width: 35 }}
-                      src={PF + user.profilePic}
+                      src={
+                        !user.profilePic
+                          ? "/broken-image.jpg"
+                          : PF + user.profilePic
+                      }
                     />
                   )}
                 </IconButton>

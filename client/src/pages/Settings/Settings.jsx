@@ -57,7 +57,11 @@ export default function Settings() {
         <Container>
           <Box sx={{ display: "flex" }}>
             <Avatar
-              src={PF + authorizedUser.profilePic}
+              src={
+                !authorizedUser.profilePic
+                  ? "/broken-image.jpg"
+                  : PF + authorizedUser.profilePic
+              }
               sx={{ width: 56, height: 56 }}
             />
             <Box sx={{ ml: 2 }}>

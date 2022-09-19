@@ -117,7 +117,11 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
                     ) : (
                       <Avatar
                         sx={{ width: 30, height: 30 }}
-                        src={PF + user.profilePic}
+                        src={
+                          !user.profilePic
+                            ? "/broken-image.jpg"
+                            : PF + user.profilePic
+                        }
                       />
                     )}
                   </Box>
