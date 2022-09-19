@@ -74,8 +74,6 @@ export default function Profile() {
     setValue(newValue);
   };
 
-  console.log(posts);
-
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 4, pb: 6 }}>
