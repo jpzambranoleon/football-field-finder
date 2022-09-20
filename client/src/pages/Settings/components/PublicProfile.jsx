@@ -150,7 +150,13 @@ const PublicProfile = ({ user }) => {
           </Typography>
           <Box>
             <Avatar
-              src={!file ? PF + user.profilePic : URL.createObjectURL(file)}
+              src={
+                !file
+                  ? !user.profile
+                    ? "/broken-image.jpg"
+                    : PF + user.profilePic
+                  : URL.createObjectURL(file)
+              }
               sx={{ width: 200, height: 200 }}
             />
             <Box sx={{ position: "absolute" }}>
