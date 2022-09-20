@@ -44,7 +44,7 @@ const TempDrawer = ({ openDrawer, setOpenDrawer }) => {
       };
       fetchUser();
     }
-  }, [userId]);
+  }, [authorized, userId]);
 
   return (
     <Drawer anchor="left" open={openDrawer} sx={{ display: { sm: "none" } }}>

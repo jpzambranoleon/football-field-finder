@@ -66,7 +66,7 @@ const Navbar = () => {
       };
       fetchUser();
     }
-  }, [userId]);
+  }, [authorized, userId]);
 
   return (
     <>
