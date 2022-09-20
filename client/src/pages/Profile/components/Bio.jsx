@@ -44,16 +44,16 @@ const Bio = () => {
           <Skeleton
             variant="circular"
             sx={{
-              width: { sm: 180, xs: 270, lg: 270 },
-              height: { sm: 180, xs: 270, lg: 270 },
+              width: { sm: 180, xs: 250, lg: 250 },
+              height: { sm: 180, xs: 250, lg: 250 },
             }}
           />
         ) : (
           <Avatar
             src={!user.profilePic ? "/broken-image.jpg" : PF + user.profilePic}
             sx={{
-              width: { sm: 170, xs: 270, lg: 270 },
-              height: { sm: 170, xs: 270, lg: 270 },
+              width: { sm: 170, xs: 250, lg: 250 },
+              height: { sm: 170, xs: 250, lg: 250 },
             }}
           />
         )}
