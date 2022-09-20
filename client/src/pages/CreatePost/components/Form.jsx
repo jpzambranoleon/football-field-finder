@@ -37,15 +37,12 @@ const Form = () => {
     email: "",
   });
 
-  console.log(formData.author);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     formData.userId = `${authorizedUser._id}`;
     formData.author = `${authorizedUser.username}`;
 
-    console.log(formData);
     axios
       .post("/posts/submit", formData)
       .then((res) => {
