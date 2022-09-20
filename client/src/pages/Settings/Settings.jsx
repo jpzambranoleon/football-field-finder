@@ -45,8 +45,6 @@ export default function Settings() {
 
   const [selectedTab, setSelectedTab] = useState(tabNameToIndex[page]);
 
-  console.log(selectedTab);
-
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
