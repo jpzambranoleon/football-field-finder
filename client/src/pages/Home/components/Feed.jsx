@@ -139,7 +139,7 @@ const Feed = () => {
                   justifyContent: "center",
                 }}
               >
-                <CircularProgress size="140px" />
+                <CircularProgress />
               </Box>
             ) : (
               <Box sx={{ mt: { sm: 10, xs: "none" } }}>
@@ -177,7 +177,7 @@ const Feed = () => {
                   justifyContent: "center",
                 }}
               >
-                <CircularProgress size="140px" />
+                <CircularProgress />
               </Box>
             ) : (
               <>
