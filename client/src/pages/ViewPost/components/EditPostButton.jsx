@@ -31,8 +31,19 @@ const EditPostButton = ({ post }) => {
           p={2}
           borderRadius={2}
         >
-          <Container maxWidth="sm">
-            <UpdateForm post={post} />
+          <Container position="fixed" maxWidth="sm">
+            <Box
+              aria-label="scrollable-box"
+              sx={{
+                overflow: "auto",
+                display: "flex",
+                flexGrow: 1,
+                flexDirection: "column",
+                maxHeight: 500,
+              }}
+            >
+              <UpdateForm post={post} />
+            </Box>
           </Container>
         </Box>
       </StyledModal>
