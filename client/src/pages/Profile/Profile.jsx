@@ -109,7 +109,7 @@ export default function Profile() {
                           justifyContent: "center",
                         }}
                       >
-                        <CircularProgress size="140px" />
+                        <CircularProgress />
                       </Box>
                     ) : (
                       <Box sx={{ mt: { sm: 10, xs: "none" } }}>
@@ -151,7 +151,7 @@ export default function Profile() {
                           justifyContent: "center",
                         }}
                       >
-                        <CircularProgress size="140px" />
+                        <CircularProgress />
                       </Box>
                     ) : (
                       <>
