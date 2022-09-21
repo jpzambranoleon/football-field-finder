@@ -35,7 +35,7 @@ const Bio = () => {
 
   setTimeout(() => {
     setLoadButton(false);
-  }, [3000]);
+  }, [1000]);
 
   return (
     <Box>
