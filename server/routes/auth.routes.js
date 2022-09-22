@@ -14,7 +14,7 @@ router.post("/activate", AuthController.activate);
 // Fotgot Password
 router.post("/forgot", AuthController.forgotPassword);
 // Reset Password
-router.post("/rest", AuthController.resetPassword);
+router.post("/reset", AuthController.resetPassword);
 // Get Profile Data
 router.get("/profile", validateToken, AuthController.getProfileData);
 
