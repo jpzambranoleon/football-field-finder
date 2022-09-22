@@ -152,7 +152,7 @@ const PublicProfile = ({ user }) => {
             <Avatar
               src={
                 !file
-                  ? !user.profile
+                  ? !user.profilePic
                     ? "/broken-image.jpg"
                     : PF + user.profilePic
                   : URL.createObjectURL(file)
