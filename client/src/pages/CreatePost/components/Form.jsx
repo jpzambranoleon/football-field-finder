@@ -19,8 +19,6 @@ const Form = () => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
   const navigate = useNavigate();
 
-  console.log(authorizedUser.username);
-
   const [formData, setFormData] = useState({
     types: {
       team: true,
