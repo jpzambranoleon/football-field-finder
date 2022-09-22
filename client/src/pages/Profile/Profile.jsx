@@ -136,7 +136,7 @@ export default function Profile() {
                           variant="h6"
                           color="text.secondary"
                         >
-                          Create a post to see it appear in your post feed
+                          There are no posts present in this feed
                         </Typography>
                       </Box>
                     )}
