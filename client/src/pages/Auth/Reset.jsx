@@ -41,7 +41,7 @@ export default function Reset(props) {
     const captcha = await handleReCaptchaVerify();
 
     axios
-      .post("/auth/rest", { ...formData, token, captcha })
+      .post("/auth/reset", { ...formData, token, captcha })
       .then((res) => {
         setLoading(false);
         setStatus({
