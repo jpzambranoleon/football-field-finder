@@ -7,7 +7,6 @@ import DeleteAccountButton from "./DeleteAccountButton";
 
 const Account = () => {
   const { setStatus, authorizedUser } = useContext(InfoContext);
-  console.log(authorizedUser);
   const [usernameData, setUsernameData] = useState({
     username: "",
   });
