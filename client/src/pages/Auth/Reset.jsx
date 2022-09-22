@@ -32,14 +32,12 @@ export default function Reset(props) {
       return;
     }
     return executeRecaptcha("yourAction");
-  }, []);
+  }, [executeRecaptcha]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     setLoading(true);
     const captcha = await handleReCaptchaVerify();
-
     axios
       .post("/auth/reset", { ...formData, token, captcha })
       .then((res) => {
