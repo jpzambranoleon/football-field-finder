@@ -134,7 +134,7 @@ const Feed = () => {
             {loading ? (
               <Box
                 sx={{
-                  mt: { sm: 15, xs: "none" },
+                  mt: { sm: 10, xs: "none" },
                   display: "flex",
                   justifyContent: "center",
                 }}
