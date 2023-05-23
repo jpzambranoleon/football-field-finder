@@ -16,10 +16,10 @@ import {
   Typography,
 } from "@mui/material";
 import { blue } from "@mui/material/colors";
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Post from "../../../components/Post";
 import { InfoContext } from "../../../utils/InfoProvider";
+import { publicRequest } from "../../../requestMethods";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -35,18 +35,23 @@ const Feed = () => {
   const { setStatus } = useContext(InfoContext);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get("/posts/timeline", { params: filterData })
-      .then((res) => {
-        setPosts(res.data.posts);
-        setTotalPages(res.data.totalPages);
+    const fetchPosts = async () => {
+      try {
+        const response = await publicRequest.get(`/posts/timeline`, {
+          params: filterData,
+        });
+        setPosts(response.data.posts);
+        setTotalPages(response.data.totalPages);
         setLoading(false);
-      })
-      .catch((err) => {
-        let message = err.response ? err.response.data.message : err.message;
+      } catch (error) {
+        let message = error.response
+          ? error.response.data.message
+          : error.message;
         setStatus({ open: true, message: message, severity: "error" });
-      });
+        setLoading(true);
+      }
+    };
+    fetchPosts();
   }, [filterData, setStatus]);
 
   return (
