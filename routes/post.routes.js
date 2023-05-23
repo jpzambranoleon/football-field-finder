@@ -7,6 +7,7 @@ router.delete("/delete/:postId", postController.deletePost);
 
 router.get("/getPost/:postId", postController.getPost);
 
-router.get("/:forumId", postController.getForumPosts);
+// Get all posts
+router.get("/timeline", postController.getTimeline);
 
 module.exports = router;
