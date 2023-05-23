@@ -4,25 +4,25 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import About from "./pages/About/About";
-import Home from "./pages/Home/Home";
+import About from "./pages/about/About";
+import Home from "./pages/home/Home";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import axios from "axios";
-import ViewPost from "./pages/ViewPost/ViewPost";
-import Profile from "./pages/Profile/Profile";
+import ViewPost from "./pages/viewPost2/ViewPost";
+import Profile from "./pages/profile2/Profile";
 import { useContext } from "react";
 import { InfoContext } from "./utils/InfoProvider";
 import StickyFooter from "./components/StickyFooter";
 import { Box } from "@mui/material";
-import Settings from "./pages/Settings/Settings";
+import Settings from "./pages/settings2/Settings";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import Setup from "./pages/Auth/Setup";
-import Activate from "./pages/Auth/Activate";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Setup from "./pages/auth/Setup";
+import Activate from "./pages/auth/Activate";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import Forgot from "./pages/Auth/Forgot";
-import Reset from "./pages/Auth/Reset";
+import Forgot from "./pages/auth/Forgot";
+import Reset from "./pages/auth/Reset";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:8800/api";
