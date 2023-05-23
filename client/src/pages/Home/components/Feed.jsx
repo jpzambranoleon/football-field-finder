@@ -37,7 +37,7 @@ const Feed = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("/posts/get_all", { params: filterData })
+      .get("/posts/timeline", { params: filterData })
       .then((res) => {
         setPosts(res.data.posts);
         setTotalPages(res.data.totalPages);
