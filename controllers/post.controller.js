@@ -2,7 +2,7 @@ const Post = require("../models/post.model");
 const User = require("../models/user.model");
 
 // CREATE A POST
-exports.submitPost = async (req, res) => {
+exports.createPost = async (req, res) => {
   try {
     let commonPostInfo = {
       author: req.body.author,
@@ -95,7 +95,7 @@ exports.getPost = async (req, res) => {
   }
 };
 
-exports.getAll = async (req, res) => {
+exports.getTimeline = async (req, res) => {
   try {
     let page = req.query.page || 1;
     let { team, player, trainer } = req.query;
