@@ -9,38 +9,47 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  loginFailure,
+  loginRequest,
+  loginSuccess,
+} from "../../redux/userSlice";
 import { InfoContext } from "../../utils/InfoProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { publicRequest } from "../../requestMethods";
 
 export default function Login() {
-  const { setStatus, setAuthorized } = useContext(InfoContext);
+  const { setStatus } = useContext(InfoContext);
+  const { loading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-
-    axios
-      .post("/auth/login", data)
-      .then((res) => {
-        setStatus({
-          open: true,
-          message: res.data.message,
-          severity: "success",
-        });
-        localStorage.setItem("token", res.data.accessToken);
-        localStorage.setItem("user", res.data.user);
-        axios.defaults.headers.common["Authorization"] = res.data.accessToken;
-
-        setAuthorized(true);
-        navigate("/");
-      })
-      .catch((err) => {
-        let message = err.response ? err.response.data.message : err.message;
-        setStatus({ open: true, message: message, severity: "error" });
+    try {
+      dispatch(loginRequest());
+      const response = await publicRequest.post("/auth/login", {
+        email,
+        password,
       });
+      setStatus({
+        open: true,
+        message: response.data.message,
+        severity: "success",
+      });
+      dispatch(loginSuccess(response.data.user));
+      navigate("/");
+    } catch (error) {
+      let message = error.response
+        ? error.response.data.message
+        : error.message;
+      setStatus({ open: true, message: message, severity: "error" });
+      dispatch(loginFailure());
+    }
   };
 
   return (
@@ -61,12 +70,7 @@ export default function Login() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}
-            >
+            <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -76,6 +80,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -86,12 +91,14 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleLogin}
               >
                 Sign In
               </Button>
