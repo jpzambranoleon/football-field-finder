@@ -1,11 +1,10 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { InfoContext } from "../../utils/InfoProvider";
 import Feed from "./components/Feed";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-  const { authorized } = useContext(InfoContext);
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <main>
@@ -49,7 +48,7 @@ export default function Home() {
             </Button>
             <Button
               component={Link}
-              to={authorized ? "/post/create" : "/register"}
+              to={currentUser ? "/post/create" : "/register"}
               variant="outlined"
               color="primary"
             >
