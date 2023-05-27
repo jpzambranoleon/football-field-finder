@@ -95,11 +95,12 @@ exports.login = async (req, res) => {
     }
 
     // Check if user's account is verified
+    /*
     if (!user.isVerified) {
       return res
         .status(401)
         .json({ message: "Please verify your email address" });
-    }
+    } */
 
     // Generate a JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
