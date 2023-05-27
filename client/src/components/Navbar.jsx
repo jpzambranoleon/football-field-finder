@@ -11,22 +11,17 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import axios from "axios";
-import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { InfoContext } from "../utils/InfoProvider";
 import TempDrawer from "./TempDrawer";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const settings = ["Logout"];
 
 const Navbar = () => {
+  const { currentUser, loading } = useSelector((state) => state.user);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { authorized } = useContext(InfoContext);
-  const userId = localStorage.getItem("user");
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
   const navigate = useNavigate();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
 
@@ -55,18 +50,6 @@ const Navbar = () => {
       window.location.reload();
     }
   };
-
-  useEffect(() => {
-    if (authorized) {
-      setLoading(true);
-      const fetchUser = async () => {
-        const res = await axios.get(`/users?userId=${userId}`);
-        setUser(res.data);
-        setLoading(false);
-      };
-      fetchUser();
-    }
-  }, [authorized, userId]);
 
   return (
     <>
@@ -102,7 +85,7 @@ const Navbar = () => {
           </Box>
           <Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {!authorized ? (
+              {!currentUser ? (
                 <Button component={Link} to={"/login"}>
                   Login
                 </Button>
@@ -113,11 +96,7 @@ const Navbar = () => {
                   ) : (
                     <Avatar
                       sx={{ height: 35, width: 35 }}
-                      src={
-                        !user.profilePic
-                          ? "/broken-image.jpg"
-                          : PF + user.profilePic
-                      }
+                      src={currentUser.profilePicture}
                     />
                   )}
                 </IconButton>
@@ -140,7 +119,7 @@ const Navbar = () => {
               >
                 <MenuItem
                   component={Link}
-                  to={`/${user.username}`}
+                  to={`/${currentUser.username}`}
                   onClick={handleCloseUserMenu}
                 >
                   <Typography textAlign="center">Profile</Typography>
