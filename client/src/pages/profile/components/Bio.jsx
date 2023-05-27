@@ -8,30 +8,13 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { InfoContext } from "../../../utils/InfoProvider";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
-const Bio = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
-  const { authorizedUser } = useContext(InfoContext);
-  const [loading, setLoading] = useState(true);
+const Bio = ({ user, loading }) => {
+  const { currentUser } = useSelector((state) => state.user);
   const [loadButton, setLoadButton] = useState(true);
-  const [user, setUser] = useState({});
-  const { username } = useParams();
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
-      setUser(res.data);
-      setLoading(false);
-    };
-    fetchUser();
-  }, [username]);
 
   setTimeout(() => {
     setLoadButton(false);
@@ -50,7 +33,7 @@ const Bio = () => {
           />
         ) : (
           <Avatar
-            src={!user.profilePic ? "/broken-image.jpg" : PF + user.profilePic}
+            src={user.profilePicture}
             sx={{
               width: { sm: 170, xs: 250, lg: 250 },
               height: { sm: 170, xs: 250, lg: 250 },
@@ -70,7 +53,7 @@ const Bio = () => {
         {loading ? <Skeleton /> : user.username}
       </Typography>
       <Typography sx={{ mb: 2 }}>{user.bio}</Typography>
-      {authorizedUser._id === user._id ? (
+      {currentUser._id === user._id ? (
         <>
           {loadButton ? (
             <Button disabled fullWidth color="primary" variant="outlined">
