@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import Post from "../../components/Post";
 import { InfoContext } from "../../utils/InfoProvider";
 import Bio from "./components/Bio";
+import { publicRequest } from "../../requestMethods";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,7 +38,8 @@ function TabPanel(props) {
 export default function Profile() {
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingUser, setLoadingUser] = useState(true);
   const [totalPages, setTotalPages] = useState(1);
   const [filterData, setFilterData] = useState({
     page: 1,
@@ -47,26 +49,40 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      setLoading(true);
-      axios
-        .get("/posts/my_posts/" + username, { params: filterData })
-        .then((res) => {
-          setPosts(res.data.posts);
-          setTotalPages(res.data.totalPages);
-          setLoading(false);
-        })
-        .catch((err) => {
-          let message = err.response ? err.response.data.message : err.message;
-          setStatus({ open: true, message: message, severity: "error" });
-        });
+      setLoadingPosts(true);
+      try {
+        const response = await publicRequest.get(
+          `/posts/userTimeline/${username}`,
+          { params: filterData }
+        );
+        setPosts(response.data.posts);
+        setTotalPages(response.data.totalPages);
+        setLoadingPosts(false);
+      } catch (error) {
+        let message = error.response
+          ? error.response.data.message
+          : error.message;
+        setStatus({ open: true, message: message, severity: "error" });
+        setLoadingPosts(false);
+      }
     };
     fetchPosts();
+  }, [setStatus, filterData, username]);
+
+  useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
-      setUser(res.data);
+      setLoadingUser(true);
+      try {
+        const res = await publicRequest.get(`/users?username=${username}`);
+        setUser(res.data);
+        setLoadingUser(false);
+      } catch (error) {
+        console.log(error);
+        setLoadingUser(true);
+      }
     };
     fetchUser();
-  }, [setStatus, filterData, username]);
+  }, [username]);
 
   const [value, setValue] = useState("one");
 
@@ -80,7 +96,7 @@ export default function Profile() {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={3}>
-              <Bio user={user} />
+              <Bio user={user} loading={loadingUser} />
             </Grid>
             <Grid item xs={12} sm={9}>
               <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
@@ -101,7 +117,7 @@ export default function Profile() {
               <TabPanel>
                 {posts.length === 0 ? (
                   <>
-                    {loading ? (
+                    {loadingPosts ? (
                       <Box
                         sx={{
                           mt: { sm: 15, xs: "none" },
@@ -143,7 +159,7 @@ export default function Profile() {
                   </>
                 ) : (
                   <>
-                    {loading ? (
+                    {loadingPosts ? (
                       <Box
                         sx={{
                           mt: { sm: 15, xs: "none" },
