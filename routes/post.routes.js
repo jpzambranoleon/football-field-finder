@@ -10,4 +10,6 @@ router.get("/getPost/:postId", postController.getPost);
 // Get all posts
 router.get("/timeline", postController.getTimeline);
 
+router.get("/userTimeline/:username", postController.getAllUsersPost);
+
 module.exports = router;
