@@ -8,11 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { InfoContext } from "../../utils/InfoProvider";
 import Account from "./components/Account";
 import PublicProfile from "./components/PublicProfile";
+import { useSelector } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -31,8 +30,7 @@ function TabPanel(props) {
 }
 
 export default function Settings() {
-  const { authorizedUser } = useContext(InfoContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
+  const { currentUser } = useSelector((state) => state.user);
 
   const { page } = useParams();
 
@@ -55,16 +53,12 @@ export default function Settings() {
         <Container>
           <Box sx={{ display: "flex" }}>
             <Avatar
-              src={
-                !authorizedUser.profilePic
-                  ? "/broken-image.jpg"
-                  : PF + authorizedUser.profilePic
-              }
+              src={currentUser.profilePicture}
               sx={{ width: 56, height: 56 }}
             />
             <Box sx={{ ml: 2 }}>
               <Typography variant="h6" fontWeight={500}>
-                {authorizedUser.name}
+                {currentUser.name}
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Your personal account
@@ -101,10 +95,10 @@ export default function Settings() {
               </Grid>
               <Grid item xs={12} sm={9}>
                 <TabPanel value={selectedTab} index={0}>
-                  <PublicProfile user={authorizedUser} />
+                  <PublicProfile user={currentUser} />
                 </TabPanel>
                 <TabPanel value={selectedTab} index={1}>
-                  <Account user={authorizedUser} />
+                  <Account user={currentUser} />
                 </TabPanel>
               </Grid>
             </Grid>
