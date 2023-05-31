@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const { currentUser } = useSelector((state) => state.user);
-
+  // reminder to updated this file to look modern
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
