@@ -16,6 +16,7 @@ import { blue, green, pink } from "@mui/material/colors";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import convertTime from "../utils/convertTime";
+import { publicRequest } from "../requestMethods";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
@@ -24,7 +25,7 @@ const Post = ({ post }) => {
   useEffect(() => {
     setLoading(true);
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
+      const res = await publicRequest.get(`/users?userId=${post.userId}`);
       setUser(res.data);
       setLoading(false);
     };
