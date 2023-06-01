@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import { blue, green, pink } from "@mui/material/colors";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import convertTime from "../utils/convertTime";
 import { publicRequest } from "../requestMethods";
 
