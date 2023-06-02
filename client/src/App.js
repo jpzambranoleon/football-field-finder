@@ -20,7 +20,6 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Setup from "./pages/auth/Setup";
 import Activate from "./pages/auth/Activate";
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import Forgot from "./pages/auth/Forgot";
 import Reset from "./pages/auth/Reset";
 
