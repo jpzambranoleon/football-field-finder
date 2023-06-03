@@ -26,8 +26,6 @@ import Reset from "./pages/auth/Reset";
 function App() {
   const { currentUser } = useSelector((state) => state.user);
 
-  const { authorized } = useContext(InfoContext);
-
   return (
     <div className="App">
       <>
