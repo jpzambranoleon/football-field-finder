@@ -12,19 +12,21 @@ import { InfoContext } from "../../../utils/InfoProvider";
 import { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { userRequest } from "../../../requestMethods";
+import { useSelector } from "react-redux";
 
 const PublicProfile = ({ user }) => {
-  const { setStatus, authorizedUser } = useContext(InfoContext);
+  const { currentUser } = useSelector((state) => state.user);
+  const { setStatus } = useContext(InfoContext);
   const [file, setFile] = useState(null);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER_IMAGES_PERSON;
   const [formData, setFormData] = useState({
-    name: authorizedUser.name,
-    publicEmail: authorizedUser.publicEmail,
-    bio: authorizedUser.bio,
-    location: authorizedUser.location,
+    name: currentUser.name,
+    publicEmail: currentUser.publicEmail,
+    bio: currentUser.bio,
+    location: currentUser.location,
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(file);
 
@@ -35,11 +37,11 @@ const PublicProfile = ({ user }) => {
       data.append("image", file);
       formData.profilePic = fileName;
 
-      axios.post("/upload", data);
+      userRequest.post("/users/upload", data);
     }
-    axios
-      .put(`/users/update/${authorizedUser._id}`, {
-        userId: authorizedUser._id,
+    userRequest
+      .put(`/users/update/${currentUser._id}`, {
+        userId: currentUser._id,
         data: formData,
       })
       .then((res) => {
@@ -76,7 +78,7 @@ const PublicProfile = ({ user }) => {
               Name
             </Typography>
             <TextField
-              defaultValue={authorizedUser.name}
+              defaultValue={currentUser.name}
               id="name"
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, name: e.target.value }))
@@ -91,7 +93,7 @@ const PublicProfile = ({ user }) => {
               Public Email
             </Typography>
             <TextField
-              defaultValue={authorizedUser.publicEmail}
+              defaultValue={currentUser.publicEmail}
               id="email"
               onChange={(e) =>
                 setFormData((prev) => ({
@@ -109,7 +111,7 @@ const PublicProfile = ({ user }) => {
               Bio
             </Typography>
             <TextField
-              defaultValue={authorizedUser.bio}
+              defaultValue={currentUser.bio}
               id="bio"
               onChange={(e) => {
                 setFormData((prev) => ({ ...prev, bio: e.target.value }));
@@ -123,7 +125,7 @@ const PublicProfile = ({ user }) => {
               Location
             </Typography>
             <TextField
-              defaultValue={authorizedUser.location}
+              defaultValue={currentUser.location}
               id="location"
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, location: e.target.value }))
@@ -150,13 +152,7 @@ const PublicProfile = ({ user }) => {
           </Typography>
           <Box>
             <Avatar
-              src={
-                !file
-                  ? !user.profilePicture
-                    ? "/broken-image.jpg"
-                    : PF + user.profilePicture
-                  : URL.createObjectURL(file)
-              }
+              src={currentUser.profilePicture}
               sx={{ width: 200, height: 200 }}
             />
             <Box sx={{ position: "absolute" }}>
