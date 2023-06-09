@@ -10,12 +10,11 @@ import {
 import { AddPhotoAlternate, Cancel } from "@mui/icons-material";
 import { InfoContext } from "../../../utils/InfoProvider";
 import { useContext } from "react";
-import axios from "axios";
 import { useState } from "react";
 import { userRequest } from "../../../requestMethods";
 import { useSelector } from "react-redux";
 
-const PublicProfile = ({ user }) => {
+const PublicProfile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { setStatus } = useContext(InfoContext);
   const [file, setFile] = useState(null);
@@ -24,38 +23,26 @@ const PublicProfile = ({ user }) => {
     publicEmail: currentUser.publicEmail,
     bio: currentUser.bio,
     location: currentUser.location,
+    image: file,
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(file);
 
-    if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
-      data.append("image", file);
-      formData.profilePic = fileName;
+    const newFormData = new FormData();
+    newFormData.append("image", file);
+    newFormData.append("userId", currentUser._id);
+    newFormData.append("data", JSON.stringify(formData));
+    const data = new FormData();
+    data.append("image", file);
+    console.log(data);
 
-      userRequest.post("/users/upload", data);
-    }
-    userRequest
-      .put(`/users/update/${currentUser._id}`, {
-        userId: currentUser._id,
-        data: formData,
-      })
-      .then((res) => {
-        setStatus({
-          open: true,
-          message: res.data.message,
-          severity: "success",
-        });
-        window.location.reload();
-      })
-      .catch((err) => {
-        let message = err.response ? err.response.data.message : err.message;
-        setStatus({ open: true, message: message, severity: "error" });
-      });
+    userRequest.put(`/users/update/${currentUser._id}`, newFormData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   return (
