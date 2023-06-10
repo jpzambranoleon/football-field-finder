@@ -1,14 +1,15 @@
 const router = require("express").Router();
-const multer = require("multer");
 const userController = require("../controllers/user.controller");
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
+//const upload = require("../middlewares/multer.middleware");
+const { handleImageUpload } = require("../middlewares/multer.middleware");
 
-// Configuration
 cloudinary.config({
-  cloud_name: "dclmwfnbr",
-  api_key: "252447426673796",
-  api_secret: "2PEJk4lf4LE2HUX0YJlrF3OVMnM",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 const storage = new CloudinaryStorage({
@@ -20,12 +21,14 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage: storage });
 
-// Update user
-router.post("/upload", upload.single("image"), async (req, res) => {
-  return res.json({ picture: req.file.path });
-});
+router.put("/upload", upload.single("image"), userController.uploadImage);
 
-router.put("/update/:userId", userController.updateUser);
+// Update user
+router.put(
+  "/update/:userId",
+  upload.single("image"),
+  userController.updateUser
+);
 
 router.put("/changePassword/:userId", userController.changePassword);
 
