@@ -1,10 +1,74 @@
+const multer = require("multer");
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: "dclmwfnbr",
+  api_key: "252447426673796",
+  api_secret: "2PEJk4lf4LE2HUX0YJlrF3OVMnM",
+});
+
+const uploadImage = async (file) => {
+  try {
+    const result = await cloudinary.uploader.upload(file, {
+      folder: "uploads", // Optional: Set the folder in your Cloudinary account
+    });
+    return result.secure_url; // Returns the URL of the uploaded image
+  } catch (error) {
+    console.error("Error uploading image:", error);
+    throw new Error("Image upload failed");
+  }
+};
+
+exports.handleImageUpload = async (req, res) => {
+  try {
+    const file = req.file.path;
+
+    const imageUrl = await uploadImage(file);
+
+    res.json({ success: true, imageUrl });
+  } catch (error) {
+    res.status(500).json({ error: true, message: "Image upload failed" });
+  }
+};
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "uploads",
+  },
+});
+
+const upload = multer({ storage: storage });
+
+exports.uploadImage = async (req, res) => {
+  try {
+    console.log("working");
+    const secure_url = req.file.path;
+    console.log(req.body);
+
+    //return res.json({ image: secure_url });
+  } catch (error) {
+    return res.status(500).json({
+      error: true,
+      message: error.message,
+    });
+  }
+};
 
 // Update user
 exports.updateUser = async (req, res) => {
   if (req.body.userId === req.params.userId || req.body.isAdmin) {
     try {
+      console.log("working");
+      console.log(req);
+      //console.log(req.body.data);
+      //const secure_url = req.file.path;
+      //console.log(req.file);
+      //return res.json({ image: secure_url });
+      /*
       const updatedUser = await User.findByIdAndUpdate(
         req.params.userId,
         {
@@ -17,7 +81,7 @@ exports.updateUser = async (req, res) => {
         success: true,
         message: "Account has been updated",
         user: { ...others },
-      });
+      }); */
     } catch (error) {
       return res.status(500).json({
         error: true,
