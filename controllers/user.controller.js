@@ -62,13 +62,15 @@ exports.uploadImage = async (req, res) => {
 exports.updateUser = async (req, res) => {
   if (req.body.userId === req.params.userId || req.body.isAdmin) {
     try {
-      console.log("working");
-      console.log(req);
-      //console.log(req.body.data);
-      //const secure_url = req.file.path;
-      //console.log(req.file);
-      //return res.json({ image: secure_url });
-      /*
+      console.log(req.body);
+      if (req.file) {
+        const secure_url = req.file.path;
+        await User.findByIdAndUpdate(
+          req.params.userId,
+          { $set: { profilePicture: secure_url } },
+          { new: true }
+        );
+      }
       const updatedUser = await User.findByIdAndUpdate(
         req.params.userId,
         {
@@ -77,11 +79,11 @@ exports.updateUser = async (req, res) => {
         { new: true }
       );
       const { password, ...others } = updatedUser._doc;
-      res.status(200).send({
+      res.status(200).json({
         success: true,
         message: "Account has been updated",
         user: { ...others },
-      }); */
+      });
     } catch (error) {
       return res.status(500).json({
         error: true,

@@ -18,13 +18,4 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage: storage });
 
-exports.handleImageUpload = async (req, res, next) => {
-  console.log(req);
-  if (req.file) {
-    upload.single("image")(req, res, next);
-  } else {
-    next();
-  }
-};
-
-//module.exports = handleImageUpload;
+module.exports = upload;

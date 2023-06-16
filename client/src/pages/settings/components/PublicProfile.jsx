@@ -12,37 +12,52 @@ import { InfoContext } from "../../../utils/InfoProvider";
 import { useContext } from "react";
 import { useState } from "react";
 import { userRequest } from "../../../requestMethods";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFailure, updateSuccess } from "../../../redux/userSlice";
 
 const PublicProfile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { setStatus } = useContext(InfoContext);
+  const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
     name: currentUser.name,
     publicEmail: currentUser.publicEmail,
     bio: currentUser.bio,
     location: currentUser.location,
-    image: file,
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(file);
-
-    const newFormData = new FormData();
-    newFormData.append("image", file);
-    newFormData.append("userId", currentUser._id);
-    newFormData.append("data", JSON.stringify(formData));
-    const data = new FormData();
-    data.append("image", file);
-    console.log(data);
-
-    userRequest.put(`/users/update/${currentUser._id}`, newFormData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    try {
+      const newFormData = new FormData();
+      if (file) {
+        newFormData.append("image", file);
+      }
+      newFormData.append("userId", currentUser._id);
+      newFormData.append("data", formData);
+      const response = await userRequest.put(
+        `/users/update/${currentUser._id}`,
+        { userId: currentUser._id, data: formData },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      setStatus({
+        open: true,
+        message: response.data.message,
+        severity: "success",
+      });
+      dispatch(updateSuccess(response.data.user));
+    } catch (error) {
+      let message = error.response
+        ? error.response.data.message
+        : error.message;
+      setStatus({ open: true, message: message, severity: "error" });
+      dispatch(updateFailure());
+    }
   };
 
   return (
@@ -139,7 +154,7 @@ const PublicProfile = () => {
           </Typography>
           <Box>
             <Avatar
-              src={currentUser.profilePicture}
+              src={!file ? !currentUser.profilePic : URL.createObjectURL(file)}
               sx={{ width: 200, height: 200 }}
             />
             <Box sx={{ position: "absolute" }}>
