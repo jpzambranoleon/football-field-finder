@@ -98,22 +98,10 @@ exports.getPost = async (req, res) => {
 exports.getTimeline = async (req, res) => {
   try {
     let page = req.query.page || 1;
-    let { team, player, trainer } = req.query;
-    console.log(team, player, trainer);
+
     let amountOnPage = 9;
-    let typeConditions = [];
-    if (player) typeConditions.push({ "types.player": true });
-    if (trainer) typeConditions.push({ "types.trainer": true });
-    if (team) typeConditions.push({ "types.team": true });
-    let searchCondition = {
-      active: true,
-      $or: typeConditions,
-      ...(team ? { "type.team": team } : {}),
-      ...(player ? { "type.player": player } : {}),
-      ...(trainer ? { "type.trainer": trainer } : {}),
-    };
-    console.log(searchCondition);
-    let posts = await Post.find(searchCondition)
+
+    let posts = await Post.find()
       .sort({ _id: -1 })
       .skip((page - 1) * amountOnPage)
       .limit(amountOnPage);
